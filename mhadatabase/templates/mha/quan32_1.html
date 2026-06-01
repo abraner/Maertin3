@@ -1,0 +1,23 @@
+{{ form.quanity32 }}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(function(){
+   $('#id_quanity32').change(function(){
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_quanity32');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("quant32-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_quanity32: $('#id_quanity32').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+</script>
+

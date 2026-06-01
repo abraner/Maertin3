@@ -1,0 +1,23 @@
+{{ form.quanity38 }}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(function(){
+   $('#id_quanity38').change(function(){
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_quanity38');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("quant38-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_quanity38: $('#id_quanity38').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+</script>
+

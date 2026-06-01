@@ -1,0 +1,68 @@
+{{ form.descript18 }}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function() {
+
+    if ($('#id_descript18').val() === 'Select Material') {
+       $("#id_descript18").css('background-color', '#2e8b57')
+       $("#id_descript18").attr("disabled", true)
+       $("#id_quanity18").attr("disabled", true)
+       $(".delete18").attr("disabled", true)
+    } else {
+        $("#id_descript18").css('background-color', 'gold')
+        $(".delete18").attr("disabled", false)
+   }
+
+});
+
+$(function(){
+   $('#id_descript18').change(function(){
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_descript18');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("descript18-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_descript18: $('#id_descript18').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+$(function(){
+    $('#id_descript18').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("descript18load-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#descript18_id").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+$(function(){
+    $('#id_descript18').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("quanity18load-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#quanity18_id").html(data);
+                     }
+                });
+        },600);
+    });
+});
+</script>

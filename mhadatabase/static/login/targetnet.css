@@ -1,0 +1,115 @@
+body{
+    font: 22px/1.5 Arial, Helvetica,sans-serif;
+    padding:0;
+    margin:0;
+}
+
+
+div.container{
+    width:100%;
+    margin-top:30px;
+    margin-left:auto;
+    margin-right:auto;
+    display: flex;
+}
+
+
+div.container1{
+    flex: 1;
+}
+
+
+div.container2{
+    flex: 1;
+    margin-top: 200px;
+    margin-left:auto;
+    margin-right:auto;
+    background:#4682B4;
+    position: relative;
+    border: 2px solid black;
+
+
+}
+
+
+div.container3{
+    flex: 1;
+}
+
+
+.close-btn{
+    color: #dddddd;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: red; /* Make it red */
+    padding: 2px 5px; /* Adjust padding as needed */
+}
+
+
+
+
+.header1{
+    font-size: calc( 1vw + .65vh + .25vmin);
+    text-align: center;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.form-rowcustid, .form-rowjobid, .form-rowbidid, .form-rowcount{
+    padding-top: 7px;
+    display: flex;
+
+}
+
+.form-row{
+    display: flex;
+    background: #4682b4;
+
+}
+
+
+input#id_custid, #id_jobid, #id_bidid{
+    width: 4.5vw;
+    margin-right:2%;
+    margin-top:0px;
+    font-size: calc(.5vw + .65vh + .25vmin);
+    padding: 0px;
+    text-align:center;
+    -moz-appearance: textfield;
+    background: #4682b4;
+    color: #4682b4;
+    border: none;
+}
+
+.form-rowincrease{
+    justify-content: center;
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#label_increase{
+    font-size: calc( 1vw + .65vh + .25vmin);
+    margin-right: 15px;
+}
+
+#id_targetprofit{
+    font-size: calc(.75vw + .65vh + .25vmin);
+}
+
+.accept{
+    width: 150px;
+    font-size: calc( 1vw + .65vh + .25vmin);
+    font-weight: 500;
+
+}
+
+.accept:hover{
+    color: white;
+    background: green;
+    transition: 0.6s;
+}

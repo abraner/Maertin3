@@ -1,0 +1,44 @@
+<div class="input">
+<label class="label1">Height :</label>
+    <input id="height_id" type="text" value="{{ height.height }}" onfocusout="myFunctionHeight()">
+
+</div>
+<script>
+ $(document).ready(function() {
+    $("#height_id").attr("disabled", true)
+   const inputFields = document.querySelectorAll('input[type="text"], input[type="email"], input[type="number"]');
+
+   inputFields.forEach(input => {
+     const defaultValue = input.value;
+     input.addEventListener('focus', function() {
+       if (this.value === defaultValue) {
+         this.value = '';
+       }
+     });
+     input.addEventListener('blur', function() {
+        if (this.value === '') {
+         this.value = defaultValue;
+        }
+     });
+   });
+});
+
+
+function myFunctionHeight() {
+if ($('#height_id').val() >1) $("#width_id").attr("disabled", false)
+$("#width_id").attr("disabled", false)
+$('#width_id').focus();
+var userInput = document.getElementById("height_id").value;
+                    console.log(userInput);
+                    var url = $(".form2").attr("height-url");
+                     $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            height_id: $("#height_id").val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+}
+
+</script>

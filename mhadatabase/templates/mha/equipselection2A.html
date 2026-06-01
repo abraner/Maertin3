@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="../../../img/img.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../static/login/equipselection2.css">
+    <title>Maertin Heating & Cooling Bidding Program</title>
+</head>
+<body style="background-image: url('../../../../img/bid.png');
+             background-repeat: no-repeat;
+             background-attachment: fixed;
+             background-size: cover;" >
+<div class="img"><img class="img" src='../../../../img/img.png'></div>
+<div class="container">
+    <div class="container1">
+
+    </div>
+    <div class="container2">
+        <form class="form2" method="post"
+            joblocation-url="{% url 'mhadatabase:joblocation' %}"
+
+            plenumheight-url="{% url 'mhadatabase:plenumheight' %}"
+            plenumheightload-url="{% url 'mhadatabase:load_plenumheight' %}"
+            plenumwidth-url="{% url 'mhadatabase:plenumwidth' %}"
+            plenumwidthload-url="{% url 'mhadatabase:load_plenumwidth' %}"
+            plenumdepth-url="{% url 'mhadatabase:plenumdepth' %}"
+            plenumdepthload-url="{% url 'mhadatabase:load_plenumdepth' %}"
+
+            existfurnheight-url="{% url 'mhadatabase:existfurnheight' %}"
+            existfurnheightload-url="{% url 'mhadatabase:load_existfurnheight' %}"
+
+            existfurnwidth-url="{% url 'mhadatabase:existfurnwidth' %}"
+            existfurndepth-url="{% url 'mhadatabase:existfurndepth' %}"
+            existfurndepthload-url="{% url 'mhadatabase:load_existfurndepth' %}"
+
+            existfurnconfig-url="{% url 'mhadatabase:existfurnconfig' %}"
+
+
+
+            condeff2A-url="{% url 'mhadatabase:condeff2A' %}"
+            load_condbtu2A-url="{% url 'mhadatabase:load_condbtu2A' %}"
+            condbtu2A-url="{% url 'mhadatabase:condbtu2A' %}"
+            conddescript2Aload-url="{% url 'mhadatabase:load_conddescript2A' %}"
+            conddescrip2A-url="{% url 'mhadatabase:conddescrip2A' %}"
+            condmodnum2Aload-url="{% url 'mhadatabase:load_condmodnum2A' %}"
+            coilconfig2Aload-url="{% url 'mhadatabase:load_coilconfig2A' %}"
+            coilconfig2up-url="{% url 'mhadatabase:coilconfig2up' %}"
+            coilconfig2A-url="{% url 'mhadatabase:coilconfig2A' %}"
+            coilbtu2Aload-url="{% url 'mhadatabase:load_coilbtu2A' %}"
+            coilbtu2A-url="{% url 'mhadatabase:coilbtu2A' %}"
+            coiltype2Aload-url="{% url 'mhadatabase:load_coiltype2A' %}"
+            coiltype2A-url="{% url 'mhadatabase:coiltype2A' %}"
+            coilmodnum2Aload-url="{% url 'mhadatabase:load_coilmodnum2A' %}"
+
+            coildepth2Aload-url="{% url 'mhadatabase:load_coildepth2A' %}"
+            coilwidth2Aload-url="{% url 'mhadatabase:load_coilwidth2A' %}"
+            coilheight2Aload-url="{% url 'mhadatabase:load_coilheight2A' %}"
+            addthermostat2A-url="{% url 'mhadatabase:addthermostat2A' %}"
+            thermomfg2a-url="{% url 'mhadatabase:thermomfg2a' %}"
+            thermomodnumload2a-url="{% url 'mhadatabase:load_thermomodnum2a' %}"
+            thermostatmodnum2a-url="{% url 'mhadatabase:thermostatmodnum2a' %}"
+            custpageloc-url="{% url 'mhadatabase:custpageloc' %}"
+            vendor1load-url="{% url 'mhadatabase:load_vendor1' %}"
+            vendor2load-url="{% url 'mhadatabase:load_vendor2' %}"
+            totalrebateload-url="{% url 'mhadatabase:load_totalrebate' %}"
+
+        >
+            {% csrf_token %}
+            {{ form.name_of_field }}
+            <div class="row1">
+                    <div class="column1">
+                        <div class="form-rowcustid">
+                            {{ form.custid.errors }}
+                            <label class="custid">Cust ID:</label>
+                            {{ form.custid }}
+                        </div>
+                        <div class="form-rowjobid">
+                            {{ form.jobid.errors }}
+                            <label class="jobid">Job ID:</label>
+                            {{ form.jobid }}
+                        </div>
+                        <div class="form-rowbidid">
+                            {{ form.bidid.errors }}
+                            <label class="bidid">Bid ID:</label>
+                            {{ form.bidid }}
+                        </div>
+                    </div>
+                    <div class="row1column2">
+                        {% for obj in object_list %}
+                        <div class="form-rowfirst">
+                            {{ obj.custfirstname }}
+                        </div>
+                        <div class="form-rowlast">
+                            {{ obj.custlastname }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="column3">
+                        <a href="{% url 'mhadatabase:deleteequipselection' %}">
+                        <button type="button" class="btn btn4">Cancel</button>
+                        </a>
+                    </div>
+                    <div class="column4">
+                        <div class="form-condcol">
+                            {{ form.optionid.errors }}
+                            <label class="label_option">Option ID:</label>
+                            {{ form.optionid }}
+                        </div>
+                        <div class="form-condcol">
+                            {{ form.options.errors }}
+                            <label class="label_option">Option:</label>
+                            {{ form.options }}
+                        </div>
+                    </div>
+            </div>
+            <div class="row2">
+                <div class="row2column1">
+                <div class="form-rowjoblocation">
+                    {{ form.joblocation.errors }}
+                    <label class="joblocation">Job Location:</label>
+                    {{ form.joblocation }}
+                </div>
+                    <div class="condheader"> Exsting Furnace Information </div>
+                    <div class="form-condcol">
+                        <div id="plenumheight">
+                            <div id="id_plenumheight"></div>
+                        </div>
+                        {{ form.plenumwidth.errors }}
+                        <label class="label_plenumwidth">Width:</label>
+                        {{ form.plenumwidth }}
+                        <div id="plenumdepth">
+                            <div id="id_plenumdepth"></div>
+                        </div>
+                    </div>
+                    <div class="form-condcol">
+                        {{ form.existfurnconfig.errors }}
+                        <label class="label_furnwidth">Furnace Config. :</label>
+                        {{ form.existfurnconfig }}
+
+                    </div>
+                    <div class="form-condcol">
+                        <div id="existfurnheight">
+                            <div id="id_existfurnheight"></div>
+                        </div>
+                        {{ form.furnwidth.errors }}
+                        <label class="label_existfurnwidth">Width :</label>
+                        {{ form.existfurnwidth }}
+                        <div id="existfurndepth">
+                            <div id="id_existfurndepth"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row2column2">
+
+                    <a href="{{ instance2.get_absolute19_url }}">
+                        <button type="button" class="btn btn3" style="display:none">Accept Equipment and Start Bid</button>
+                    </a>
+                    <a href="{{ instance2.get_absolute19_url }}">
+                        <button type="button" class="btn btn2" style="display:none">Accept Equipment and Start Option Bid</button>
+                    </a>
+
+                </div>
+                <div class="row2column3">
+                         <div id="rebateamount">Rebate Amount</div>
+                    <div class="form-condcol">
+                        <div id="vendor1rebate">
+                            <div id="id_vendor1rebate"></div>
+                        </div>
+                    </div>
+                    <div class="form-condcol">
+                        <div id="vendor2rebate">
+                            <div id="id_vendor2rebate"></div>
+                        </div>
+                    </div>
+                     <div class="form-condcol">
+                        <div id="totalrebate">
+                            <div id="id_totalrebate"></div>
+                        </div>
+                    </div>
+
+                    </div>
+            </div>
+            <div class="row3">
+                <div class="column1">
+                    <div class="condheader2">Condenser Selection</div>
+                    <div class="form-condcol">
+                        {{ form.condeff.errors }}
+                        <label class="label_condcol">Efficiency:</label>
+                        {{ form.condeff }}
+                    </div>
+                    <div class="form-condcol">
+                        {{ form.condbtu.errors }}
+                        <label class="label_condcol">BTU:</label>
+                        {{ form.condbtu }}
+                    </div>
+                    <div class="form-condcol">
+                        {{ form.conddescript.errors }}
+                        <label class="label_condcol">Model Descrip.:</label>
+                        {{ form.conddescript }}
+                    </div>
+                    <div class="form-condcol">
+                        {{ form.condmodnum.errors }}
+                        <label class="label_condcol">Model Num. :</label>
+                        <div id="condmodnum">
+                            <div id="id_condmodnum"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="column2">
+                    <div id="coilheader"> Coil Selection </div>
+                     <div class="form-condcol">
+                        {{ form.coilconfig.errors }}
+                        <label class="label_condcol">Config.:</label>
+                        {{ form.coilconfig }}
+                    </div>
+                     <div class="form-condcol">
+                        {{ form.coilbtu.errors }}
+                        <label class="label_condcol">BTU:</label>
+                        {{ form.coilbtu }}
+                    </div>
+                    <div class="form-condcol">
+                        {{ form.coiltype.errors }}
+                        <label class="label_condcol">Coil Type:</label>
+                        {{ form.coiltype }}
+                    </div>
+                    <div class="form-condcol">
+                        {{ form.coilmodnum.errors }}
+                        <label class="label_condcol"> Model Num:</label>
+                        <div id="coilmodnum">
+                            <div id="id_coilmodnum"></div>
+                        </div>
+                    </div>
+                    <div class="form-condcol">
+                        <label class="label_condcol">Height:</label>
+                        <div id="coilheight">
+                            <div id="id_coilheight"></div>
+                        </div>
+                    </div>
+                    <div class="form-condcolwidth">
+                        <label class="label_condcol">Width:</label>
+                        <div id="coilwidth">
+                            <div id="id_coilwidth"></div>
+                        </div>
+                    </div>
+                    <div class="form-condcoldepth">
+                        <label class="label_condcol">Depth:</label>
+                        <div id="coildepth">
+                            <div id="id_coildepth"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row3column3">
+                    <div id="thermostat">Thermostat Selection</div>
+                     <div class="form-thermostat">
+                        {{ form.addthermostat.errors }}
+                        <label class="label_thermostat">Add New Thermostat to Job?:</label>
+                        {{ form.addthermostat }}
+                    </div>
+
+                        <div class="form-thermostat2"  style="display:none">
+                            {{ form.thermostat.errors }}
+                            <label class="label_condcol">Mfg.:</label>
+                            {{ form.thermostat }}
+                        </div>
+                        <div class="form-thermostat2"  style="display:none">
+                            {{ form.thermostatmodnum.errors }}
+                            <label class="label_condcol">Model Num:</label>
+                            {{ form.thermostatmodnum }}
+                        </div>
+
+
+
+                </div>
+                <div class="column4">
+                </div>
+
+
+            </div>
+
+        </form>
+    </div>
+    <div class="container3">
+
+    </div>
+
+</div>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+
+
+
+  $("#id_custid").attr("disabled", true)
+  $("#id_jobid").attr("disabled", true)
+  $("#id_bidid").attr("disabled", true)
+  $("#form-rowfirst").attr("disabled", true)
+  $("#form-rowlast").attr("disabled", true)
+  $("#id_joblocation").css('background-color', 'gold')
+  $("#id_furntype").attr("disabled", true)
+  $("#id_outsideunittype").attr("disabled", true)
+ // $("#id_condeff").attr("disabled", true)
+  $("#id_condbtu").attr("disabled", true)
+  $("#id_conddescript").attr("disabled", true)
+  $("#condmodnum_id").attr("disabled", true)
+  $("#id_furnbtu").attr("disabled", true)
+  $("#id_furnconfig").attr("disabled", true)
+  $("#id_furneff").attr("disabled", true)
+  $("#id_furndescript").attr("disabled", true)
+  $("#id_furnmodnum").attr("disabled", true)
+  $("#id_coiltype").attr("disabled", true)
+  $("#id_coilbtu").attr("disabled", true)
+  $("#id_coilconfig").attr("disabled", true)
+  $("#id_coilmodnum").attr("disabled", true)
+  $("#id_thermostat").attr("disabled", true)
+  $("#id_thermostatmodnum").attr("disabled", true)
+  $("#id_joblocation").attr("disabled", false).css('background-color', '#66d09a')
+  $("#id_plenumwidth").attr("disabled", true)
+  $("#id_plenumdepth").attr("disabled", true)
+  $("#id_optionid").attr("disabled", true)
+  $("#id_options").attr("disabled", true)
+  $("#id_addthermostat").attr("disabled", true).css('background-color', '#66d09a')
+  $("#id_existfurnconfig").attr("disabled", true)
+  $("#id_existfurnwidth").attr("disabled", true)
+
+
+
+   setTimeout(function(){
+           var urlC = $(".form2").attr("plenumheightload-url");
+           req = $.ajax({
+                  url: urlC,
+                  data:{
+                    },
+                    success: function (data) {
+                      $("#id_plenumheight").html(data);
+                    }
+               });
+       }, 0);
+
+   setTimeout(function(){
+           var urlC = $(".form2").attr("plenumdepthload-url");
+           req = $.ajax({
+                  url: urlC,
+                  data:{
+                    },
+                    success: function (data) {
+                      $("#id_plenumdepth").html(data);
+                    }
+               });
+       }, 0);
+
+
+   setTimeout(function(){
+           var urlC = $(".form2").attr("existfurnheightload-url");
+           req = $.ajax({
+                  url: urlC,
+                  data:{
+                    },
+                    success: function (data) {
+                      $("#id_existfurnheight").html(data);
+                    }
+               });
+       }, 0);
+
+
+   setTimeout(function(){
+           var urlC = $(".form2").attr("existfurndepthload-url");
+           req = $.ajax({
+                  url: urlC,
+                  data:{
+                    },
+                    success: function (data) {
+                      $("#id_existfurndepth").html(data);
+                    }
+               });
+       }, 0);
+
+
+     setTimeout(function(){
+           var urlC = $(".form2").attr("condmodnum2Aload-url");
+           req = $.ajax({
+                  url: urlC,
+                  data:{
+                    },
+                    success: function (data) {
+                      $("#id_condmodnum").html(data);
+                    }
+               });
+       }, 0);
+
+
+     setTimeout(function(){
+           var urlC = $(".form2").attr("coilmodnum2Aload-url");
+           req = $.ajax({
+                  url: urlC,
+                  data:{
+                    },
+                    success: function (data) {
+                      $("#id_coilmodnum").html(data);
+                    }
+               });
+       }, 0);
+
+
+          setTimeout(function(){
+           var urlC = $(".form2").attr("coilheight2Aload-url");
+           req = $.ajax({
+                  url: urlC,
+                  data:{
+                    },
+                    success: function (data) {
+                      $("#id_coilheight").html(data);
+                    }
+               });
+       }, 0);
+
+
+            setTimeout(function(){
+           var urlC = $(".form2").attr("coilwidth2Aload-url");
+           req = $.ajax({
+                  url: urlC,
+                  data:{
+                    },
+                    success: function (data) {
+                      $("#id_coilwidth").html(data);
+                    }
+               });
+       }, 0);
+
+
+            setTimeout(function(){
+           var urlC = $(".form2").attr("coildepth2Aload-url");
+           req = $.ajax({
+                  url: urlC,
+                  data:{
+                    },
+                    success: function (data) {
+                      $("#id_coildepth").html(data);
+                    }
+               });
+       }, 0);
+
+setTimeout(function(){
+            var urlC = $(".form2").attr("vendor1load-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_vendor1rebate").html(data);
+                     }
+                });
+        }, 0);
+
+
+  setTimeout(function(){
+            var urlC = $(".form2").attr("vendor2load-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_vendor2rebate").html(data);
+                     }
+                });
+        }, 0);
+
+
+    setTimeout(function(){
+            var urlC = $(".form2").attr("totalrebateload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_totalrebate").html(data);
+                     }
+                });
+        }, 0);
+
+});
+
+///////////////////////////////////////  Job Location  ////////////////////////////////////
+
+$(function(){
+   $('#id_joblocation').change(function(){
+       $("#id_joblocation").css('background-color', '#ffd700')
+       $("input#plenumheight_id").attr("disabled", false).css('background-color', '#66d09a')
+       $('#id_plenumheigh').focus();
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_joblocation');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("joblocation-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_joblocation: $('#id_joblocation').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+////////////////// Plenum Width //////////////////////////////////////
+
+$(function(){
+   $('#id_plenumwidth').change(function(){
+        $("#id_plenumwidth").css('background-color', '#ffd700')
+        $("#plenumdepth_id").attr("disabled", false).css('background-color', '#66d09a')
+        $('#plenumdepth_id').focus();
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_plenumwidth');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("plenumwidth-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_plenumwidth: $('#id_plenumwidth').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+///////////////////////////////////////  Existing Furnace Info  ////////////////////////////////////
+
+$(function(){
+   $('#id_existfurnwidth').change(function(){
+       //$("#id_joblocation").css('background-color', '#ffd700')
+       $("#existfurndepth_id").attr("disabled", false).css('background-color', '#66d09a')
+       $("#id_existfurnwidth").attr("disabled", false).css('background-color', 'gold')
+       $('#id_plenumheigh').focus();
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_existfurnwidth');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("existfurnwidth-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_existfurnwidth: $('#id_existfurnwidth').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+$(function(){
+   $('#id_existfurnconfig').change(function(){
+       //$("#id_joblocation").css('background-color', '#ffd700')
+       $("#existfurnheight_id").attr("disabled", false).css('background-color', '#66d09a')
+
+       $("#id_existfurnconfig").attr("disabled", false).css('background-color', '#ffd700')
+       //$('#id_plenumheigh').focus();
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_existfurnconfig');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("existfurnconfig-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_existfurnconfig: $('#id_existfurnconfig').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+    ///////////////////////////////////////  Condenser Efficiency  ////////////////////////////////////
+
+$(function(){
+   $('#id_condeff').change(function(){
+        $("#existfurndepth_id").attr("disabled", true).css('background-color', '#66d09a')
+        $("#id_plenumwidth").attr("disabled", true).css('background-color', '#66d09a')
+        $("#plenumheight_id").attr("disabled", true).css('background-color', '#66d09a')
+        $("#plenumdepth_id").attr("disabled", true).css('background-color', '#66d09a')
+        $("#id_existfurnconfig").attr("disabled", true).css('background-color', '#66d09a')
+        $("#existfurnheight_id").attr("disabled", true).css('background-color', '#66d09a')
+        $("#id_existfurnwidth").attr("disabled", true).css('background-color', '#66d09a')
+       $("#id_condeff").attr("disabled", false).css('background-color', 'gold')
+        $("#id_condbtu").attr("disabled", false).css('background-color', '#66d09a')
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_condeff');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("condeff2A-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_condeff: $('#id_condeff').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+$(function(){
+   $('#id_condeff').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("load_condbtu2A-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_condbtu").html(data);
+                     }
+                });
+        },200);
+    });
+});
+
+$(function(){
+   $('#id_condeff').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("conddescript2Aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_conddescript").html(data);
+                     }
+                });
+        },200);
+    });
+});
+
+
+$(function(){
+   $('#id_condeff').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("condmodnum2Aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_condmodnum").html(data);
+                     }
+                });
+        },200);
+    });
+});
+
+    ///////////////////////////////////////  Condenser BTU  ////////////////////////////////////
+
+$(function(){
+   $('#id_condbtu').change(function(){
+       $("#id_condbtu").attr("disabled", false).css('background-color', 'gold')
+       $("#id_conddescript").attr("disabled", false).css('background-color', '#66d09a')
+
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_condbtu');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("condbtu2A-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_condbtu: $('#id_condbtu').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+$(function(){
+   $('#id_condbtu').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("conddescript2Aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_conddescript").html(data);
+                     }
+                });
+        },200);
+    });
+});
+
+    ///////////////////////////////////////  Condenser Description  ////////////////////////////////////
+
+$(function(){
+   $('#id_conddescript').change(function(){
+       //$("#id_joblocation").css('background-color', '#ffd700')
+       $("#id_conddescript").attr("disabled", false).css('background-color', '#ffd700')
+       $("#id_coilconfig").attr("disabled", false).css('background-color', '#66d09a')
+       //$('#id_plenumheigh').focus();
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_conddescript');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("conddescrip2A-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_conddescript: $('#id_conddescript').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+$(function(){
+   $('#id_conddescript').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("condmodnum2Aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_condmodnum").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+$(function(){
+   $('#id_conddescript').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("coilconfig2up-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_coilconfig").html(data);
+                     }
+                });
+        },800);
+    });
+});
+
+    ///////////////////////////////////////  Coil Config  ////////////////////////////////////
+
+$(function(){
+   $('#id_coilconfig').change(function(){
+       $("#id_condeff").attr("disabled", true).css('background-color', '#66d09a')
+        $("#id_condbtu").attr("disabled", true).css('background-color', '#66d09a')
+        $("#id_conddescript").attr("disabled", true).css('background-color', '#66d09a')
+        $("#id_coilbtu").attr("disabled", false).css('background-color', '#66d09a')
+        $("#id_coilconfig").attr("disabled", false).css('background-color', 'gold')
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_coilconfig');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("coilconfig2A-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_coilconfig: $('#id_coilconfig').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+$(function(){
+   $('#id_coilconfig').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("coilbtu2Aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_coilbtu").html(data);
+                     }
+                });
+        },800);
+    });
+});
+
+
+    ///////////////////////////////////////  Coil BTU  ////////////////////////////////////
+
+$(function(){
+   $('#id_coilbtu').change(function(){
+       $("#id_coiltype").attr("disabled", false).css('background-color', '#66d09a')
+       $("#id_coilbtu").attr("disabled", false).css('background-color', 'gold')
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_coilbtu');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("coilbtu2A-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_coilbtu: $('#id_coilbtu').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+$(function(){
+   $('#id_coilbtu').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("coiltype2Aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_coiltype").html(data);
+                     }
+                });
+        },800);
+    });
+});
+
+        ///////////////////////////////////////  Condenser Description  ////////////////////////////////////
+
+$(function(){
+   $('#id_coiltype').change(function(){
+    $("#id_coiltype").attr("disabled", false).css('background-color', 'gold')
+       $("#coilmodnum_id").attr("disabled", false).css('background-color', '#66d09a')
+       $("#id_addthermostat").attr("disabled", false).css('background-color', 'gold')
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_coiltype');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("coiltype2A-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_coiltype: $('#id_coiltype').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+$(function(){
+   $('#id_coiltype').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("coilmodnum2Aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_coilmodnum").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+
+
+$(function(){
+   $('#id_coiltype').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("coildepth2Aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_coildepth").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+
+$(function(){
+   $('#id_coiltype').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("coilwidth2Aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_coilwidth").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+
+$(function(){
+   $('#id_coiltype').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("coilheight2Aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_coilheight").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+$(function(){
+   $('#id_coiltype').change(function(){
+        setTimeout(function(){
+            if ($("#id_optionid").val() === '1') {
+            console.log("Input field value is 1!");
+            var urlC = $(".form2").attr("custpageloc-url");
+            req = $.ajax({
+                   url: urlC,
+                   });
+    }
+
+        },500);
+    });
+});
+///////////////////////////////////////   Thermostat Mfg.  ////////////////////////////////////
+
+$(function(){
+   $('#id_thermostat').change(function(){
+    $("#id_thermostatmodnum").attr("disabled", false).css('background-color', '#66d09a')
+    $('#id_thermostat').css('background-color', '#ffd700')
+    $('#id_thermostatmodnum').focus();
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_thermostat');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("thermomfg-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_thermostat: $('#id_thermostat').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+//$(function(){
+//   $('#id_thermostat').change(function(){
+//        setTimeout(function(){
+//       $("#id_coilbtu").attr("disabled", true).css('background-color', '#98b5d0')
+//       $("#id_coilconfig").attr("disabled", true).css('background-color', '#98b5d0')
+//       $("#id_coilmodnum").attr("disabled", true).css('background-color', '#98b5d0')
+//       $("#id_coiltype").attr("disabled", true).css('background-color', '#98b5d0')
+//       $('#id_thermostat').css('background-color', '#ffd700')
+//       $("#id_thermostatmodnum").attr("disabled", false).css('background-color', '#66d09a')
+//            var urlC = $(".form2").attr("thermomodnumload-url");
+//            req = $.ajax({
+//                   url: urlC,
+//                   data:{
+//                     },
+//                     success: function (data) {
+//                       $("#id_thermostatmodnum").html(data);
+//                     }
+//                });
+//        },1000);
+//    });
+//});
+
+
+///////////////////////////////////////   Thermostat Model NUmber  ////////////////////////////////////
+
+$(function(){
+    $('.delete40').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("delete40-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#delete40").html(data);
+                     }
+                });
+        },100);
+    });
+});
+
+
+ $(function(){
+   $('#id_addthermostat').change(function(){
+        $('#id_addthermostat').css('background-color', '#ffd700')
+        if ($('#id_addthermostat').val() == 1) $(".btn.btn3").hide()
+        if ($('#id_addthermostat').val() == 2) $(".btn.btn3").show()
+        if ($('#id_addthermostat').val() == 1) $(".form-thermostat2").show()
+        if ($('#id_addthermostat').val() == 2) $(".form-thermostat2").hide()
+        if ($('#id_addthermostat').val() == 1) $("#id_thermostat").attr("disabled", false).css('background-color', '#66d09a')
+        $("#id_coilbtu").attr("disabled", true).css('background-color', '#98b5d0')
+        $("#id_coilconfig").attr("disabled", true).css('background-color', '#98b5d0')
+        $("#id_coilmodnum").attr("disabled", true).css('background-color', '#98b5d0')
+        $("#id_coiltype").attr("disabled", true).css('background-color', '#98b5d0')
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_addthermostat');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("addthermostat2a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_addthermostat: $('#id_addthermostat').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+//$(function(){
+//   $('#id_addthermostat').change(function(){
+//        setTimeout(function(){
+//            if ($('#id_addthermostat').val() == 2) { var url = $(".form2").attr("vendor1load-url")};
+//            req = $.ajax({
+//                   url: url,
+//                   data:{
+//                     },
+//                     success: function (data) {
+//                       $("#id_vendor1rebate").html(data);
+//                     }
+//                });
+//        },400);
+//    });
+//});
+//
+//
+//$(function(){
+//   $('#id_addthermostat').change(function(){
+//        setTimeout(function(){
+//            if ($('#id_addthermostat').val() == 2) { var url = $(".form2").attr("vendor2load-url")};
+//            req = $.ajax({
+//                   url: url,
+//                   data:{
+//                     },
+//                     success: function (data) {
+//                       $("#id_vendor2rebate").html(data);
+//                     }
+//                });
+//        },400);
+//    });
+//});
+//
+//$(function(){
+//   $('#id_addthermostat').change(function(){
+//        setTimeout(function(){
+//            if ($('#id_addthermostat').val() == 2) { var url = $(".form2").attr("totalrebateload-url")};
+//            req = $.ajax({
+//                   url: url,
+//                   data:{
+//                     },
+//                     success: function (data) {
+//                       $("#id_totalrebate").html(data);
+//                     }
+//                });
+//        },400);
+//    });
+//});
+//
+//
+$(function(){
+   $('#id_thermostatmodnum').change(function(){
+       $("#id_thermostat").attr("disabled", true).css('background-color', '#98b5d0')
+       $("#id_thermostatmodnum").attr("disabled", true).css('background-color', '#98b5d0')
+       $("#id_addthermostat").attr("disabled", true).css('background-color', '#98b5d0')
+       if ($('#id_optionid').val() == 1) $(".btn.btn2").hide()
+       if ($('#id_optionid').val() == 1) $(".btn.btn3").show()
+       if ($('#id_optionid').val() > 1) $(".btn.btn2").show()
+       if ($('#id_optionid').val() > 1) $(".btn.btn3").hide()
+
+//      $('#id_thermostat').css('background-color', '#ffd700')
+//      $("#id_thermostatmodnum").attr("disabled", false).css('background-color', '#66d09a')
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_thermostatmodnum');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("thermostatmodnum2A-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_thermostatmodnum: $('#id_thermostatmodnum').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+
+
+$(function(){
+   $('#id_thermostatmodnum').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("vendor1load-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_vendor1rebate").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+$(function(){
+   $('#id_thermostatmodnum').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("vendor2load-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_vendor2rebate").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+$(function(){
+   $('#id_thermostatmodnum').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("totalrebateload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_totalrebate").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+
+
+
+
+$(function(){
+    $('.btn.btn3').click(function(){
+        $(".btn.btn3").attr("disabled", true)
+
+    });
+});
+
+
+    $(function(){
+    $('#id_addthermostat').change(function(){
+    if ($('#id_addthermostat').val() ==='No') $(".btn.btn2no").show()
+    if ($('#id_addthermostat').val() ==='Yes') $(".btn.btn2no").hide()
+
+    });
+});
+
+</script>

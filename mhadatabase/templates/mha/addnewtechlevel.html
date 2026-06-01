@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="../../../img/img.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/login/changetechrate.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Maertin Heating & Cooling Bidding Program</title>
+</head>
+<body style="background-image: url('../../../../img/A.jpg');
+             background-repeat: no-repeat;
+             background-attachment: fixed;
+             background-size: cover;" >
+<div class="container1">
+    <div class="header">Add New Technician</div>
+    <div class="container1add">
+        <div class="butclose">
+<!--            <span class="closeadd-btn" onclick="closeFormAndRedirect()">&times;</span>-->
+        </div>
+      <form class="form2" method="post"
+            addnewtechlevel-url="{% url 'mhadatabase:addnewtechlevel' %}"
+            package1b-url="{% url 'mhadatabase:package1b' %}"
+            levelnewtech-url="{% url 'mhadatabase:levelnewtech' %}"
+            ratenewtech-url="{% url 'mhadatabase:ratenewtech' %}"
+      >
+           {% csrf_token %}
+          {{ form.name_of_field }}
+          {% for obj in object_list %}
+          <div class="inforow">
+               <div class="form-row-id1">
+                   <label class="labelid">ID</label>
+                   <div class="id1">
+                         {{ obj.idA }}
+                   </div>
+               </div>
+               {% endfor %}
+              <div class="form-row-techlevel1">
+                  {{ form.level.errors }}
+                  <label class="labellevel">Level</label>
+                  <input id="level1_id" type="text"  value="{{ level.level }}" onfocusout="addTechlevel()" >
+              </div>
+              <div class="form-row-rate1">
+                  {{ form.rate.errors }}
+                  <label class="labelrate">Rate</label>
+                  <input id="rate1_id" type="text"  value="{{ rate.rate }}" onfocusout="addTechRate()" >
+              </div>
+          </div>
+          <div class="buttonrow">
+              <a class="accept1"  href="/mhadatabase/laborrates">Accept</a>
+              <a href="{% url 'mhadatabase:deletetech' instance.id %}">
+                  <button type="button" class="delete1">Delete</button>
+              </a>
+
+              <a href="">
+              </a>
+          </div>
+      </form>
+        </div>
+</div>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script>
+
+function addTechlevel() {
+
+var userInput = document.getElementById("level1_id").value;
+                    console.log(userInput);
+                    var url = $(".form2").attr("levelnewtech-url");
+                     $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            level1_id: $("#level1_id").val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+}
+
+
+function addTechRate() {
+
+var userInput = document.getElementById("rate1_id").value;
+                    console.log(userInput);
+                    var url = $(".form2").attr("ratenewtech-url");
+                     $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            rate1_id: $("#rate1_id").val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+}
+
+//$(function(){
+//   $('#id_level').change(function(){
+//        setTimeout(function(){
+//                var selectBox =document.getElementById('id_level');
+//                var userInput =selectBox.options[selectBox.selectedIndex].value;
+//                console.log(userInput);
+//                var url = $(".form2").attr("addnewtechlevel-url");
+//                    $.ajax({
+//                        type:'POST',
+//                       url: url,
+//                       data:{
+//                            id_level: $('#id_level').val(),
+//                            csrfmiddlewaretoken: '{{ csrf_token }}'
+//                         },
+//                    });
+//        }, 0);
+//    });
+//});
+//
+//$(function(){
+//   $('#id_quant').change(function(){
+//       $("#butrowA").show()
+//        setTimeout(function(){
+//                var selectBox =document.getElementById('id_quant');
+//                var userInput =selectBox.options[selectBox.selectedIndex].value;
+//                console.log(userInput);
+//                var url = $(".form2").attr("package1b-url");
+//                    $.ajax({
+//                        type:'POST',
+//                       url: url,
+//                       data:{
+//                            id_quant: $('#id_quant').val(),
+//                            csrfmiddlewaretoken: '{{ csrf_token }}'
+//                         },
+//                    });
+//        }, 300);
+//    });
+//});
+
+function closeFormAndRedirect() {
+    window.location.href = '{% url 'mhadatabase:laborrates' %}'; // Redirect
+}
+
+
+</script>

@@ -1,0 +1,410 @@
+body{
+    font: 22px/1.5 Arial, Helvetica,sans-serif;
+    padding:0;
+    margin:0;
+    display:  flex;
+    justify-content: center;
+}
+
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Target Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.header{
+    margin-top: 0px;
+    font-size: calc( 2.5vw + 0.75vh + .25vmin);
+    text-align: center;
+    color: black;
+    font-weight:bold;
+    font-family: "sans-serif";
+}
+
+
+
+div.img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    margin-top:100px;
+}
+
+div.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: #008B8B;
+    border: black 4px solid;
+    padding: 0px;
+}
+
+div.container1{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: #008B8B;
+    padding: 0px;
+    width: 900px;
+    margin-top: 200px;
+    border: 5px solid black;
+}
+
+div.container1add{
+    width: 750px;
+    height: 325px;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    background: #8ccd8c;
+    border: black 4px solid;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.techinfo{
+    display: flex;
+    margin-top: 38px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.techinfo1{
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    flex-direction: column;
+}
+
+
+.label{
+    font-size: calc( 1vw + 0.75vh + .25vmin);
+    text-align: center;
+    color: black;
+    font-weight:bold;
+    font-family: "sans-serif";
+}
+
+.labelid{
+    width: 40px;
+    font-size: calc( 1vw + 0.75vh + .25vmin);
+    text-align: center;
+    color: black;
+    font-weight:bold;
+    font-family: "sans-serif";
+}
+
+.labellevel{
+    width: 251px;
+    font-size: calc( 1vw + 0.75vh + .25vmin);
+    text-align: center;
+    color: black;
+    font-weight:bold;
+    font-family: "sans-serif";
+}
+
+.labelrate{
+    width: 200px;
+    font-size: calc( 1vw + 0.75vh + .25vmin);
+    text-align: center;
+    color: black;
+    font-weight:bold;
+    font-family: "sans-serif";
+}
+
+.form-row-id{
+    margin-left: 20px;
+    display: flex;
+
+}
+
+.form-row-rate{
+    display: flex;
+    justify-content: center;
+}
+
+.form-row-rate1{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-row-id{
+    margin-left: 20px;
+    display: flex;
+
+}
+
+.inforow{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.form-row-id1{
+    width: 57px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.id{
+    font-size: calc( 1vw + 0.75vh + .25vmin);
+    width: 40px;
+    text-align: center;
+    font-weight:bold;
+    font-family: "sans-serif";
+    border: 2px solid black;
+    margin-left: 8px;
+    background: #C0C0C0;
+}
+
+
+.id1{
+    font-size: calc( 1vw + 0.75vh + .25vmin);
+    width: 40px;
+    text-align: center;
+    font-weight:bold;
+    font-family: "sans-serif";
+    border: 2px solid black;
+    margin-left: 8px;
+    background: #C0C0C0;
+}
+
+.level{
+    font-size: calc( 1vw + 0.75vh + .25vmin);
+    width: 250px;
+    font-weight:bold;
+    font-family: "sans-serif";
+    border: 2px solid black;
+    margin-left: 25px;
+    background: #C0C0C0;
+}
+
+#level1_id{
+    font-size: calc( 1vw + 0.75vh + .25vmin);
+    width: 270px;
+    font-weight:bold;
+    font-family: "sans-serif";
+    border: 2px solid black;
+    margin-left: 0px;
+
+}
+
+.form-row-techlevel{
+    display: flex;
+    margin-left: 65px;
+    text-align: center;
+    font-family: "sans-serif";
+
+}
+
+.form-row-techlevel1{
+    width: 290px;
+    margin-left: 65px;
+    text-align: center;
+    font-family: "sans-serif";
+    display: flex;
+    flex-direction: column;
+}
+
+.rate{
+    margin-left: 20px;
+}
+
+#rate1_id{
+    font-size: calc( 1vw + 0.75vh + .25vmin);
+    margin-left: 0px;
+    border: 2px solid black;
+}
+
+input#id_rate{
+    width: 100px;
+    text-align: center;
+    font-family: "sans-serif";
+    font-size: calc( 1vw + 0.75vh + .25vmin);
+    margin-left:  10px;
+    border: 2px solid black;
+}
+
+
+.buttonrow{
+    display: flex;
+    display: flex;
+    justify-content: center;
+}
+
+
+a#accept{
+    border: 2px solid black;
+    border-radius: 2px;
+    background: #C0C0C0;
+    width: 170px;
+    font-size: calc(1vw + 0.75vh + .25vmin);
+    color: black;
+    font-style: italic;
+    font-family: "Times New Roman";
+    font-weight:bold;
+    cursor: pointer;
+    margin-top: 50px;
+    margin-left:0.0%;
+    margin-right: 64px;
+    margin-bottom: 0.0%;
+    transition: 0.6s;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    display: flex;
+}
+
+a#accept:hover{
+    color: white;
+    background: #1e90ff;
+}
+
+
+.delete{
+    border: 2px solid black;
+    border-radius: 2px;
+    background: #C0C0C0;
+    width: 170px;
+    font-size: calc(1vw + 0.75vh + .25vmin);
+    color: black;
+    font-style: italic;
+    font-family: "Times New Roman";
+    font-weight:bold;
+    cursor: pointer;
+    margin-top: 50px;
+    margin-left:0.0%;
+    margin-right: 64px;
+    margin-bottom: 0.0%;
+    transition: 0.6s;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    display: flex;
+}
+
+.delete:hover{
+    color: white;
+    background: #1e90ff;
+}
+
+.accept1{
+    border: 2px solid black;
+    border-radius: 2px;
+    background: #C0C0C0;
+    width: 170px;
+    font-size: calc(1vw + 0.75vh + .25vmin);
+    color: black;
+    font-style: italic;
+    font-family: "Times New Roman";
+    font-weight:bold;
+    cursor: pointer;
+    margin-top: 50px;
+    margin-left:0.0%;
+    margin-right: 64px;
+    margin-bottom: 0.0%;
+    transition: 0.6s;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    display: flex;
+}
+
+.accept1:hover{
+    color: white;
+    background: #1e90ff;
+}
+
+
+.delete1{
+    border: 2px solid black;
+    border-radius: 2px;
+    background: #C0C0C0;
+    width: 170px;
+    font-size: calc(1vw + 0.75vh + .25vmin);
+    color: black;
+    font-style: italic;
+    font-family: "Times New Roman";
+    font-weight:bold;
+    cursor: pointer;
+    margin-top: 50px;
+    margin-left:0.0%;
+    margin-right: 64px;
+    margin-bottom: 0.0%;
+    transition: 0.6s;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    display: flex;
+}
+
+.delete1:hover{
+    color: white;
+    background: #1e90ff;
+}
+
+
+
+.close-btn{
+    color: #dddddd;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: red; /* Make it red */
+    padding: 2px 5px; /* Adjust padding as needed */
+    padding-top: 1px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-bottom: black 2px solid;
+    border-left: black 2px solid;
+
+}
+
+.close-btn:hover{
+    color: grey; /* Optional: Change color on hover */
+}
+
+.closeadd-btn{
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: red; /* Make it red */
+    padding-top: 1px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-bottom: black 2px solid;
+    border-left: black 2px solid;
+
+}
+
+.closeadd-btn:hover{
+    color: grey; /* Optional: Change color on hover */
+}

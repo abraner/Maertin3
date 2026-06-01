@@ -1,0 +1,20 @@
+<div class="input"  onfocusin="addDeposit()">
+    <input id="deposit_id" type="text" value="{{ deposit }}">
+
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+   $(document).ready(function() {
+
+     var x = document.getElementById('deposit_id').value;
+    if (x.indexOf("$") != 0)
+    {
+        x = "$" + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    document.getElementById('deposit_id').value = x;
+    console.log(x);
+});
+
+
+
+</script>

@@ -1,0 +1,2910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="../../../img/img.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../static/login/contract.css">
+    <link rel="stylesheet" media="print" href="../../../../static/login/print.css" />
+    {{ form.media }}
+    <title>Maertin Heating & Cooling Bidding Program</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css"/>
+</head>
+<body>
+
+
+
+<div class="container">
+    <div class="container1">
+    </div>
+    <div class="container2">
+        <div class="contract">
+            <div class="section1">
+                <div class="logo">
+                    <div class="logo1">
+                        <img class="img" src='../../../img/img.png'>
+                        <div id="number">708-479-9350</div>
+                    </div>
+                    <div class="logo2">
+                        <form class="form2" method="post"
+                              memo1-url="{% url 'mhadatabase:memo1' instance.bidid %}"
+                              memo1a-url="{% url 'mhadatabase:memo1a' instance.bidid %}"
+                              memo1aload-url="{% url 'mhadatabase:load_memo1a' instance.bidid %}"
+                              memo2-url="{% url 'mhadatabase:memo2' instance.bidid %}"
+                              memo2a-url="{% url 'mhadatabase:memo2a' instance.bidid %}"
+                              memo2aload-url="{% url 'mhadatabase:load_memo2a' instance.bidid %}"
+                              memo3-url="{% url 'mhadatabase:memo3' instance.bidid %}"
+                              memo3a-url="{% url 'mhadatabase:memo3a' instance.bidid %}"
+                              memo3aload-url="{% url 'mhadatabase:load_memo3a' instance.bidid %}"
+                              memo4-url="{% url 'mhadatabase:memo4' instance.bidid %}"
+                              memo4a-url="{% url 'mhadatabase:memo4a' instance.bidid %}"
+                              memo4aload-url="{% url 'mhadatabase:load_memo4a' instance.bidid %}"
+                              memo5-url="{% url 'mhadatabase:memo5' instance.bidid %}"
+                              memo5a-url="{% url 'mhadatabase:memo5a' instance.bidid %}"
+                              memo5aload-url="{% url 'mhadatabase:load_memo5a' instance.bidid %}"
+                              memo6-url="{% url 'mhadatabase:memo6' instance.bidid %}"
+                              memo6a-url="{% url 'mhadatabase:memo6a' instance.bidid %}"
+                              memo6aload-url="{% url 'mhadatabase:load_memo6a' instance.bidid %}"
+                              memo7-url="{% url 'mhadatabase:memo7' instance.bidid %}"
+                              memo7a-url="{% url 'mhadatabase:memo7a' instance.bidid %}"
+                              memo7aload-url="{% url 'mhadatabase:load_memo7a' instance.bidid %}"
+                              memo8-url="{% url 'mhadatabase:memo8' instance.bidid %}"
+                              memo8a-url="{% url 'mhadatabase:memo8a' instance.bidid %}"
+                              memo8aload-url="{% url 'mhadatabase:load_memo8a' instance.bidid %}"
+                              memo9-url="{% url 'mhadatabase:memo9' instance.bidid %}"
+                              memo9a-url="{% url 'mhadatabase:memo9a' instance.bidid %}"
+                              memo9aload-url="{% url 'mhadatabase:load_memo9a' instance.bidid %}"
+                              memo10-url="{% url 'mhadatabase:memo10' instance.bidid %}"
+                              memo10a-url="{% url 'mhadatabase:memo10a' instance.bidid %}"
+                              memo10aload-url="{% url 'mhadatabase:load_memo10a' instance.bidid %}"
+                              memo11-url="{% url 'mhadatabase:memo11' instance.bidid %}"
+                              memo11a-url="{% url 'mhadatabase:memo11a' instance.bidid %}"
+                              memo11aload-url="{% url 'mhadatabase:load_memo11a' instance.bidid %}"
+                              memo12-url="{% url 'mhadatabase:memo12' instance.bidid %}"
+                              memo12a-url="{% url 'mhadatabase:memo12a' instance.bidid %}"
+                              memo12aload-url="{% url 'mhadatabase:load_memo12a' instance.bidid %}"
+                              memo13-url="{% url 'mhadatabase:memo13' instance.bidid %}"
+                              memo13a-url="{% url 'mhadatabase:memo13a' instance.bidid %}"
+                              memo13aload-url="{% url 'mhadatabase:load_memo13a' instance.bidid %}"
+                              memo14-url="{% url 'mhadatabase:memo14' instance.bidid %}"
+                              memo14a-url="{% url 'mhadatabase:memo14a' instance.bidid %}"
+                              memo14aload-url="{% url 'mhadatabase:load_memo14a' instance.bidid %}"
+                              memo15-url="{% url 'mhadatabase:memo15' instance.bidid %}"
+                              memo15a-url="{% url 'mhadatabase:memo15a' instance.bidid %}"
+                              memo15aload-url="{% url 'mhadatabase:load_memo15a' instance.bidid %}"
+                              memo16-url="{% url 'mhadatabase:memo16' instance.bidid %}"
+                              memo16a-url="{% url 'mhadatabase:memo16a' instance.bidid %}"
+                              memo16aload-url="{% url 'mhadatabase:load_memo16a' instance.bidid %}"
+                              memo17-url="{% url 'mhadatabase:memo17' instance.bidid %}"
+                              memo17a-url="{% url 'mhadatabase:memo17a' instance.bidid %}"
+                              memo17aload-url="{% url 'mhadatabase:load_memo17a' instance.bidid %}"
+                              memo18-url="{% url 'mhadatabase:memo18' instance.bidid %}"
+                              memo18a-url="{% url 'mhadatabase:memo18a' instance.bidid %}"
+                              memo18aload-url="{% url 'mhadatabase:load_memo18a' instance.bidid %}"
+                              memo31-url="{% url 'mhadatabase:memo31' instance.bidid %}"
+                              contractdate-url="{% url 'mhadatabase:contractdate' instance.bidid %}"
+                              depositdate-url="{% url 'mhadatabase:depositdate' instance.bidid %}"
+                              finalpaymentdate-url="{% url 'mhadatabase:finalpaymentdate' instance.bidid %}"
+                              deposit-url="{% url 'mhadatabase:deposit' instance.bidid %}"
+                              depositload-url="{% url 'mhadatabase:load_deposit' instance.bidid %}"
+                              finalpaymentload-url="{% url 'mhadatabase:load_finalpayment' instance.bidid %}"
+                              depositterms-url="{% url 'mhadatabase:depositterms' instance.bidid %}"
+                              deposittermsa-url="{% url 'mhadatabase:deposittermsa' instance.bidid %}"
+                              deposittermsaload-url="{% url 'mhadatabase:load_deposittermsa' instance.bidid %}"
+                              finalterms-url="{% url 'mhadatabase:finalterms' instance.bidid %}"
+                              finaltermsa-url="{% url 'mhadatabase:finaltermsa' instance.bidid %}"
+                              finaltermsaload-url="{% url 'mhadatabase:load_finaltermsa' instance.bidid %}"
+
+                              multiformb-url="{% url 'mhadatabase:multiformb' %}"
+
+                        >
+                                {% csrf_token %}
+                                {{ form.name_of_field }}
+                            <div class="jobinfo">
+                                <div class="rowcustid">
+                                    {{ form.custid.errors }}
+                                    <label id="label_custid">Cust ID:</label>
+                                   {{ form.custid }}
+                                </div>
+                                <div class="rowjobid">
+                                    {{ form.jobid.errors }}
+                                    <label id="label_jobid">Job ID:</label>
+                                    {{ form.jobid }}
+                                </div>
+                                <div class="rowbidid">
+                                    {{ form.bidid.errors }}
+                                    <label id="label_bidid">Bid ID:</label>
+                                    {{ form.bidid }}
+                                </div>
+                            </div>
+                            <div id="header">
+                                Proposal and Agreement
+                            </div>
+                        </form>
+                    </div>
+                    <div class="logo3">
+                        <button id="gencon" onclick="window.print()">Print</button>
+                        <a class="button2" href="{% url 'mhadatabase:customerinfo' instance.custid %}">Close Form</a>
+                        <div class="dateheader">Proposal Date</div>
+                        <div class="calendar">
+                            <div id="contractdate" >{{ form.contractdate }}</div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div id="info">
+                    www.maertinheating.com * 19150 S. Wolf Road,  Mokena IL 60448 * maertinheating@sbcglobal.net
+                </div>
+            </div>
+            <div class="section2">
+                <div class="section2a">
+                {% for obj in object_list %}
+                    <div id="name">
+                        <div id="label-name">Customer :</div>
+                        <div id="firstname">{{ obj.custfirstname }} {{ obj.custlastname }}</div>
+                    </div>
+                    <div id="address">
+                        <div id="label-job">Job Location :</div>
+                        <div id="joblocation">{{ obj.custadd1 }} {{ obj.custcity }} {{ obj.custst }} {{ obj.custzipcode }}</div>
+                    </div>
+                    <div id="email">
+                        <div id="label-email">Email :</div>
+                        <div id="email1">{{ obj.custemail1 }}</div>
+                    </div>
+                </div>
+                <div class="section2b">
+                    <div id="cell1">
+                        <div id="label-cell1">Cell #1 :</div>
+                        <div id="cell11">{{ obj.custcell1 }}</div>
+                    </div>
+                    <div id="cell2">
+                        <div id="label-cell2">Cell #2 :</div>
+                        <div id="cell21">{{ obj.custcell2 }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="section3">
+                <div id="header2">We will furnish, install and service the equipment listed below at the price, terms and conditions outlined on this proposal.</div>
+                <div id="header2a">Job Description</div>
+                <div id="memo31" onfocusout="addNewname()">{{ form.memo31 }}</div>
+            </div>
+            <div class="section4">
+                <div id="header4">Equipment Specifications A</div>
+                <div id="equipheader">
+                    <div class="quant">Quant.</div>
+                    <div class="type">Equip. Type</div>
+                    <div class="man">Man. Type</div>
+                    <div class="partnum">Part #</div>
+                    <div class="descrip">Description</div>
+                    <div class="seer">Seer</div>
+                    <div class="btu">BTU's</div>
+                </div>
+                <div class="equiprow1">
+                    {% for obj in object_list2 %}
+                    <div class="quant1">{{ obj.quanity|default_if_none:"" }}</div>
+                    <div class="type1">{{ obj.type|default_if_none:"" }}</div>
+                    <div class="man1">{{ obj.mfg|default_if_none:"" }}</div>
+                    <div class="partnum1">{{ obj.modelnum|default_if_none:"" }}</div>
+                    <div class="descrip1">{{ obj.mfgmodeldescrip|default_if_none:"" }}</div>
+                    <div class="seer1">{{ obj.eff|default_if_none:"" }}</div>
+                    <div class="btu1">{{ obj.btu|default_if_none:"" }}</div>
+                </div>
+                {% endfor %}
+                {% for obj in object_list3 %}
+                <div class="equiprow1">
+                    <div class="quant1">{{ obj.quanity|default_if_none:"" }}</div>
+                    <div class="type1">{{ obj.type|default_if_none:"" }}</div>
+                    <div class="man1">{{ obj.mfg|default_if_none:"" }}</div>
+                    <div class="partnum1">{{ obj.modelnum|default_if_none:"" }}</div>
+                    <div class="descrip1">{{ obj.mfgmodeldescrip|default_if_none:"" }}</div>
+                    <div class="seer1">{{ obj.eff|default_if_none:"" }}</div>
+                    <div class="btu1">{{ obj.btu|default_if_none:"" }}</div>
+                </div>
+                {% endfor %}
+                 {% for obj in object_list4 %}
+                <div class="equiprow1">
+                    <div class="quant1">{{ obj.quanity|default_if_none:"" }}</div>
+                    <div class="type1">{{ obj.type|default_if_none:"" }}</div>
+                    <div class="man1">{{ obj.mfg|default_if_none:"" }}</div>
+                    <div class="partnum1">{{ obj.modelnum|default_if_none:"" }}</div>
+                    <div class="descrip1">{{ obj.mfgmodeldescrip|default_if_none:"" }}</div>
+                    <div class="seer1">{{ obj.eff|default_if_none:"" }}</div>
+                    <div class="btu1">{{ obj.btu|default_if_none:"" }}</div>
+                </div>
+                {% endfor %}
+                 {% for obj in object_list5 %}
+                <div class="equiprow1">
+                    <div class="quant1">{{ obj.quanity|default_if_none:"" }}</div>
+                    <div class="type1">{{ obj.type|default_if_none:"" }}</div>
+                    <div class="man1">{{ obj.mfg|default_if_none:"" }}</div>
+                    <div class="partnum1">{{ obj.modelnum|default_if_none:"" }}</div>
+                    <div class="descrip1">{{ obj.mfgmodeldescrip|default_if_none:"" }}</div>
+                    <div class="seer1">{{ obj.eff|default_if_none:"" }}</div>
+                    <div class="btu1">{{ obj.btu|default_if_none:"" }}</div>
+                </div>
+                {% endfor %}
+                 {% for obj in object_list6 %}
+                <div class="equiprow1">
+                    <div class="quant1">{{ obj.quanity|default_if_none:"" }}</div>
+                    <div class="type1">{{ obj.type|default_if_none:"" }}</div>
+                    <div class="man1">{{ obj.mfg|default_if_none:"" }}</div>
+                    <div class="partnum1">{{ obj.modelnum|default_if_none:"" }}</div>
+                    <div class="descrip1">{{ obj.mfgmodeldescrip|default_if_none:"" }}</div>
+                    <div class="seer1">{{ obj.eff|default_if_none:"" }}</div>
+                    <div class="btu1">{{ obj.btu|default_if_none:"" }}</div>
+                </div>
+                {% endfor %}
+                 {% for obj in object_list7 %}
+                <div class="equiprow1">
+                    <div class="quant1">{{ obj.quanity|default_if_none:"" }}</div>
+                    <div class="type1">{{ obj.type|default_if_none:"" }}</div>
+                    <div class="man1">{{ obj.mfg|default_if_none:"" }}</div>
+                    <div class="partnum1">{{ obj.modelnum|default_if_none:"" }}</div>
+                    <div class="descrip1">{{ obj.mfgmodeldescrip|default_if_none:"" }}</div>
+                    <div class="seer1">{{ obj.eff|default_if_none:"" }}</div>
+                    <div class="btu1">{{ obj.btu|default_if_none:"" }}</div>
+                </div>
+                {% endfor %}
+                 {% for obj in object_list8 %}
+                <div class="equiprow1">
+                    <div class="quant1">{{ obj.quanity|default_if_none:"" }}</div>
+                    <div class="type1">{{ obj.type|default_if_none:"" }}</div>
+                    <div class="man1">{{ obj.mfg|default_if_none:"" }}</div>
+                    <div class="partnum1">{{ obj.modelnum|default_if_none:"" }}</div>
+                    <div class="descrip1">{{ obj.mfgmodeldescrip|default_if_none:"" }}</div>
+                    <div class="seer1">{{ obj.eff|default_if_none:"" }}</div>
+                    <div class="btu1">{{ obj.btu|default_if_none:"" }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="section5">
+                <div class="section55">
+                <div class="section5a">
+                    <div class="rowmemo">
+                        {{ form.memo1.errors }}
+                        {{ form.memo1 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo3.errors }}
+                        {{ form.memo3 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo5.errors }}
+                        {{ form.memo5 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo7.errors }}
+                        {{ form.memo7 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo9.errors }}
+                        {{ form.memo9 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo11.errors }}
+                        {{ form.memo11 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo13.errors }}
+                        {{ form.memo13 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo15.errors }}
+                        {{ form.memo15 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo17.errors }}
+                        {{ form.memo17 }}
+                    </div>
+
+                </div>
+                <div class="section5b">
+                    <div class="rowmemo">
+                        {{ form.memo2.errors }}
+                        {{ form.memo2 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo4.errors }}
+                        {{ form.memo4 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo6.errors }}
+                        {{ form.memo6 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo8.errors }}
+                        {{ form.memo8 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo10.errors }}
+                        {{ form.memo10 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo12.errors }}
+                        {{ form.memo12 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo14.errors }}
+                        {{ form.memo14 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo16.errors }}
+                        {{ form.memo16 }}
+                    </div>
+                    <div class="rowmemo">
+                        {{ form.memo18.errors }}
+                        {{ form.memo18 }}
+                    </div>
+                </div>
+                </div>
+                <div class="page">1 of 2</div>
+            </div>
+            <br>
+            <div class="section6">
+                <div class="header6">Equipment Warranty</div>
+                <div class="equipheader">
+                    <div class="type2">Equip. Type</div>
+                    <div class="partnum2">Part #</div>
+                    <div class="warr2">Warranty</div>
+                </div>
+                {% for obj in object_list2 %}
+                <div class="equiprow1">
+                    <div class="type3">{{ obj.type|default_if_none:"" }}</div>
+                    <div class="partnum3">{{ obj.modelnum|default_if_none:"" }}</div>
+                    <div class="warr3">{{ obj.warr|default_if_none:"" }}</div>
+                </div>
+                {% endfor %}
+                {% for obj in object_list3 %}
+                <div class="equiprow1">
+                    <div class="type3">{{ obj.type|default_if_none:"" }}</div>
+                    <div class="partnum3">{{ obj.modelnum|default_if_none:"" }}</div>
+                    <div class="warr3">{{ obj.warr|default_if_none:"" }}</div>
+                </div>
+                {% endfor %}
+                {% for obj in object_list4 %}
+                <div class="equiprow1">
+                    <div class="type3">{{ obj.type|default_if_none:"" }}</div>
+                    <div class="partnum3">{{ obj.modelnum|default_if_none:"" }}</div>
+                    <div class="warr3">{{ obj.warr|default_if_none:"" }}</div>
+                </div>
+                {% endfor %}
+                {% for obj in object_list5 %}
+                <div class="equiprow1">
+                    <div class="type3">{{ obj.type|default_if_none:"" }}</div>
+                    <div class="partnum3">{{ obj.modelnum|default_if_none:"" }}</div>
+                    <div class="warr3">{{ obj.warr|default_if_none:"" }}</div>
+                </div>
+                {% endfor %}
+                {% for obj in object_list6 %}
+                <div class="equiprow1">
+                    <div class="type3">{{ obj.type|default_if_none:"" }}</div>
+                    <div class="partnum3">{{ obj.modelnum|default_if_none:"" }}</div>
+                    <div class="warr3">{{ obj.warr|default_if_none:"" }}</div>
+                </div>
+                {% endfor %}
+                {% for obj in object_list7 %}
+                <div class="equiprow1">
+                    <div class="type3">{{ obj.type|default_if_none:"" }}</div>
+                    <div class="partnum3">{{ obj.modelnum|default_if_none:"" }}</div>
+                    <div class="warr3">{{ obj.warr|default_if_none:"" }}</div>
+                </div>
+                {% endfor %}
+                {% for obj in object_list8 %}
+                <div class="equiprow1">
+                    <div class="type3">{{ obj.type|default_if_none:"" }}</div>
+                    <div class="partnum3">{{ obj.modelnum|default_if_none:"" }}</div>
+                    <div class="warr3">{{ obj.warr|default_if_none:"" }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="section7">
+                <div class="header6">Instance Rebate</div>
+                {% for obj in object_list9 %}
+                <div class="rebaterow1">
+                    <div id="commed">
+                        <div id="commedheader">Comm Ed</div>
+                        <div class="commed">${{ obj.vendor2rebate|default_if_none:"" }}</div>
+                    </div>
+                    <div id="nicor">
+                        <div id="nicorheader">Nicor</div>
+                        <div class="nicor">${{ obj.vendor1rebate|default_if_none:"" }}</div>
+                    </div>
+                    <div id="totalrebate">
+                        <div id="totalreabeheader">Total Rebate</div>
+                        <div class="totalrebate">${{ obj.totalrebate|default_if_none:"" }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="section8">
+                 <div class="header8">Proposed Cost of Improvements</div>
+                {% for obj in object_list10 %}
+                <div class="costrow">
+                    <div class="costrow1">
+                    </div>
+                    <div class="costrow2">
+                    </div>
+                    <div class="costrow3">
+                        <div id="totalbeforerebate">
+                            <div class="totalbeforerebate">Price Before Rebates:</div>
+                            <div class="tbr">{{ obj.costbeforrebate|default_if_none:"" }}
+                            </div>
+                        </div>
+                        <div id="totalreabte2">
+                            <div class="totalrebate2">Instant Rebate Amount:</div>
+                            <div class="tr">{{ obj.totalrebate|default_if_none:"" }}
+                            </div>
+                        </div>
+                        <div id="finalcost">
+                            <div class="finalcost">Contract Amount:</div>
+                            <div class="fc">{{ obj.totaljobcost|default_if_none:"" }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="wordsA">
+                    <div id="words">
+                        {{ grandtotalcost }}
+                    </div>
+
+                </div>
+                {% endfor %}
+                <div class="costpayment">
+                    <div class="costrow4">
+                        <div class="costrowheader">Deposit</div>
+                            <div class="deposit">
+                            <div id="id_deposit"></div>
+                        </div>
+                        </div>
+                        <div class="dpterms">
+                            {{ form.depositterms.errors }}
+                            {{ form.depositterms }}
+                        </div>
+                        <div class="dpdate">
+                            <div class="dpcalendar">
+                             <div id="dpdate">{{ form.downpaymentdate }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="costrow5">
+
+                    </div>
+                    <div class="costrow6">
+                        <div class="finalrowheader">Final Payment</div>
+                        <div class="finalpayment">
+                            <div id="id_finalpayment"></div>
+                        </div>
+                        <div class="dpterms">
+                            {{ form.finalterms.errors }}
+                            {{ form.finalterms }}
+                        </div>
+                        <div class="dpdate">
+                            <div class="dpcalendar">
+                                <div id="fpdate">{{ form.finalpaymentdate }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="costrow7">
+                        <div class="final7a">
+                            <div class="disclaimer1">* Price Quote Valid for 30 days</div>
+                            <div class="disclaimer2">* Payment terms include cash, check, Visa/MasterCard/Discover/American Express.</div>
+                            <div class="disclaimer3">* 6 months same-as cash financing available upon prior credit approval.</div>
+
+                        </div>
+                        <div class="final7b">
+                             <button id="gencon2" onclick="window.print()">Print</button>
+                        <a class="button2" href="{% url 'mhadatabase:customerinfo' instance.custid %}">Close Form</a>
+
+                        </div>
+                    </div>
+                </div>
+
+            <div class="section9">
+                    <div class="sig1">
+                        <div class="sub">Submitted by:</div>
+
+                        <div class="name">Scott Maertin</div>
+                        <div class="date">
+                                    {{ form.contractdate.errors }}
+                                    <label id="label_contractdate">Date:</label>
+                                    {{ form.contractdate }}
+                                </div>
+
+                    </div>
+                <div class="line">____________________________________________________</div>
+                    <div class="sig2">
+                     <div class="accepted">Accepted by:____________________________________________________________ Date: ____________</div>
+                    </div>
+                <div class="page">2 of 2</div>
+            </div>
+            </div>
+        </div>
+    <div class="container3">
+
+    </div>
+</div>
+
+</body>
+<div class="mfg-modal" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button1">Yes</button>
+                <button type="button" class="button2">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg2" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo1a.errors }}
+                {{ form.memo1a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept">Accept</button>
+                <button type="button" class="cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal2" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button12">Yes</button>
+                <button type="button" class="button22">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg22" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo2a.errors }}
+                {{ form.memo2a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept2">Accept</button>
+                <button type="button" class="cancel2">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal3" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button13">Yes</button>
+                <button type="button" class="button23">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg23" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo3a.errors }}
+                {{ form.memo3a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept3">Accept</button>
+                <button type="button" class="cancel3">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal4" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button14">Yes</button>
+                <button type="button" class="button24">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg24" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo4a.errors }}
+                {{ form.memo4a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept4">Accept</button>
+                <button type="button" class="cancel4">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal5" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button15">Yes</button>
+                <button type="button" class="button25">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg25" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo5a.errors }}
+                {{ form.memo5a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept5">Accept</button>
+                <button type="button" class="cancel5">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal6" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button16">Yes</button>
+                <button type="button" class="button26">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg26" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo6a.errors }}
+                {{ form.memo6a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept6">Accept</button>
+                <button type="button" class="cancel6">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal7" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button17">Yes</button>
+                <button type="button" class="button27">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg27" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo7a.errors }}
+                {{ form.memo7a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept7">Accept</button>
+                <button type="button" class="cancel7">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal8" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button18">Yes</button>
+                <button type="button" class="button28">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg28" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo8a.errors }}
+                {{ form.memo8a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept8">Accept</button>
+                <button type="button" class="cancel8">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal9" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button19">Yes</button>
+                <button type="button" class="button29">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg29" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo9a.errors }}
+                {{ form.memo9a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept9">Accept</button>
+                <button type="button" class="cancel9">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal10" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button110">Yes</button>
+                <button type="button" class="button210">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg210" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo10a.errors }}
+                {{ form.memo10a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept10">Accept</button>
+                <button type="button" class="cancel10">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal11" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button111">Yes</button>
+                <button type="button" class="button211">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg211" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo11a.errors }}
+                {{ form.memo11a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept11">Accept</button>
+                <button type="button" class="cancel11">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal12" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button112">Yes</button>
+                <button type="button" class="button212">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg212" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo12a.errors }}
+                {{ form.memo12a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept12">Accept</button>
+                <button type="button" class="cancel12">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal13" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button113">Yes</button>
+                <button type="button" class="button213">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg213" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo13a.errors }}
+                {{ form.memo13a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept13">Accept</button>
+                <button type="button" class="cancel13">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal14" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button114">Yes</button>
+                <button type="button" class="button214">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg214" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo14a.errors }}
+                {{ form.memo14a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept14">Accept</button>
+                <button type="button" class="cancel14">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal15" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button115">Yes</button>
+                <button type="button" class="button215">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg215" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo15a.errors }}
+                {{ form.memo15a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept15">Accept</button>
+                <button type="button" class="cancel15">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal16" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button116">Yes</button>
+                <button type="button" class="button216">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg216" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo16a.errors }}
+                {{ form.memo16a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept16">Accept</button>
+                <button type="button" class="cancel16">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal17" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button117">Yes</button>
+                <button type="button" class="button217">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg217" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo17a.errors }}
+                {{ form.memo17a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept17">Accept</button>
+                <button type="button" class="cancel17">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="mfg-modal18" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Detail to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="button118">Yes</button>
+                <button type="button" class="button218">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="mfg218" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Detail</h3>
+            <div class="input2">
+                {{ form.memo18a.errors }}
+                {{ form.memo18a }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="accept18">Accept</button>
+                <button type="button" class="cancel18">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+        <div class="da" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add Deposit Amount</h3>
+            <div class="input2">
+                {{ form.balance.errors }}
+                {{ form.balance }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="acceptda">Accept</button>
+                <button type="button" class="cancelda">Cancel</button>
+            </div>
+        </div>
+    </div>
+<div class="dptermsA" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Terms to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="buttondpA">Yes</button>
+                <button type="button" class="buttondpB">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="dptermsB" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Terms</h3>
+            <div class="input2">
+                {{ form.deposittermsa.errors }}
+                {{ form.deposittermsa }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="acceptdpA">Accept</button>
+                <button type="button" class="canceldpB">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+<div class="finaltermsA" style="display:none">
+        <div class="memo-content">
+            <h3 class="modaltitle">Do you wish to add a new Terms to the master list?</h3>
+            <div class="butrow">
+                <button type="button" class="buttonfinalA">Yes</button>
+                <button type="button" class="buttonfinalB">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="finaltermsB" style="display:none">
+        <div class="memo-content">
+            <h3 class="add-mfg-title">Add New Terms</h3>
+            <div class="input2">
+                {{ form.finaltermsa.errors }}
+                {{ form.finaltermsa }}
+            </div>
+            <div class="butrow">
+                <button type="button" class="acceptfinalA">Accept</button>
+                <button type="button" class="cancelfinalB">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+
+$(document).ready(function() {
+
+
+
+//setTimeout(function(){
+//            var urlC = $(".form2").attr("workorderdatea-url");
+//            req = $.ajax({
+//                   url: urlC,
+//                   data:{
+//                     },
+//                     success: function (data) {
+//                       $("#workorderdate").html(data);
+//                     }
+//                });
+//        }, 0);
+//
+//setTimeout(function(){
+//            var urlC = $(".form2").attr("downpaymentdatea-url");
+//            req = $.ajax({
+//                   url: urlC,
+//                   data:{
+//                     },
+//                     success: function (data) {
+//                       $("#downpaymentdate").html(data);
+//                     }
+//                });
+//        }, 0);
+//
+//
+//setTimeout(function(){
+//            var urlC = $(".form2").attr("finalpaymentdatea-url");
+//            req = $.ajax({
+//                   url: urlC,
+//                   data:{
+//                     },
+//                     success: function (data) {
+//                       $("#finalpaymentdate").html(data);
+//                     }
+//                });
+//        }, 0);
+
+
+setTimeout(function(){
+            var urlC = $(".form2").attr("depositload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_deposit").html(data);
+                     }
+                });
+        }, 0);
+
+
+setTimeout(function(){
+            var urlC = $(".form2").attr("finalpaymentload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_finalpayment").html(data);
+                     }
+                });
+        }, 0);
+
+
+
+});
+
+
+let allElements = document.querySelectorAll('.tbr, .tr,  .fc');
+allElements.forEach(element => {
+if (element.textContent.indexOf("$") != 0)
+{
+    element.textContent = "$" + element.textContent.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+console.log(element.textContent);
+});
+
+
+
+$('.datepicker_input').datepicker();
+
+function addNewname() {
+var userInput = document.getElementById("id_memo31").value;
+    console.log(userInput);
+    var url = $(".form2").attr("memo31-url");
+     $.ajax({
+        type:'POST',
+       url: url,
+       data:{
+            id_memo31: $("#id_memo31").val(),
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+         },
+    });
+}
+
+
+////////////////// Deposit //////////////////////////////////////
+function addDeposit() {
+
+$(".da").show()
+
+}
+
+$(function(){
+    $('button.cancelda').click(function(){
+        $(".da").hide()
+    });
+});
+
+
+
+
+
+ $(function(){
+    $('.acceptda').click(function(){
+        $(".da").hide()
+        var userInput = document.getElementById("id_balance").value;
+    console.log(userInput);
+    var url = $(".form2").attr("deposit-url");
+     $.ajax({
+        type:'POST',
+       url: url,
+       data:{
+            id_balance: $("#id_balance").val(),
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+         },
+    });
+    setTimeout(function(){
+     var urlC = $(".form2").attr("finalpaymentload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_finalpayment").html(data);
+                     }
+                });
+    },400);
+
+    setTimeout(function(){
+            var urlC = $(".form2").attr("depositload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_deposit").html(data);
+                     }
+                });
+        }, 500);
+
+
+
+
+    });
+});
+
+
+
+
+////////////////// Work Order Date //////////////////////////////////////
+function WorkOrderDateFunction() {
+    setTimeout(function(){
+        var selectBox =document.getElementById('id_contractdate');
+        var userInput =selectBox.value;
+            console.log(userInput);
+            var url = $(".form2").attr("contractdate-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_contractdate: $('#id_contractdate').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+    }, 0);
+}
+
+
+////////////////// Down Payment Date //////////////////////////////////////
+
+
+function DownPaymentDateFunction() {
+    setTimeout(function(){
+        var selectBox =document.getElementById('id_downpaymentdate');
+        var userInput =selectBox.value;
+            console.log(userInput);
+            var url = $(".form2").attr("depositdate-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_downpaymentdate: $('#id_downpaymentdate').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+    }, 0);
+}
+
+
+////////////////////////////// Down Payment Terms //////////////////////////////////////
+
+
+$(function(){
+   $('#id_depositterms').change(function(){
+   if ($('#id_depositterms').val() ==1) $(".dptermsA").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_depositterms');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("depositterms-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_depositterms: $('#id_depositterms').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.buttondpA').click(function(){
+        $(".dptermsB").show()
+        $(".dptermsA").hide()
+    });
+});
+
+$(function(){
+    $('.buttondpB').click(function(){
+        $(".dptermsA").hide()
+    });
+});
+
+$(function(){
+    $('button.canceldpB').click(function(){
+        $(".dptermsB").hide()
+    });
+});
+
+
+ $(function(){
+    $('.acceptdpA').click(function(){
+        $(".dptermsB").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_deposittermsa").value;
+                console.log(userInput);
+                var url = $(".form2").attr("deposittermsa-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_deposittermsa: $('#id_deposittermsa').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.acceptdpA').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("deposittermsaload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_depositterms").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+
+////////////////////////////// Final Payment Terms //////////////////////////////////////
+
+
+$(function(){
+   $('#id_finalterms').change(function(){
+   if ($('#id_finalterms').val() ==1) $(".finaltermsA").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_finalterms');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("finalterms-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_finalterms: $('#id_finalterms').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.buttonfinalA').click(function(){
+        $(".finaltermsB").show()
+        $(".finaltermsA").hide()
+    });
+});
+
+$(function(){
+    $('.buttonfinalB').click(function(){
+        $(".finaltermsA").hide()
+    });
+});
+
+$(function(){
+    $('button.cancelfinalB').click(function(){
+        $(".finaltermsB").hide()
+    });
+});
+
+
+ $(function(){
+    $('.acceptfinalA').click(function(){
+        $(".finaltermsB").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_finaltermsa").value;
+                console.log(userInput);
+                var url = $(".form2").attr("finaltermsa-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_finaltermsa: $('#id_finaltermsa').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.acceptfinalA').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("finaltermsaload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_finalterms").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+
+
+////////////////// Final Payment Date //////////////////////////////////////
+function FinalPaymentDateFunction() {
+    setTimeout(function(){
+        var selectBox =document.getElementById('id_finalpaymentdate');
+        var userInput =selectBox.value;
+            console.log(userInput);
+            var url = $(".form2").attr("finalpaymentdate-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_finalpaymentdate: $('#id_finalpaymentdate').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+    }, 0);
+}
+
+////////////////////////////// Memo 1 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo1').change(function(){
+   if ($('#id_memo1').val() ==1) $(".mfg-modal").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo1');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo1-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo1: $('#id_memo1').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button1').click(function(){
+        $(".mfg2").show()
+        $(".mfg-modal").hide()
+    });
+});
+
+$(function(){
+    $('.button2').click(function(){
+        $(".mfg-modal").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel').click(function(){
+        $(".mfg2").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept').click(function(){
+        $(".mfg2").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo1a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo1a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo1a: $('#id_memo1a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo1aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo1").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+
+
+
+
+
+////////////////////////////// Memo 2 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo2').change(function(){
+   if ($('#id_memo2').val() ==1) $(".mfg-modal2").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo2');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo2-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo2: $('#id_memo2').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button12').click(function(){
+        $(".mfg22").show()
+        $(".mfg-modal2").hide()
+    });
+});
+
+$(function(){
+    $('.button22').click(function(){
+        $(".mfg-modal2").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel2').click(function(){
+        $(".mfg22").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept2').click(function(){
+        $(".mfg22").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo2a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo2a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo2a: $('#id_memo2a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept2').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo2aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo2").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+
+
+//////////////////////////// Memo 3 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo3').change(function(){
+   if ($('#id_memo3').val() ==1) $(".mfg-modal3").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo3');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo3-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo3: $('#id_memo3').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button13').click(function(){
+        $(".mfg23").show()
+        $(".mfg-modal3").hide()
+    });
+});
+
+$(function(){
+    $('.button23').click(function(){
+        $(".mfg-modal3").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel3').click(function(){
+        $(".mfg23").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept3').click(function(){
+        $(".mfg23").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo3a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo3a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo3a: $('#id_memo3a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept3').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo3aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo3").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+
+
+////////////////////////////// Memo 4 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo4').change(function(){
+   if ($('#id_memo4').val() ==1) $(".mfg-modal4").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo4');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo4-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo4: $('#id_memo4').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button14').click(function(){
+        $(".mfg24").show()
+        $(".mfg-modal4").hide()
+    });
+});
+
+$(function(){
+    $('.button24').click(function(){
+        $(".mfg-modal4").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel4').click(function(){
+        $(".mfg24").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept4').click(function(){
+        $(".mfg24").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo4a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo4a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo4a: $('#id_memo4a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept4').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo4aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo4").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+
+
+////////////////////////////// Memo 5 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo5').change(function(){
+   if ($('#id_memo5').val() ==1) $(".mfg-modal5").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo5');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo5-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo5: $('#id_memo5').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button15').click(function(){
+        $(".mfg25").show()
+        $(".mfg-modal5").hide()
+    });
+});
+
+$(function(){
+    $('.button25').click(function(){
+        $(".mfg-modal5").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel5').click(function(){
+        $(".mfg25").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept5').click(function(){
+        $(".mfg25").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo5a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo5a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo5a: $('#id_memo5a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept5').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo5aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo5").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 6 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo6').change(function(){
+   if ($('#id_memo6').val() ==1) $(".mfg-modal6").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo6');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo6-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo6: $('#id_memo6').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button16').click(function(){
+        $(".mfg26").show()
+        $(".mfg-modal6").hide()
+    });
+});
+
+$(function(){
+    $('.button26').click(function(){
+        $(".mfg-modal6").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel6').click(function(){
+        $(".mfg26").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept6').click(function(){
+        $(".mfg26").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo6a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo6a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo6a: $('#id_memo6a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept6').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo6aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo6").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 7 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo7').change(function(){
+   if ($('#id_memo7').val() ==1) $(".mfg-modal7").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo7');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo7-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo7: $('#id_memo7').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button17').click(function(){
+        $(".mfg27").show()
+        $(".mfg-modal7").hide()
+    });
+});
+
+$(function(){
+    $('.button27').click(function(){
+        $(".mfg-modal7").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel7').click(function(){
+        $(".mfg27").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept7').click(function(){
+        $(".mfg27").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo7a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo7a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo7a: $('#id_memo7a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept7').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo7aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo7").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 8 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo8').change(function(){
+   if ($('#id_memo8').val() ==1) $(".mfg-modal8").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo8');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo8-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo8: $('#id_memo8').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button18').click(function(){
+        $(".mfg28").show()
+        $(".mfg-modal8").hide()
+    });
+});
+
+$(function(){
+    $('.button28').click(function(){
+        $(".mfg-modal8").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel8').click(function(){
+        $(".mfg28").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept8').click(function(){
+        $(".mfg28").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo8a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo8a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo8a: $('#id_memo8a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept8').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo8aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo8").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 9 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo9').change(function(){
+   if ($('#id_memo9').val() ==1) $(".mfg-modal9").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo9');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo9-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo9: $('#id_memo9').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button19').click(function(){
+        $(".mfg29").show()
+        $(".mfg-modal9").hide()
+    });
+});
+
+$(function(){
+    $('.button29').click(function(){
+        $(".mfg-modal9").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel9').click(function(){
+        $(".mfg29").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept9').click(function(){
+        $(".mfg29").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo9a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo9a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo9a: $('#id_memo9a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept9').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo9aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo9").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 10 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo10').change(function(){
+   if ($('#id_memo10').val() ==1) $(".mfg-modal10").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo10');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo10-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo10: $('#id_memo10').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button110').click(function(){
+        $(".mfg210").show()
+        $(".mfg-modal10").hide()
+    });
+});
+
+$(function(){
+    $('.button210').click(function(){
+        $(".mfg-modal10").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel10').click(function(){
+        $(".mfg210").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept10').click(function(){
+        $(".mfg210").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo10a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo10a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo10a: $('#id_memo10a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept10').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo10aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo10").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 11 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo11').change(function(){
+   if ($('#id_memo11').val() ==1) $(".mfg-modal11").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo11');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo11-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo11: $('#id_memo11').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button111').click(function(){
+        $(".mfg211").show()
+        $(".mfg-modal11").hide()
+    });
+});
+
+$(function(){
+    $('.button211').click(function(){
+        $(".mfg-modal11").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel11').click(function(){
+        $(".mfg211").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept11').click(function(){
+        $(".mfg211").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo11a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo11a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo11a: $('#id_memo11a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept11').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo11aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo11").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 12 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo12').change(function(){
+   if ($('#id_memo12').val() ==1) $(".mfg-modal12").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo12');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo12-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo12: $('#id_memo12').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button112').click(function(){
+        $(".mfg212").show()
+        $(".mfg-modal12").hide()
+    });
+});
+
+$(function(){
+    $('.button212').click(function(){
+        $(".mfg-modal12").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel12').click(function(){
+        $(".mfg212").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept12').click(function(){
+        $(".mfg212").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo12a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo12a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo12a: $('#id_memo12a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept12').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo12aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo12").html(data);
+                     }
+                });
+        },400);
+    });
+});
+////////////////////////////// Memo 13 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo13').change(function(){
+   if ($('#id_memo13').val() ==1) $(".mfg-modal13").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo13');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo13-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo13: $('#id_memo13').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button113').click(function(){
+        $(".mfg213").show()
+        $(".mfg-modal13").hide()
+    });
+});
+
+$(function(){
+    $('.button213').click(function(){
+        $(".mfg-modal13").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel13').click(function(){
+        $(".mfg213").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept13').click(function(){
+        $(".mfg213").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo13a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo13a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo13a: $('#id_memo13a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept13').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo13aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo13").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 14 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo14').change(function(){
+   if ($('#id_memo14').val() ==1) $(".mfg-modal14").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo14');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo14-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo14: $('#id_memo14').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button114').click(function(){
+        $(".mfg214").show()
+        $(".mfg-modal14").hide()
+    });
+});
+
+$(function(){
+    $('.button214').click(function(){
+        $(".mfg-modal14").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel14').click(function(){
+        $(".mfg214").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept14').click(function(){
+        $(".mfg214").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo14a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo14a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo14a: $('#id_memo14a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept14').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo14aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo14").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 15 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo15').change(function(){
+   if ($('#id_memo15').val() ==1) $(".mfg-modal15").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo15');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo15-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo15: $('#id_memo15').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button115').click(function(){
+        $(".mfg215").show()
+        $(".mfg-modal15").hide()
+    });
+});
+
+$(function(){
+    $('.button215').click(function(){
+        $(".mfg-modal15").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel15').click(function(){
+        $(".mfg215").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept15').click(function(){
+        $(".mfg215").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo15a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo15a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo15a: $('#id_memo15a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept15').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo15aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo15").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 16 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo16').change(function(){
+   if ($('#id_memo16').val() ==1) $(".mfg-modal16").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo16');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo16-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo16: $('#id_memo16').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button116').click(function(){
+        $(".mfg216").show()
+        $(".mfg-modal16").hide()
+    });
+});
+
+$(function(){
+    $('.button216').click(function(){
+        $(".mfg-modal16").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel16').click(function(){
+        $(".mfg216").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept16').click(function(){
+        $(".mfg216").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo16a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo16a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo16a: $('#id_memo16a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept16').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo16aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo16").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 17 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo17').change(function(){
+   if ($('#id_memo17').val() ==1) $(".mfg-modal17").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo17');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo17-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo17: $('#id_memo17').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button117').click(function(){
+        $(".mfg217").show()
+        $(".mfg-modal17").hide()
+    });
+});
+
+$(function(){
+    $('.button217').click(function(){
+        $(".mfg-modal17").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel17').click(function(){
+        $(".mfg217").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept17').click(function(){
+        $(".mfg217").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo17a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo17a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo17a: $('#id_memo17a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept17').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo17aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo17").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 18 //////////////////////////////////////
+
+
+$(function(){
+   $('#id_memo18').change(function(){
+   if ($('#id_memo18').val() ==1) $(".mfg-modal18").show()
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_memo18');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo18-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo18: $('#id_memo18').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button118').click(function(){
+        $(".mfg218").show()
+        $(".mfg-modal18").hide()
+    });
+});
+
+$(function(){
+    $('.button218').click(function(){
+        $(".mfg-modal18").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel18').click(function(){
+        $(".mfg218").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept18').click(function(){
+        $(".mfg218").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo18a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo18a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo18a: $('#id_memo18a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept18').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo18aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo18").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+
+
+
+
+
+</script>
+
+
+

@@ -1,0 +1,976 @@
+body{
+    font: 22px/1.5 Arial, Helvetica,sans-serif;
+    padding:0;
+
+}
+
+div.container{
+    width:100%;
+    margin-top:0px;
+   margin-left: auto;
+  margin-right: auto;
+    display: flex;
+}
+
+div.container1{
+    flex: 3;
+    display: flex;
+}
+
+div.container2{
+    width: 790px;
+}
+
+div.container3{
+    flex: 3;
+    display: flex;
+}
+
+.contract{
+    margin-top: 15px;
+}
+
+#gencon{
+
+}
+
+.button2{
+    border: 2px solid black;
+    padding: 3px;
+    color: black;
+    text-decoration: none;
+    background: #e9e9ed;
+}
+
+.section1{
+    border: black 4px solid;
+}
+
+.section2{
+    border-bottom: black 4px solid;
+    border-left: black 4px solid;
+    border-right: black 4px solid;
+    display: flex;
+}
+
+.section3{
+    border-bottom: black 4px solid;
+    border-left: black 4px solid;
+    border-right: black 4px solid;
+}
+
+.section4{
+    border-bottom: black 4px solid;
+    border-left: black 4px solid;
+    border-right: black 4px solid;
+}
+
+.section5{
+    border-bottom: black 4px solid;
+    border-left: black 4px solid;
+    border-right: black 4px solid;
+    display: flex;
+    flex-direction: column;
+}
+
+.section55{
+    display: flex;
+    flex-direction: row;
+}
+
+.section6{
+    border: black 4px solid;
+    display: flex;
+    flex-direction: column;
+}
+
+.section7{
+    border-bottom: black 4px solid;
+    border-left: black 4px solid;
+    border-right: black 4px solid;
+    display: flex;
+    flex-direction: column;
+}
+
+.section8{
+    border-bottom: black 4px solid;
+    border-left: black 4px solid;
+    border-right: black 4px solid;
+    display: flex;
+    flex-direction: column;
+}
+
+.section9{
+    border-bottom: black 4px solid;
+    border-left: black 4px solid;
+    border-right: black 4px solid;
+    display: flex;
+    flex-direction: column;
+}
+
+.section10{
+    border-bottom: black 4px solid;
+    border-left: black 4px solid;
+    border-right: black 4px solid;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+.logo1{
+    width: 242px;
+}
+
+.logo2{
+    width: 360px;
+    text-align: center;
+}
+
+.jobinfo{
+    margin-bottom: 18px;
+    display: flex;
+}
+
+.rowcustid{
+    margin-right: 10px;
+}
+
+.rowjobid{
+    margin-right: 10px;
+}
+
+.rowbidid{
+    margin-right: 10px;
+}
+
+#label_custid, #label_jobid, #label_bidid{
+    font-size: calc(.3vw + 0.75vh + .25vmin);
+}
+
+#id_custid{
+    width: 50px;
+    font-size: calc(.3vw + 0.75vh + .25vmin);
+    text-align: center;
+    -webkit-appearance: textfield;
+}
+
+#id_jobid{
+    width: 50px;
+    font-size: calc(.3vw + 0.75vh + .25vmin);
+    text-align: center;
+    -webkit-appearance: textfield;
+}
+
+#id_bidid{
+    width: 50px;
+    font-size: calc(.3vw + 0.75vh + .25vmin);
+    text-align: center;
+    -webkit-appearance: textfield;
+}
+
+#header{
+    text-align: center;
+    font-size: calc(1.0vw + 0.75vh + .25vmin);
+    font-weight:bold;
+}
+
+
+.logo3{
+    width: 187px;
+}
+
+i.bi bi-calendar-date input-group-text{
+    width: 40px;
+
+}
+
+.input-group-text {
+    width: 43px;
+}
+
+.calendar {
+    display: flex;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    margin-left: 26px;
+}
+
+
+
+
+.dateheader{
+    margin-left: 44px;
+    margin-right: 5px;
+    margin-top: 5px;
+    font-weight:bold;
+}
+
+img.img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 204px;
+    margin-top: 6px;
+}
+
+#number{
+    text-align: center;
+}
+
+#info{
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: calc(0.5vw + 0.75vh + .25vmin);
+    font-weight:bold;
+}
+
+#name{
+    margin-top: 10px;
+    display: flex;
+}
+
+#label-name{
+    margin-right: 5px;
+    margin-left: 32px;
+    font-weight:bold;
+}
+
+#address{
+    display: flex;
+}
+
+#label-job{
+    margin-right: 5px;
+    margin-left: 10px;
+    font-weight:bold;
+}
+
+#email{
+    margin-bottom: 10px;
+    display: flex;
+}
+
+#label-email{
+    margin-right: 5px;
+    margin-left: 66px;
+    font-weight:bold;
+}
+
+#cell1{
+    margin-top: 11px;
+    display: flex;
+}
+
+#label-cell1{
+    margin-right: 5px;
+    margin-left: 135px;
+    font-weight:bold;
+}
+
+#label-cell2{
+    margin-right: 5px;
+    margin-left: 135px;
+    font-weight:bold;
+}
+
+
+#cell2{
+    display: flex;
+}
+
+#header2{
+    font-size: calc(0.25vw + 0.75vh + .25vmin);
+    text-align: center;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+
+#header2a{
+    text-align: center;
+    font-weight:bold;
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+
+#memo31{
+     text-align: center;
+     margin-bottom: 10px;
+}
+
+#id_memo31{
+    height: 180px;
+    padding-left: 10px;
+}
+
+#equipheader{
+    display: flex;
+
+}
+
+.headerB{
+    display: flex;
+}
+
+.quant{
+    width: 50px;
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    text-align: center;
+    font-weight:bold;
+}
+
+.type{
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    width: 133px;
+    text-align: center;
+    font-weight:bold;
+}
+
+.man{
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    width: 113px;
+    text-align: center;
+    font-weight:bold;
+}
+
+.partnum{
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    width: 164px;
+    text-align: center;
+    font-weight:bold;
+}
+
+.descrip{
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    width: 139px;
+    text-align: center;
+    font-weight:bold;
+}
+
+.btu{
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    width: 100px;
+    text-align: center;
+    font-weight:bold;
+}
+
+.seer{
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    width: 77px;
+    text-align: center;
+    font-weight:bold;
+}
+
+.cost{
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    width: 52px;
+    text-align: center;
+    font-weight:bold;
+    margin-left: 100px;
+    margin-top: 0px;
+}
+
+.cost1{
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    width: 52px;
+    text-align: center;
+    font-weight:bold;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+.quant1{
+    width: 48px;
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    text-align: center;
+}
+
+.type1{
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    width: 133px;
+    text-align: center;
+}
+
+.man1{
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    width: 124px;
+    text-align: center;
+}
+
+.partnum1{
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    width: 170px;
+    text-align: center;
+}
+
+.descrip1{
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    width: 124px;
+    text-align: center;
+}
+
+.seer1{
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    width: 67px;
+    text-align: center;
+}
+
+.btu1{
+    font-size: calc(0.4vw + 0.75vh + .25vmin);
+    width: 116px;
+    text-align: center;
+}
+
+.warr2{
+    width: 463px;
+    text-align: center;
+    font-weight:bold;
+}
+
+.type3{
+    width: 112px;
+    text-align: center;
+    margin-left: 25px;
+}
+
+.partnum3{
+    width: 180px;
+    text-align: center;
+}
+
+.warr3{
+    width: 472px;
+    text-align: center;
+}
+
+#header4{
+    width: 100%;
+    text-align: center;
+    font-weight:bold;
+    text-decoration: underline;
+    padding-top: 18px;
+    margin-bottom: 0px;
+}
+
+.header4{
+    font-size: calc(0.5vw + 0.75vh + .25vmin);
+    text-align: center;
+    font-weight:bold;
+    text-decoration: underline;
+    margin-top: 0px;
+    margin-bottom: 1px;
+    margin-left: 240px;
+}
+
+.header6{
+    font-size: calc(0.5vw + 0.75vh + .25vmin);
+    text-align: center;
+    font-weight:bold;
+    text-decoration: underline;
+    margin-top: 0px;
+    margin-bottom: 1px;
+
+}
+
+.equiprow1top{
+    display: flex;
+    margin-bottom: 5px;
+    height: 25px;
+    border-bottom: black 1px solid;
+    border-top: black 1px solid;
+}
+
+
+.equiprow1{
+    display: flex;
+    height: 22px;
+    border-bottom: black 1px solid;
+}
+
+.equipheader{
+    display: flex;
+}
+
+
+
+.type2{
+    width: 120px;
+    margin-left: 25px;
+    text-align: center;
+    font-weight:bold;
+
+}
+
+
+
+.partnum2{
+    width: 180px;
+    text-align: center;
+    font-weight:bold;
+}
+
+
+.section5a{
+    width: 394px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.section5b{
+    width: 394px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.rowmemo{
+    justify-content: center;
+    display: flex;
+    margin-top: 5px;
+}
+
+.rowmemolast{
+    justify-content: center;
+    display: flex;
+    margin-bottom: 5px;
+}
+
+
+#id_memo1, #id_memo2, #id_memo3, #id_memo4, #id_memo5, #id_memo6, #id_memo7, #id_memo8, #id_memo9, #id_memo10,
+#id_memo11, #id_memo12, #id_memo13, #id_memo14, #id_memo15, #id_memo16, #id_memo17, #id_memo18{
+    width: 360px;
+    font-size: calc(.3vw + 0.75vh + .25vmin);
+}
+
+.contract2{
+height: 900px;
+}
+
+
+.rebaterow1{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+#commed{
+    width: 200px;
+    display: flex;
+}
+
+#nicor{
+    width: 200px;
+    display: flex;
+}
+
+#commedheader{
+    width: 114px;
+    margin-right: 10px;
+    text-align: right;
+    font-weight:bold;
+}
+
+#nicorheader{
+    width: 114px;
+    margin-right: 10px;
+    text-align: right;
+    font-weight:bold;
+}
+
+#totalrebate{
+    width: 237px;
+    display: flex;
+}
+
+#totalreabeheader{
+    width: 251px;
+    margin-right: 10px;
+    text-align: right;
+    font-weight:bold;
+}
+
+.totalbeforerebate{
+    width: 200px;
+    margin-right: 10px;
+    font-weight:bold;
+    text-align: right;
+}
+
+.totalrebate{
+    margin-right: 10px;
+    font-weight:bold;
+    text-align: right;
+}
+
+.totalrebate2{
+    width: 200px;
+    margin-right: 10px;
+    font-weight:bold;
+    text-align: right;
+}
+
+
+.finalcost{
+    width: 200px;
+    margin-right: 10px;
+    font-weight:bold;
+    text-align: right;
+
+}
+
+
+
+.costrow{
+    display: flex;
+}
+
+.costrow1{
+    width: 230px;
+}
+
+.costrow2{
+    width: 230px;
+}
+
+.costrow3{
+    width: 300px;
+}
+
+
+#id_costbeforrebate, #id_totalrebate, #id_totaljobcost{
+    width: 100px;
+    text-align: right;
+    -webkit-appearance: textfield;
+}
+
+div.tbr, div.tr, div.fc{
+    text-align: right;
+    width: 100px;
+}
+
+
+#totalbeforerebate, #totalreabte2, #finalcost{
+    width: 315px;
+    display: flex;
+}
+
+
+
+#wordsA{
+    margin-right: 15px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: right;
+}
+
+#words{
+    margin-left: 15px;
+    text-align: right;
+    border: black 1px solid;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 600;
+
+}
+
+#dollar{
+    width: 60px;
+    margin-left: 6px;
+}
+
+
+.header8{
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 4px;
+    margin-bottom: 16px;
+}
+
+.costpayment{
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.costrow4, .costrow5, .costrow6, .costrow7{
+    display: flex;
+
+}
+
+#id_deposit, #id_balance, #finalpayment_id{
+    -webkit-appearance: textfield;
+    width: 80px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#id_deposit_1{
+    display: none;
+}
+
+.dpterms{
+    width: 377px;
+    margin-right: 15px;
+}
+
+#id_depositterms, #id_finalterms{
+    width: 377px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.costrowheader, .balanceheader{
+    width: 130px;
+    margin-left: 6px;
+    margin-right: 5px;
+    font-weight: bold;
+    text-align: right;
+}
+
+
+
+
+.finalrowheader{
+    width: 130px;
+    margin-left: 6px;
+    margin-right: 5px;
+    font-weight: bold;
+    text-align: right;
+}
+
+
+.dpdate{
+    display: flex;
+}
+
+.dpcalendar{
+    display: flex;
+}
+
+input.datepicker_input.form-control{
+    width: 110px;
+}
+
+
+
+input.datepicker_input.form-control2{
+    width: 110px;
+}
+
+div.final7a{
+    width: 630px;
+}
+
+div.final7b{
+    align-items: flex-end;
+    display: flex;
+}
+
+.disclaimer1{
+    margin-left: 15px;
+    margin-top: 20px;
+}
+
+
+.disclaimer2{
+    margin-left: 15px;
+}
+
+.disclaimer3{
+    margin-left: 15px;
+    margin-bottom: 20px;
+}
+
+.sig1{
+    margin-top: 38px;
+    display: flex;
+    align-items: center;
+}
+
+.sub{
+    width: 177px;
+    text-align: right;
+}
+
+.name{
+    width: 397px;
+    text-align: center;
+    font-family: Brush Script MT;
+    font-size: calc(1.75vw + 0.75vh + .25vmin);
+}
+
+.date{
+
+}
+
+.sig2{
+    margin-top: 80px;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.page{
+    text-align: center;
+    margin-bottom: 19px;
+}
+
+
+.da{
+    width:100%;
+    height:225%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top:550px;
+    display:flex;
+    align-items: center;
+}
+
+
+
+.mfg-modal, .mfg2, .mfg-modal2, .mfg22, .mfg-modal3, .mfg23, .mfg-modal4, .mfg24, .mfg-modal5, .mfg25, .mfg-modal6, .mfg26,
+.mfg-modal7, .mfg27, .mfg-modal8, .mfg28, .mfg-modal9, .mfg29, .mfg-modal10, .mfg210, .mfg-modal11, .mfg211, .mfg-modal12, .mfg212
+,  .mfg-modal13, .mfg213, .mfg-modal14, .mfg214, .mfg-modal15, .mfg215, .mfg-modal16, .mfg216, .mfg-modal17, .mfg217, .mfg-modal18, .mfg218{
+    width:100%;
+    height:225%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top:0px;
+    display:flex;
+    align-items: center;
+}
+
+.memo-content{
+    width:533px;
+    height:250px;
+    margin: auto;
+    background-color: #c0c0c0;
+    border-radius:10px;
+}
+
+.modaltitle, .add-mfg-title{
+    height:50px;
+    width:400px;
+    margin-top: 28px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    font-size: calc( 1vw + 0.65vh + .25vmin);
+    font-style: italic;
+    font-family: "Times New Roman";
+    font-weight: bold;
+}
+
+.butrow{
+        display: flex;
+}
+
+
+button.button1, button.button2, button.accept, button.cancel, button.button12, button.button22, button.accept2, button.cancel2
+,button.button13, button.button23, button.accept3, button.cancel3,button.button14, button.button24, button.accept4, button.cancel4
+,button.button15, button.button25, button.accept5, button.cancel5,button.button16, button.button26, button.accept6, button.cancel6
+,button.button17, button.button27, button.accept7, button.cancel7,button.button18, button.button28, button.accept8, button.cancel8
+,button.button19, button.button29, button.accept9, button.cancel9,button.button110, button.button210, button.accept10, button.cancel10
+,button.button111, button.button211, button.accept11, button.cancel11,button.button112, button.button212, button.accept12, button.cancel12
+,button.button113, button.button213, button.accept13, button.cancel13,button.button114, button.button214, button.accept14, button.cancel14
+,button.button115, button.button215, button.accept15, button.cancel15,button.button116, button.button216, button.accept16, button.cancel16
+,button.button117, button.button217, button.accept17, button.cancel17,button.button118, button.button218, button.accept18, button.cancel18
+, button.acceptda, button.cancelda, button.buttondpA, button.buttondpB, button.acceptdpA, button.canceldpB,
+ button.buttonfinalA, button.buttonfinalB, button.acceptfinalA, button.cancelfinalB
+{
+    border: 2px solid black;
+    border-radius: 2px;
+    background: white;
+    width: 150px;
+    font-size: calc( 1vw + 0.75vh + .25vmin);
+    color: black;
+    font-style: italic;
+    font-family: "Times New Roman";
+    font-weight:bold;
+    cursor: pointer;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    transition: 0.6s;
+    position: relative;
+    overflow: hidden;
+
+}
+
+button.button1:hover, button.button2:hover, button.accept:hover, button.cancel:hover,
+button.button12:hover, button.button22:hover, button.accept2:hover, button.cancel2:hover,
+button.button13:hover, button.button23:hover, button.accept3:hover, button.cancel3:hover,
+button.button14:hover, button.button24:hover, button.accept4:hover, button.cancel4:hover,
+button.button15:hover, button.button25:hover, button.accept5:hover, button.cancel5:hover,
+button.button16:hover, button.button26:hover, button.accept6:hover, button.cancel6:hover,
+button.button17:hover, button.button27:hover, button.accept7:hover, button.cancel7:hover,
+button.button18:hover, button.button28:hover, button.accept8:hover, button.cancel8:hover,
+button.button19:hover, button.button29:hover, button.accept9:hover, button.cancel9:hover,
+button.button110:hover, button.button210:hover, button.accept10:hover, button.cancel10:hover,
+button.button111:hover, button.button211:hover, button.accept11:hover, button.cancel11:hover,
+button.button112:hover, button.button212:hover, button.accept12:hover, button.cancel12:hover,
+button.button113:hover, button.button213:hover, button.accept13:hover, button.cancel13:hover,
+button.button114:hover, button.button214:hover, button.accept14:hover, button.cancel14:hover,
+button.button115:hover, button.button215:hover, button.accept15:hover, button.cancel15:hover,
+button.button116:hover, button.button216:hover, button.accept16:hover, button.cancel16:hover,
+button.button117:hover, button.button217:hover, button.accept17:hover, button.cancel17:hover,
+button.button118:hover, button.button218:hover, button.accept18:hover, button.cancel18:hover,
+ button.buttonfinalA:hover, button.buttonfinalB:hover, button.acceptfinalA:hover, button.cancelfinalB:hover
+{
+    color: white;
+    background: #1e90ff;
+}
+
+.input2{
+    display: flex;
+    justify-content: center;
+}
+
+#id_memo1a, #id_memo2a, #id_memo3a, #id_memo4a, #id_memo5a, #id_memo6a, #id_memo7a, #id_memo8a, #id_memo9a
+, #id_memo10a, #id_memo11a, #id_memo12a, #id_memo13a, #id_memo14a, #id_memo15a, #id_memo16a, #id_memo17a, #id_memo18a{
+    width: 500px;
+}
+
+#id_balance{
+    font-size: calc( 1vw + 0.75vh + .25vmin);
+    width: 200px;
+}
+
+#deposit_id{
+    width: 80px;
+    text-align: right;
+}
+
+.line{
+    display: flex;
+    justify-content: center;
+    margin-top: -35px;
+}
+
+.dptermsA, .dptermsB, .finaltermsA, .finaltermsB{
+    width:100%;
+    height:225%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top:550px;
+    display:flex;
+    align-items: center;
+}
+
+#id_deposittermsa, #id_finaltermsa{
+    width: 475px;
+}
+

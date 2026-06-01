@@ -1,0 +1,56 @@
+{{ form.descript32 }}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+
+$(function(){
+   $('#id_descript32').change(function(){
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_descript32');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("descript32-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_descript32: $('#id_descript32').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+$(function(){
+    $('#id_descript32').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("descript32load-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#descript32_id").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+$(function(){
+    $('#id_descript32').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("quanity32load-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#quanity32_id").html(data);
+                     }
+                });
+        },1000);
+    });
+});
+
+</script>

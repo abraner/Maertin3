@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="../../../../img/img.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../static/login/targetnet.css">
+    <title>Maertin Heating & Cooling Bidding Program</title>
+</head>
+<body style="background-image: url('../../../../img/bid.png');
+             background-repeat: no-repeat;
+             background-attachment: fixed;
+             background-size: cover;" >
+<div class="container">
+    <div class="container1">
+    </div>
+    <div class="container2">
+        <div class="butclose">
+            <span class="close-btn" onclick="closeFormAndRedirect()">&times;</span>
+        </div>
+        <form class="form2" method="post"
+              changetargetnet-url="{% url 'mhadatabase:changetargetnet' instance.bidid %}"
+              targetnetprofit-url="{% url 'mhadatabase:targetnetprofit' instance.bidid %}"
+        >
+            {% csrf_token %}
+            {{ form.name_of_field }}
+             <div class="headera">
+          <div class="header1">Target Net Profit</div>
+      </div>
+            <div class="form-row">
+
+            <div class="form-rowcustid">
+                        {{ form.custid.errors }}
+                        {{ form.custid }}
+                    </div>
+                    <div class="form-rowjobid">
+                        {{ form.jobid.errors }}
+                        {{ form.jobid }}
+                    </div>
+                    <div class="form-rowbidid">
+                        {{ form.bidid.errors }}
+                        {{ form.bidid }}
+                    </div>
+            </div>
+
+            <div class="form-rowincrease">
+                        {{ form.targetprofit.errors }}
+                        <label id="label_increase">Increase</label>
+                        {{ form.targetprofit }}
+                    </div>
+
+            <div class="form-rowincrease">
+            <a id = B href="{% url 'mhadatabase:jobcost' instance.bidid %}">
+                                <button type="button" class="accept">Accept</button>
+                        </a>
+            </div>
+
+        </form>
+    </div>
+    <div class="container3">
+    </div>
+</div>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+
+
+
+
+});
+
+
+$(function(){
+   $('#id_targetprofit').change(function(){
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_targetprofit');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("changetargetnet-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_targetprofit: $('#id_targetprofit').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+function closeFormAndRedirect() {
+    window.location.href = '{% url 'mhadatabase:jobcost' instance.bidid %}'; // Redirect
+}
+
+</script>

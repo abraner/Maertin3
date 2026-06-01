@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="../../../img/img.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../static/login/editequip.css">
+    <title>Maertin Heating & Cooling Bidding Program</title>
+</head>
+<body style="background: #6aadad;
+             background-image: url('../../../../img/B.png');
+             background-repeat: no-repeat;
+             background-attachment: fixed;
+             background-size: 70%;
+             background-position: center;">
+<div class="img"><img class="img" src=></div>
+<div class="container">
+  <div class="container1">
+  </div>
+  <div class="container2">
+      <div class="container2A">
+      <form class="form2" method="post"
+
+
+            modelnum-url="{% url 'mhadatabase:modeldup' %}"
+            description-url="{% url 'mhadatabase:descriptiondup' %}"
+            btu-url="{% url 'mhadatabase:btudup' %}"
+            cost-url="{% url 'mhadatabase:costdup' %}"
+            height-url="{% url 'mhadatabase:heightdup' %}"
+            width-url="{% url 'mhadatabase:widthdup' %}"
+            depth-url="{% url 'mhadatabase:depthdup' %}"
+            duplicate2-url="{% url 'mhadatabase:duplicate22' %}"
+            duplicateequip-url="{% url 'mhadatabase:duplicateequip' %}"
+
+      >
+          {% csrf_token %}
+          {{ form.name_of_field }}
+          <div class="form-row1">
+               {{ form.idA.errors }}
+              <label class="label">ID # :</label>
+              {{ form.idA }}
+          </div>
+          <div class="form-row">
+               {{ form.modelnum.errors }}
+              <label class="label">Model # :</label>
+             {{ form.modelnum }}
+          </div>
+          <div class="form-row">
+              {{ form.mfg.errors }}
+              <label class="label">Mfg :</label>
+              {{ form.mfg }}
+          </div>
+          <div class="form-row">
+              {{ form.type.errors }}
+              <label class="label">Type # :</label>
+              {{ form.type }}
+          </div>
+          <div class="form-row">
+              {{ form.config.errors }}
+              <label class="label">Config :</label>
+              {{ form.config }}
+          </div>
+          <div class="form-row">
+              {{ form.eff.errors }}
+              <label class="label">Efficiency :</label>
+              {{ form.eff }}
+          </div>
+          <div class="form-row">
+              {{ form.mfgmodeldescrip.errors }}
+              <label class="label">Mfg. Descrip. :</label>
+              {{ form.mfgmodeldescrip }}
+          </div>
+          <div class="form-row">
+              {{ form.gasviv.errors }}
+              <label class="label">Gas VIv :</label>
+              {{ form.gasviv }}
+          </div>
+          <div class="form-row">
+              {{ form.motortype.errors }}
+              <label class="label">Motor Type :</label>
+              {{ form.motortype }}
+          </div>
+          <div class="form-row">
+              {{ form.description.errors }}
+              <label class="label">Description :</label>
+              {{ form.description }}
+          </div>
+            <div class="buttonrow">
+                <a id="back"  href="/mhadatabase/openequip">Save and Exit</a>
+                <a id="delete"  href="/mhadatabase/deleteequip">Delete and Exit</a>
+                <a id="duplicate">Save and Duplicate</a>
+               </div>
+      </form>
+      </div>
+      <div class="container2B">
+           <form class="form2" method="post">
+          {% csrf_token %}
+          {{ form.name_of_field }}
+          <div class="form-row">
+              {{ form.refrig.errors }}
+              <label class="label">Refrig :</label>
+              {{ form.refrig }}
+          </div>
+          <div class="form-row">
+              {{ form.btu.errors }}
+              <label class="label">BTUs :</label>
+              {{ form.btu }}
+          </div>
+          <div class="form-row">
+              {{ form.outputstg1.errors }}
+              <label class="label">Output Stage 1 :</label>
+              {{ form.outputstg1 }}
+          </div>
+          <div class="form-row">
+              {{ form.outputstg2.errors }}
+              <label class="label">Output Stage 2 :</label>
+              {{ form.outputstg2 }}
+          </div>
+          <div class="form-row">
+              {{ form.outputstg3.errors }}
+              <label class="label">Output Stage 3 :</label>
+              {{ form.outputstg3 }}
+          </div>
+          <div class="form-row">
+              {{ form.cost.errors }}
+              <label class="label">Cost :</label>
+              {{ form.cost }}
+          </div>
+          <div class="form-row">
+              {{ form.warr.errors }}
+              <label class="label">Warranty :</label>
+              {{ form.warr }}
+          </div>
+          <div class="form-row">
+              {{ form.height.errors }}
+              <label class="label">Height :</label>
+              {{ form.height }}
+          </div>
+          <div class="form-row">
+             {{ form.width.errors }}
+              <label class="label">Width :</label>
+              {{ form.width }}
+          </div>
+          <div class="form-row">
+              {{ form.depth.errors }}
+              <label class="label">Depth :</label>
+              {{ form.depth }}
+          </div>
+               <div class="form-rowsmart" style="display:none">
+                   {{ form.smart.errors }}
+                   <label class="label">Smart Therm. :</label>
+                   {{ form.smart }}
+               </div>
+           </form>
+      </div>
+  </div>
+    <div class="container3">
+
+    </div>
+
+</div>
+<div class="mfg-modal" style="display:none">
+        <div class="modal-content">
+            <h3 class="modaltitle">Do you wish to delete {{ form.modelnum }} from the master list?</h3>
+            <div class="butrow">
+                <a class="button1" href="../deleteediteequip">yes</a>
+                <button type="button" class="button2">No</button>
+            </div>
+        </div>
+    </div>
+<div class="duplicate-modal" style="display:none">
+        <div class="modal-content">
+            <h3 class="modaltitle">Do you wish to duplicate this equipment information?</h3>
+            <div class="butrow">
+            <button type="button" class="button1dup">Yes</button>
+            <button type="button" class="button2dup">No</button>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+$("#id_idA").attr("disabled", true)
+$("#id_mfg").attr("disabled", true)
+$("#id_type").attr("disabled", true)
+$("#id_config").attr("disabled", true)
+$("#id_eff").attr("disabled", true)
+$("#id_mfgmodeldescrip").attr("disabled", true)
+$("#id_gasviv").attr("disabled", true)
+$("#id_motortype").attr("disabled", true)
+//$("#id_description").attr("disabled", true)
+$("#id_refrig").attr("disabled", true)
+//$("#id_btu").attr("disabled", true)
+$("#id_outputstg1").attr("disabled", true)
+$("#id_outputstg2").attr("disabled", true)
+$("#id_outputstg3").attr("disabled", true)
+$("#id_warr").attr("disabled", true)
+$("#id_modelnum ").attr("disabled", false)
+
+
+//if ($('#id_type').val() === 'Thermostat') $(".form-rowsmart").show()
+
+
+
+
+});
+
+
+$('#id_modelnum').focusout(function(){
+    var field_value = $(this).val();
+    console.log(field_value);
+    var url = $(".form2").attr("modelnum-url");
+    $.ajax({
+        type:'POST',
+        url: url,
+         data:{
+               id_modelnum: $("#id_modelnum").val(),
+               csrfmiddlewaretoken: '{{ csrf_token }}'
+              },
+    });
+});
+
+
+$('#id_description').focusout(function(){
+    var field_value = $(this).val();
+    console.log(field_value);
+    var url = $(".form2").attr("description-url");
+    $.ajax({
+        type:'POST',
+        url: url,
+         data:{
+               id_description: $("#id_description").val(),
+               csrfmiddlewaretoken: '{{ csrf_token }}'
+              },
+    });
+});
+
+
+$('#id_btu').focusout(function(){
+    var field_value = $(this).val();
+    console.log(field_value);
+    var url = $(".form2").attr("btu-url");
+    $.ajax({
+        type:'POST',
+        url: url,
+         data:{
+               id_btu: $("#id_btu").val(),
+               csrfmiddlewaretoken: '{{ csrf_token }}'
+              },
+    });
+});
+
+
+$('#id_cost').focusout(function(){
+    var field_value = $(this).val();
+    console.log(field_value);
+    var url = $(".form2").attr("cost-url");
+    $.ajax({
+        type:'POST',
+        url: url,
+         data:{
+               id_cost: $("#id_cost").val(),
+               csrfmiddlewaretoken: '{{ csrf_token }}'
+              },
+    });
+});
+
+
+$('#id_height').focusout(function(){
+    var field_value = $(this).val();
+    console.log(field_value);
+    var url = $(".form2").attr("height-url");
+    $.ajax({
+        type:'POST',
+        url: url,
+         data:{
+               id_height: $("#id_height").val(),
+               csrfmiddlewaretoken: '{{ csrf_token }}'
+              },
+    });
+});
+
+
+$('#id_width').focusout(function(){
+    var field_value = $(this).val();
+    console.log(field_value);
+    var url = $(".form2").attr("width-url");
+    $.ajax({
+        type:'POST',
+        url: url,
+         data:{
+               id_width: $("#id_width").val(),
+               csrfmiddlewaretoken: '{{ csrf_token }}'
+              },
+    });
+});
+
+
+$('#id_depth').focusout(function(){
+    var field_value = $(this).val();
+    console.log(field_value);
+    var url = $(".form2").attr("depth-url");
+    $.ajax({
+        type:'POST',
+        url: url,
+         data:{
+               id_depth: $("#id_depth").val(),
+               csrfmiddlewaretoken: '{{ csrf_token }}'
+              },
+    });
+});
+
+
+
+
+
+//
+//$(function(){
+//    $('#delete').click(function(){
+//        $(".mfg-modal").show()
+//    });
+//});
+//
+//$(function(){
+//    $('.button2').click(function(){
+//        $(".mfg-modal").hide()
+//    });
+//});
+//
+//
+//
+//$(function(){
+//   $('#id_smart').change(function(){
+//        setTimeout(function(){
+//                var selectBox =document.getElementById('id_smart');
+//                var userInput =selectBox.options[selectBox.selectedIndex].value;
+//                console.log(userInput);
+//                var url = $(".form2").attr("smart-url");
+//                    $.ajax({
+//                        type:'POST',
+//                       url: url,
+//                       data:{
+//                            id_smart: $('#id_smart').val(),
+//                            csrfmiddlewaretoken: '{{ csrf_token }}'
+//                         },
+//                    });
+//        }, 100);
+//    });
+//});
+
+ //////////////////////// Duplicate Equipment //////////////////////////////////////
+
+$(function(){
+    $('#duplicate').click(function(){
+        $(".duplicate-modal").show()
+
+    });
+});
+
+$(function(){
+    $('.button1dup').click(function(){
+    $(".duplicate-modal").hide()
+        setTimeout(function(){
+            var urlC = $(".form2").attr("duplicate2-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                });
+        }, 0);
+    });
+});
+
+$(function(){
+    $('.button2dup').click(function(){
+        $(".duplicate-modal").hide()
+    });
+});
+
+
+$(function(){
+    $('.button1dup').click(function(){
+    $(".duplicate-modal").hide()
+        setTimeout(function(){
+        //    var urlC = $(".form2").attr("duplicateequip-url");
+        // Redirects the browser to the specified URL
+              var urlC = window.location.href = "{% url 'mhadatabase:duplicateequip' %}";
+
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                });
+        },600);
+    });
+});
+
+</script>

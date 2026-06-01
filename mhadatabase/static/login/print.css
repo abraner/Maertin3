@@ -1,0 +1,68 @@
+@media print {
+
+
+body{
+    font: 22px/1.5 Arial, Helvetica,sans-serif;
+    padding:0;
+}
+
+header, footer {
+    display: none;
+  }
+
+div.container{
+    width:100%;
+    margin-top:0px;
+   margin-left: 0px;
+  margin-right: 0px;
+    display: flex;
+}
+
+#gencon, #gencon2{
+    visibility: hidden;
+}
+
+button.gencon{
+    visibility: hidden;
+}
+
+a.button2{
+    visibility: hidden;
+}
+
+.container1 * {
+    visibility: hidden;
+}
+
+.sig1{
+    margin-top: 38px;
+    display: flex;
+    align-items: center;
+}
+
+.line{
+    display: flex;
+    justify-content: center;
+    margin-top: -35px;
+}
+
+.name{
+    width: 397px;
+    text-align: center;
+    font-family: Brush Script MT;
+    font-size: calc(3.75vw + 0.75vh + .25vmin);
+}
+
+.container3 * {
+    visibility: hidden;
+}
+
+
+  @page {
+    margin-top: .5in;
+    margin-left: .25in;
+    margin-right: .25in;
+  }
+
+
+}

@@ -1,0 +1,35 @@
+{{ form.quanity19 }}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+    if ($('#id_descript19').val() === 'Select Material') {
+       $("#id_descript19").css('background-color', '#2e8b57')
+       $("#id_quanity19").attr("disabled", true)
+    } else {
+        $("#id_descript19").css('background-color', 'gold')
+     //   $("#id_descript19").attr("disabled", true)
+   }
+
+});
+
+    $(function(){
+   $('#id_quanity19').change(function(){
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_quanity19');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("quant19-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_quanity19: $('#id_quanity19').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+</script>

@@ -1,0 +1,88 @@
+{{ form.jobtype1 }}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function() {
+
+    if ($('#id_jobtype1').val() === 'Select Equip. Type') {
+       $("#id_jobtype1").css('background-color', '#2e8b57')
+       $("#id_descript1").attr("disabled", true)
+       $("#id_quanity1").attr("disabled", true)
+    } else {
+       $("#id_jobtype1").css('background-color', 'gold')
+   }
+
+});
+
+$(function(){
+   $('#id_jobtype1').change(function(){
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_jobtype1');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("jobtype1-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_jobtype1: $('#id_jobtype1').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('#id_jobtype1').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("jobtype1load-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#jobtype1_id").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+$(function(){
+    $('#id_jobtype1').change(function(){
+        setTimeout(function(){
+ //              $("#id_jobtype1").attr("disabled", true)
+            var urlC = $(".form2").attr("descript1bload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#descript1b_id").html(data);
+                     }
+                });
+        },600);
+    });
+});
+
+    $(function(){
+    $('#id_jobtype1').change(function(){
+        setTimeout(function(){
+ //              $("#id_jobtype1").attr("disabled", true)
+            var urlC = $(".form2").attr("descript1load-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#descript1_id").html(data);
+                     }
+                });
+        },800);
+    });
+});
+
+</script>
+
