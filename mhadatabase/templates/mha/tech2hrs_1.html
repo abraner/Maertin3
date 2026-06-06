@@ -4,25 +4,30 @@
 <script>
 $(document).ready(function() {
 
-setTimeout(function(){
-    if ($('.form2 #id_techlevel2').val() >0 ){
-       $("#id_techhrs2").css('background-color', 'gold')
-       $("#id_techhrs2").attr("disabled", false)
-       $("#id_techlevel3").css('background-color', 'gold')
-       $("#iid_techlevel3").attr("disabled", false)
-    } else {
-        $("#id_techhrs2").css('background-color', '#2e8b57')
-        $("#id_techhrs2").attr("disabled", true)
-        $("#id_techlevel3").css('background-color', '#2e8b57')
-        $("#id_techlevel3").attr("disabled", true)
-    }
-}, 100);
+  if ($('#id_techhrs2').val() > 1) {
+    $("#id_techhrs2").css('background-color', 'gold')
+        setTimeout(function(){
+        var urlC = $(".form2").attr("load_tech3-url");
+        req = $.ajax({
+               url: urlC,
+               data:{
+                 },
+                 success: function (data) {
+                   $("#techlevel3_id").html(data);
+                 }
+            });
+    }, 100);
+ } else {
+  $("#id_techhrs2").css('background-color', '#2e8b57')
+
+ }
 
 });
 
 $(function(){
    $('#id_techhrs2').change(function(){
         setTimeout(function(){
+                $("#id_techhrs2").css('background-color', 'gold') 
                 var selectBox =document.getElementById('id_techhrs2');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
                 console.log(userInput);
@@ -39,6 +44,21 @@ $(function(){
     });
 });
 
+    $(function(){
+   $('#id_techhrs2').change(function(){setTimeout(function(){
+        var urlC = $(".form2").attr("load_tech3-url");
+        req = $.ajax({
+               url: urlC,
+               data:{
+                 },
+                 success: function (data) {
+                   $("#techlevel3_id").html(data);
+                 }
+            });
+    }, 100);
+
+    });
+});
 
 </script>
 

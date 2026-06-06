@@ -73,4 +73,23 @@ $(function(){
         },600);
     });
 });
+
+        $(function(){
+   $('#id_quanity1').change(function(){
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_quanity1');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("quant1-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_quanity1: $('#id_quanity1').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
 </script>

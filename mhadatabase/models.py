@@ -1235,7 +1235,6 @@ class EquipSelection(models.Model):
     def get_absolute16_url(self):
         return f"/mhadatabase/{self.custid}/jobselection"
 
-
     def get_absolute7_url(self):
         return f"/mhadatabase/{self.custid}/customerpage/"
 
@@ -1248,8 +1247,14 @@ class EquipSelection(models.Model):
     def get_absolute19_url(self):
         return f"/mhadatabase/{self.bidid}/bidpage/"
 
+    def get_absolute26_url(self):
+        return f"/mhadatabase/{self.bidid}/bidpage1"
+
     def get_absolute27_url(self):
         return f"/mhadatabase/{self.bidid}/bidpage4"
+
+    def get_absolute28_url(self):
+        return f"/mhadatabase/{self.bidid}/bidpage2"
 
     def get_absolute29_url(self):
         return f"/mhadatabase/{self.bidid}/bidpage3"
@@ -1760,6 +1765,21 @@ class Bidding(models.Model):
 
     def get_absolute28_url(self):
         return f"/mhadatabase/main"
+
+    def get_absolute1_url(self):
+        return f"/mhadatabase/{self.bidid}/bidpage1"
+
+    def get_absolute2_url(self):
+        return f"/mhadatabase/{self.bidid}/bidpage2"
+
+    def get_absolute3_url(self):
+        return f"/mhadatabase/{self.bidid}/bidpage3"
+
+    def get_absolute4_url(self):
+        return f"/mhadatabase/{self.bidid}/bidpage4"
+
+    def get_absolute5_url(self):
+        return f"/mhadatabase/{self.bidid}/bidpage5"
 
 
 
@@ -2512,7 +2532,7 @@ class Custpagelocation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def get_absolute21_url(self):
-        return f"/mhadatabase/{self.custid}/customerinfo"
+        return f"/mhadatabase/{self.jobid}/customerinfo"
 
 
 class multiformA(models.Model):

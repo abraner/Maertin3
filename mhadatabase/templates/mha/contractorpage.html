@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="../../../img/img.png"/>
@@ -95,17 +95,18 @@
                     <label class="label_conemail2">Email #2:</label>
                     {{ form.conemail2 }}
                 </div>
-            </form>
+
             <div class="form-rowbutton">
-                <a href="{% url 'mhadatabase:conedit' instance.id %}">
+                <a href="">
                     <button type="button" class="btn btn1">Update Customers Info</button>
                 </a>
             </div>
             <div class="form-rowbutton">
-                <a href="{% url 'mhadatabase:deletecon' instance.id %}">
+                <a href="">
                     <button type="button" class="btn btn1">Delete Customer</button>
                 </a>
             </div>
+            </form>
         </div>
         <div class="container2B">
             <div class="form-rowbuttoncust">
@@ -117,34 +118,30 @@
                     <button type="button" class="btn btn3">Close</button>
                 </a>
             </div>
-            <div class="form-rowcust">
+            <form class="form3" method="post">
                 <div class="header1">
-                    <div id="A1">ID</div>
-                    <div id="A">First Name</div>
-                    <div id="B">Last Name</div>
-                    <div id="C">Address</div>
-                    <div id="D">City</div>
+                   <div id="A1">ID</div>
+                   <div id="A">First Name</div>
+                   <div id="B">Last Name</div>
+                   <div id="C">Address</div><div id="D">City</div>
                 </div>
-                <form class="form3" method="post">
-                    {% csrf_token %}
-                    {{ form.name_of_field }}
-                    <div class="rowcust">
+                <form id="form1" method="post">
+                    <div class="form-rowcust">
                         {% for obj in object_list %}
-                        <a id="custid"  href="{{ obj.get_absolute12_url }}">{{ obj.custid }}</a>
-                        <div id="custfirstname">{{ obj.custfirstname|default_if_none:""  }}</div>
-                        <div id="custlastname">{{ obj.custlastname|default_if_none:""  }}</div>
-                        <div id="custadd1">{{ obj.custadd1|default_if_none:""  }}</div>
-                        <div id="custcity">{{ obj.custcity|default_if_none:""  }}</div>
+                        <a class="custid"  href="{{ obj.get_absolute12_url }}">{{ obj.custid }}</a>
+                        <div class="custfirstname">{{ obj.custfirstname|default_if_none:""  }}</div>
+                        <div class="custlastname">{{ obj.custlastname|default_if_none:""  }}</div>
+                        <div class="custadd1">{{ obj.custadd1|default_if_none:""  }}</div>
+                        <div class="custcity">{{ obj.custcity|default_if_none:""  }}</div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </form>
-            </div>
+            </form>
         </div>
-    </div>
     </div>
     <div class="container3">
     </div>
-
+</div>
 </body>
 </html>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

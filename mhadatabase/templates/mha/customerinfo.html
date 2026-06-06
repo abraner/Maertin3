@@ -14,7 +14,6 @@
 <div class="img"><img class="img" src='../../../../img/img.png'></div>
 <div class="container">
     <div class="container1">
-
     </div>
     <div class="container2">
         <div class="container2A">
@@ -80,15 +79,18 @@
 
         </div>
         <div class="container2B">
+             <div class="butclose">
+                <span class="close-btn" onclick="closeFormAndRedirect()">&times;</span>
+            </div>
             <div class="rowmulti">
                 <a class="multiproposal2" href="{% url 'mhadatabase:contractmulti2' instance2.jobid %}">View Multi Proposal 2</a>
                 <a class="multiproposal3" href="{% url 'mhadatabase:contractmulti3' instance2.jobid %}">View Multi Proposal 3</a>
                 <a class="multiproposal4" href="{% url 'mhadatabase:contractmulti4' instance2.jobid %}">View Multi Proposal 4</a>
                 <a class="multiproposal5" href="{% url 'mhadatabase:contractmulti5' instance2.jobid %}">View Multi Proposal 5</a>
-            {% for obj in object_list2 %}
+                {% for obj in object_list2 %}
                 <div class="count">{{ obj.count }}</div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
             <div class="form-rowcust">
                 <div class="header1">
                     <div id="A1">Bid ID</div>
@@ -99,6 +101,7 @@
                     <div id="E">Cost After Rebate</div>
                     <div id="F"></div>
                 </div>
+
                 <form class="form3" method="post">
                     {% csrf_token %}
                     {{ form.name_of_field }}
@@ -174,16 +177,13 @@
                        {% endfor %}
                     </div>
                 </form>
-
             </div>
-        </div>
-        <div class="butclose">
-            <span class="close-btn" onclick="closeFormAndRedirect()">&times;</span>
+
         </div>
     </div>
     <div class="container3">
-
     </div>
+</div>
 <div class="mfg-modal"  style="display:none">
         <div class="modal-content">
             <h3 class="modaltitle">Do you wish to add a new Project to this Customer?</h3>

@@ -1,17 +1,23 @@
-{{ form.descript13 }}
+    {{ form.descript13 }}
+<div id="id_descript13b">
+    <input id="descript13b_id" value="{{ descript13b.descript13b }}">
+</div>
+<div id="quanity13_id" >
+    {{ form.quanity13 }}
+</div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
 $(document).ready(function() {
 
-    if ($('#id_descript13').val() === 'Select Material') {
-       $("#id_descript13").css('background-color', '#2e8b57')
-       $("#id_descript13").attr("disabled", true)
-       $("#id_quanity13").attr("disabled", true)
-       $(".delete13").attr("disabled", true)
-    } else {
+  if ($('#id_descript13').val() === 'Select Material' || $('#id_descript13').val() === '' &&  $('#descript13b_id').val() == 1 ){
+       $("#id_descript13").css('background-color', '#1E5938')
+        $("#id_descript13").attr("disabled", true)
+     } else if  ($('#id_descript13').val() === 'Select Material' || $('#id_descript13').val() === '' &&  $('#descript13b_id').val() > 1 ){
+        $("#id_descript13").attr("disabled", false)
+        $("#id_descript13").css('background-color', '#90B5A1')
+     } else   {
         $("#id_descript13").css('background-color', 'gold')
-        $(".delete13").attr("disabled", false)
-   }
+     }
 
 });
 
@@ -53,6 +59,7 @@ $(function(){
 $(function(){
     $('#id_descript13').change(function(){
         setTimeout(function(){
+               $("#id_quanity13").attr("disabled", true)
             var urlC = $(".form2").attr("quanity13load-url");
             req = $.ajax({
                    url: urlC,
@@ -63,6 +70,78 @@ $(function(){
                      }
                 });
         },600);
+    });
+});
+
+
+    $(function(){
+   $('#id_quanity13').change(function(){
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_quanity13');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("quant13-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_quanity13: $('#id_quanity13').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+    
+    
+    $(function(){
+    $('#id_descript13').change(function(){
+setTimeout(function(){
+            var urlC = $(".form2").attr("update14b-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#descript14b_id").html(data);
+                     }
+                });
+        },700);
+    });
+});
+
+
+$(function(){
+    $('#id_descript13').change(function(){
+    setTimeout(function(){
+            var urlC = $(".form2").attr("descript14bload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#descript14b_id").html(data);
+                     }
+                });
+        },1000);
+    });
+});
+
+
+$(function(){
+    $('#id_descript13').change(function(){
+    setTimeout(function(){
+            var urlC = $(".form2").attr("descript14load-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#descript14_id").html(data);
+                     }
+                });
+        },1000);
     });
 });
 </script>

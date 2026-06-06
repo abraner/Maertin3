@@ -1,16 +1,41 @@
 {{ form.jobtype1 }}
+
+<div id="id_descript1b">
+<input id="descript1b_id" value="{{ descript1b.descript1b }}">
+</div>
+<div id="descript1">
+{{ form.descript1 }}
+</div>
+<div id="quanity1_id" >
+{{ form.quanity1 }}
+</div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
 $(document).ready(function() {
 
-    if ($('#id_jobtype1').val() === 'Select Equip. Type') {
-       $("#id_jobtype1").css('background-color', '#2e8b57')
-       $("#id_descript1").attr("disabled", true)
-       $("#id_quanity1").attr("disabled", true)
-    } else {
-       $("#id_jobtype1").css('background-color', 'gold')
-   }
+   if ($('#descript1b_id').val() == 1  && $('#id_descript1').val() === '' ){
+    $("#id_jobtype1").attr("disabled", false).css('background-color', '#90B5A1')
+    $("#id_descript1").attr("disabled", true).css('background-color', '#1E5938')
+    }
 
+   if ($('#descript1b_id').val() > 1  && $('#id_descript1').val() === '' ){
+    $("#id_jobtype1").attr("disabled", false).css('background-color', 'gold')
+    $("#id_descript1").attr("disabled", true).css('background-color', '#1E5938')
+    }
+
+    if ($('#descript1b_id').val() > 1  && $('#id_descript1').val() === '' ){
+    $("#id_jobtype1").attr("disabled", false).css('background-color', 'gold')
+    $("#id_descript1").attr("disabled", false).css('background-color', '#90B5A1')
+    }
+
+    if ($('#descript1b_id').val() > 1  && $('#id_descript1').val()){
+    $("#id_jobtype1").attr("disabled", true).css('background-color', 'gold')
+    $("#id_descript1").attr("disabled", true).css('background-color', 'gold')
+    }
+
+//console.log($('#id_descript1').val());
+//console.log($('#descript1b_id').val());
 });
 
 $(function(){
@@ -84,5 +109,58 @@ $(function(){
     });
 });
 
+    $(function(){
+   $('#id_descript1').change(function(){
+        setTimeout(function(){
+            $("#id_jobtype1").attr("disabled", true).css('background-color', 'gold')
+            $("#id_descript1").attr("disabled", true).css('background-color', 'gold')
+                var selectBox =document.getElementById('id_descript1');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("descript1-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_descript1: $('#id_descript1').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+$(function(){
+    $('#id_descript1').change(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("descript1load-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#descript1_id").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+$(function(){
+    $('#id_descript1').change(function(){
+        setTimeout(function(){
+               $("#id_quanity1").attr("disabled", true)
+            var urlC = $(".form2").attr("quanity1load-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#quanity1_id").html(data);
+                     }
+                });
+        },700);
+    });
+});
 </script>
 

@@ -1,21 +1,25 @@
-{{ form.descript9 }}
-
+    {{ form.descript9 }}
+<div id="id_descript9b">
+    <input id="descript9b_id" value="{{ descript9b.descript9b }}">
+</div>
+<div id="quanity9_id" >
+    {{ form.quanity9 }}
+</div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-
 $(document).ready(function() {
-
-    if ($('#id_descript9').val() === 'Select Material') {
-       $("#id_descript9").css('background-color', '#2e8b57')
-       $("#id_descript9").attr("disabled", true)
-       $("#id_quanity9").attr("disabled", true)
-       $(".delete9").attr("disabled", true)
-    } else {
+  if ($('#id_descript9').val() === 'Select Material' || $('#id_descript9').val() === '' &&  $('#descript9b_id').val() == 1 ){
+       $("#id_descript9").css('background-color', '#1E5938')
+        $("#id_descript9").attr("disabled", true)
+     } else if  ($('#id_descript9').val() === 'Select Material' || $('#id_descript9').val() === '' &&  $('#descript9b_id').val() > 1 ){
+        $("#id_descript9").attr("disabled", false)
+        $("#id_descript9").css('background-color', '#90B5A1')
+     } else   {
         $("#id_descript9").css('background-color', 'gold')
-        $(".delete9").attr("disabled", false)
-   }
-
+     }
 });
+
+
 
 $(function(){
    $('#id_descript9').change(function(){
@@ -55,7 +59,7 @@ $(function(){
 $(function(){
     $('#id_descript9').change(function(){
         setTimeout(function(){
-        $("#id_quanity9").attr("disabled", true)
+               $("#id_quanity9").attr("disabled", true)
             var urlC = $(".form2").attr("quanity9load-url");
             req = $.ajax({
                    url: urlC,
@@ -69,4 +73,73 @@ $(function(){
     });
 });
 
+
+    $(function(){
+   $('#id_quanity9').change(function(){
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_quanity9');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("quant9-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_quanity9: $('#id_quanity9').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+$(function(){
+    $('#id_descript9').change(function(){
+setTimeout(function(){
+            var urlC = $(".form2").attr("update10b-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#descript10b_id").html(data);
+                     }
+                });
+        },700);
+    });
+});
+
+
+$(function(){
+    $('#id_descript9').change(function(){
+    setTimeout(function(){
+            var urlC = $(".form2").attr("descript10bload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#descript10b_id").html(data);
+                     }
+                });
+        },1000);
+    });
+});
+
+
+$(function(){
+    $('#id_descript9').change(function(){
+    setTimeout(function(){
+            var urlC = $(".form2").attr("descript10load-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#descript10_id").html(data);
+                     }
+                });
+        },1000);
+    });
+});
 </script>

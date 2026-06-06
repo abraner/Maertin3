@@ -5,36 +5,64 @@
 $(document).ready(function() {
 
 
+  if ($('#id_techhrs').val() > 1) {
+    $("#id_techhrs").css('background-color', 'gold')
 
+    setTimeout(function(){
+        var urlC = $(".form2").attr("load_tech2-url");
+        req = $.ajax({
+               url: urlC,
+               data:{
+                 },
+                 success: function (data) {
+                   $("#techlevel2_id").html(data);
+                 }
+            });
+    }, 100);
 
-
-
-setTimeout(function(){
-    if ($(' #id_techlevel').val() >0 ){
-       $("#id_techhrs").css('background-color', 'gold')
-       $("#id_techhrs").attr("disabled", false)
-       $("#id_techlevel").css('background-color', 'gold')
-       $("#id_techlevel2").css('background-color', 'gold')
-    } else {
+ } else {
         $("#id_techhrs").css('background-color', '#2e8b57')
-        $("#id_techhrs").attr("disabled", true)
-        $("#id_techlevel2").css('background-color', '#2e8b57')
-        $("#id_techlevel2").attr("disabled", true)
-        $("#id_techlevel").css('background-color', '#e55451')
-        $("#bidcal").hide()
-        $("#bidcal2").hide()
-        $("#bidcal3").hide()
-        $("#bidcal4").hide()
-        $("#bidcal5").hide()
-    }
-}, 400);
+ }
+
 
 });
+
 
 $(function(){
    $('#id_techhrs').change(function(){
         setTimeout(function(){
-
+        $("#id_techhrs").css('background-color', 'gold')
+            if ($('#id_count').val() == 1){
+               $("#bidcal").show();
+               $("#bidcal2").hide();
+               $("#bidcal3").hide(); 
+               $("#bidcal4").hide();
+               $("#bidcal5").hide();
+            } else if ($('#id_count').val() == 2){
+               $("#bidcal").hide();
+               $("#bidcal2").show();
+               $("#bidcal3").hide();
+               $("#bidcal4").hide();
+               $("#bidcal5").hide();
+            } else if ($('#id_count').val() == 3){
+               $("#bidcal").hide();
+               $("#bidcal2").hide();
+               $("#bidcal3").show();
+               $("#bidcal4").hide();
+               $("#bidcal5").hide();
+            } else if ($('#id_count').val() == 4){
+               $("#bidcal").hide();
+               $("#bidcal2").hide();
+               $("#bidcal3").hide();
+               $("#bidcal4").show();
+               $("#bidcal5").hide();
+            } else if ($('#id_count').val() == 5){
+               $("#bidcal").hide();
+               $("#bidcal2").hide();
+               $("#bidcal3").hide();
+               $("#bidcal4").hide();
+               $("#bidcal5").show();
+            }
                 var selectBox =document.getElementById('id_techhrs');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
                 console.log(userInput);
@@ -51,52 +79,20 @@ $(function(){
     });
 });
 
-
 $(function(){
-    $('#id_techhrs').change(function(){
-        setTimeout(function(){
-            if ($('#id_options').val() ===  'Option A') $("#bidcal").show()
-            if ($('#id_options').val() ===  'Option A') $("#bidcal2").hide()
-            if ($('#id_options').val() ===  'Option A') $("#bidcal3").hide()
-            if ($('#id_options').val() ===  'Option A') $("#bidcal4").hide()
-            if ($('#id_options').val() ===  'Option A') $("#bidcal5").hide()
+   $('#id_techhrs').change(function()
+   {setTimeout(function(){
+        var urlC = $(".form2").attr("load_tech2-url");
+        req = $.ajax({
+               url: urlC,
+               data:{
+                 },
+                 success: function (data) {
+                   $("#techlevel2_id").html(data);
+                 }
+            });
+    }, 100);
 
-            if ($('#id_options').val() ===  'Option B') $("#bidcal").hide()
-            if ($('#id_options').val() ===  'Option B') $("#bidcal2").show()
-            if ($('#id_options').val() ===  'Option B') $("#bidcal3").hide()
-            if ($('#id_options').val() ===  'Option B') $("#bidcal4").hide()
-            if ($('#id_options').val() ===  'Option B') $("#bidcal5").hide()
-
-            if ($('#id_options').val() ===  'Option C') $("#bidcal").hide()
-            if ($('#id_options').val() ===  'Option C') $("#bidcal2").hide()
-            if ($('#id_options').val() ===  'Option C') $("#bidcal3").show()
-            if ($('#id_options').val() ===  'Option C') $("#bidcal4").hide()
-            if ($('#id_options').val() ===  'Option C') $("#bidcal5").hide()
-
-            if ($('#id_options').val() ===  'Option D') $("#bidcal").hide()
-            if ($('#id_options').val() ===  'Option D') $("#bidcal2").hide()
-            if ($('#id_options').val() ===  'Option D') $("#bidcal3").hide()
-            if ($('#id_options').val() ===  'Option D') $("#bidcal4").show()
-            if ($('#id_options').val() ===  'Option D') $("#bidcal5").hide()
-
-            if ($('#id_options').val() ===  'Option E') $("#bidcal").hide()
-            if ($('#id_options').val() ===  'Option E') $("#bidcal2").hide()
-            if ($('#id_options').val() ===  'Option E') $("#bidcal3").hide()
-            if ($('#id_options').val() ===  'Option E') $("#bidcal4").hide()
-            if ($('#id_options').val() ===  'Option E') $("#bidcal5").show()
-
-                $("#id_techlevel2").attr("disabled", false)
-                $("#id_techlevel2").css('background-color', 'gold')
-            var urlC = $(".form2").attr("techlevelhrsload-url");
-            req = $.ajax({
-                   url: urlC,
-                   data:{
-                     },
-                     success: function (data) {
-                       $("#techhrs_id").html(data);
-                     }
-                });
-        },1000);
     });
 });
 

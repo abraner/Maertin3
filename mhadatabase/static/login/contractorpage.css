@@ -82,8 +82,12 @@ div.form-delete{
     margin-top: 2vh;
 }
 
-.form2{
-
+.form3{
+    width:881px;
+    margin-top:0px;
+    margin-left: auto;
+    margin-right:auto;
+    display:block;
 }
 
 #formh2{
@@ -99,6 +103,19 @@ div.form-delete{
     text-shadow: 2px 2px 5px black;
 
 }
+
+section#sec1, section#sec3, section#sec5, section#sec7, section#sec9, section#sec11, section#sec13{
+    width: 100%;
+    height: 4.2vh;
+    background:#51a9ff;
+}
+
+section#sec2, section#sec4, section#sec6, section#sec8, section#sec10, section#sec12{
+    width: 100%;
+    height: 4.2vh;
+    background:#6bb6ff;
+}
+
 
 
 #formh3{
@@ -504,13 +521,18 @@ button.btn.btn3:hover{
 }
 
 .form-rowcust{
-    margin-top: 0px;
+    height: 245px;
+    width: 878px;
     margin-left:auto;
     margin-right:auto;
-    position: relative;
-    border: 2px solid #C0C0C0;
-    border-color: black;
+    display:block;
+    font-size: 0vw;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    margin-top: -1px;
 }
+
 
 .header1{
     display: flex;
@@ -524,8 +546,9 @@ button.btn.btn3:hover{
     width: 80px;
     font-size: calc(.5vw + .5vh + .25vmin);
     text-align: center;
-    border-right: black 2px solid;
-    border-bottom: black 2px solid;
+    border-left: black 2px solid;
+    border-top: black 2px solid;
+    border-bottom: 2px solid black;
     font-weight:bold;
     color:white;
     background:#004385;
@@ -535,8 +558,9 @@ button.btn.btn3:hover{
     width: 200px;
     font-size: calc(.5vw + .5vh + .25vmin);
     text-align: center;
-    border-right: black 2px solid;
-    border-bottom: black 2px solid;
+    border-left: black 2px solid;
+    border-top: black 2px solid;
+    border-bottom: 2px solid black;
     font-weight:bold;
     color:white;
     background:#004385;
@@ -546,8 +570,9 @@ button.btn.btn3:hover{
     width: 200px;
     font-size: calc(.5vw + .5vh + .25vmin);
     text-align: center;
-    border-right: black 2px solid;
+    border-left: black 2px solid;
     border-bottom: black 2px solid;
+    border-top: black 2px solid;
     font-weight:bold;
     color:white;
     background:#004385;
@@ -557,7 +582,8 @@ button.btn.btn3:hover{
     width: 243px;
     font-size: calc(.5vw + .5vh + .25vmin);
     text-align: center;
-    border-right: black 2px solid;
+    border-top: black 2px solid;
+    border-left: black 2px solid;
     border-bottom: black 2px solid;
     font-weight:bold;
     color:white;
@@ -571,57 +597,95 @@ button.btn.btn3:hover{
     font-weight:bold;
     color:white;
     background:#004385;
-    border-bottom: black 2px solid;
+    border: black 2px solid;
 }
 
 .rowcust{
-    display: flex;
     width: 100%;
-    flex-direction: row;
     margin-top: 2px;
-    background:#51a9ff;
 }
 
-#custid{
+.custid{
     color:blue;
-    font-size: calc(.5vw + .5vh + .25vmin);
-    width: 80px;
-    text-align: center;
-    border-right: black 2px solid;
+    display:inline-block;
+    width: 81px;
+    height: 42px;
+    margin-top:0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: calc(.75vw + .5vh + .25vmin);
+    text-align:center;
+    border-bottom: 2px solid #c0c0c0;
+    border-right: 2px solid #c0c0c0;
     font-weight:bold;
+    font-style: italic;
+    font-family: "Times New Roman";
+    box-sizing: border-box;
 }
 
 
-#custfirstname{
-    font-size: calc(.5vw + .5vh + .25vmin);
-    width: 200px;
-    text-align: center;
-    border-right: black 2px solid;
+.custfirstname{
+    display:inline-block;
+    width: 201px;
+    height: 42px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: calc(.75vw + .5vh + .25vmin);
+    text-align:center;
+    border-bottom: 2px solid #c0c0c0;
+    border-right: 2px solid #c0c0c0;
     font-weight:bold;
+    font-style: italic;
+    font-family: "Times New Roman";
+    box-sizing: border-box;
 }
 
-#custlastname{
-    font-size: calc(.5vw + .5vh + .25vmin);
-    width: 200px;
-    text-align: center;
-    border-right: black 2px solid;
+.custlastname{
+    display:inline-block;
+    width: 201px;
+    height: 42px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: calc(.75vw + .5vh + .25vmin);
+    text-align:center;
+    border-bottom: 2px solid #c0c0c0;
+    border-right: 2px solid #c0c0c0;
     font-weight:bold;
+    font-style: italic;
+    font-family: "Times New Roman";
+    box-sizing: border-box;
 }
 
-#custadd1{
-    font-size: calc(.5vw + .5vh + .25vmin);
-    width: 244px;
-    text-align: center;
-    border-right: black 2px solid;
+.custadd1{
+    display:inline-block;
+    width: 245px;
+    height: 42px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: calc(.75vw + .5vh + .25vmin);
+    text-align:center;
+    border-bottom: 2px solid #c0c0c0;
+    border-right: 2px solid #c0c0c0;
     font-weight:bold;
+    font-style: italic;
+    font-family: "Times New Roman";
+    box-sizing: border-box;
 }
 
-#custcity{
-    font-size: calc(.5vw + .5vh + .25vmin);
+.custcity{
+    display:inline-block;
     width: 150px;
-    text-align: center;
+    height: 42px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: calc(.75vw + .5vh + .25vmin);
+    text-align:center;
+    border-bottom: 2px solid #c0c0c0;
 
     font-weight:bold;
+    font-style: italic;
+    font-family: "Times New Roman";
+    box-sizing: border-box;
 }
 
 .mfg-modal{

@@ -509,7 +509,7 @@ button.btn.btn3:hover{
 }
 
 .form-rowcust{
-    width: 92%;
+    width: 1022px;
     margin-top: 14px;
     margin-left:46px;
     margin-bottom: 50px;
@@ -931,8 +931,8 @@ input#id_form1-custcell2_1, input#id_form1-custhome_1, .phone-field-ext{
     padding: 2px 5px; /* Adjust padding as needed */
     padding-top: 1px;
     padding-bottom: 3px;
-    padding-left: 3px;
-    padding-right: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
     border-bottom: black 2px solid;
     border-left: black 2px solid;
 

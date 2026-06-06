@@ -4,21 +4,19 @@
 <script>
 $(document).ready(function() {
 
-setTimeout(function(){
-    if ($('.form2 #id_techlevel4').val() >0 ){
-       $("#id_techhrs4").css('background-color', 'gold')
-       $("#id_techhrs4").attr("disabled", false)
-    } else {
+  if ($('#id_techhrs4').val() > 1) {
+    $("#id_techhrs4").css('background-color', 'gold')
+
+ } else {
         $("#id_techhrs4").css('background-color', '#2e8b57')
-        $("#id_techhrs4").attr("disabled", true)
-    }
-}, 100);
+ }
 
 });
 
 $(function(){
    $('#id_techhrs4').change(function(){
         setTimeout(function(){
+        $("#id_techhrs4").css('background-color', 'gold')
                 var selectBox =document.getElementById('id_techhrs4');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
                 console.log(userInput);

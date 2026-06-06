@@ -1,24 +1,29 @@
-{{ form.descript8 }}
-
+    {{ form.descript8 }}
+<div id="id_descript8b">
+    <input id="descript8b_id" value="{{ descript8b.descript8b }}">
+</div>
+<div id="quanity8_id" >
+    {{ form.quanity8 }}
+</div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
 $(document).ready(function() {
 
-    if ($('#id_descript8').val() === 'Select Material') {
-       $("#id_descript8").css('background-color', '#2e8b57')
-       $("#id_descript8").attr("disabled", true)
-       $("#id_quanity8").attr("disabled", true)
-       $(".delete8").attr("disabled", true)
-    } else {
+  if ($('#id_descript8').val() === 'Select Material' || $('#id_descript8').val() === '' &&  $('#descript8b_id').val() == 1 ){
+       $("#id_descript8").css('background-color', '#1E5938')
+        $("#id_descript8").attr("disabled", true)
+     } else if  ($('#id_descript8').val() === 'Select Material' || $('#id_descript8').val() === '' &&  $('#descript8b_id').val() > 1 ){
+        $("#id_descript8").attr("disabled", false)
+        $("#id_descript8").css('background-color', '#90B5A1')
+     } else   {
         $("#id_descript8").css('background-color', 'gold')
-        $(".delete8").attr("disabled", false)
-   }
-
+     }
 });
 
 $(function(){
    $('#id_descript8').change(function(){
         setTimeout(function(){
+        //$("#descript9_id").css('background-color', 'red')
                 var selectBox =document.getElementById('id_descript8');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
                 console.log(userInput);
@@ -54,6 +59,8 @@ $(function(){
 $(function(){
     $('#id_descript8').change(function(){
         setTimeout(function(){
+       // $("#id_descript9").css('background-color', 'gold')
+        $("#id_descript9").attr("disabled", false)
                $("#id_quanity8").attr("disabled", true)
             var urlC = $(".form2").attr("quanity8load-url");
             req = $.ajax({
@@ -68,4 +75,73 @@ $(function(){
     });
 });
 
+
+    $(function(){
+   $('#id_quanity8').change(function(){
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_quanity8');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("quant8-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_quanity8: $('#id_quanity8').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+$(function(){
+    $('#id_descript8').change(function(){
+setTimeout(function(){
+            var urlC = $(".form2").attr("update9b-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#descript9b_id").html(data);
+                     }
+                });
+        },700);
+    });
+});
+
+
+$(function(){
+    $('#id_descript8').change(function(){
+    setTimeout(function(){
+            var urlC = $(".form2").attr("descript9bload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#descript9b_id").html(data);
+                     }
+                });
+        },1000);
+    });
+});
+
+
+$(function(){
+    $('#id_descript8').change(function(){
+    setTimeout(function(){
+            var urlC = $(".form2").attr("descript9load-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#descript9_id").html(data);
+                     }
+                });
+        },1000);
+    });
+});
 </script>

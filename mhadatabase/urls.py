@@ -351,7 +351,8 @@ urlpatterns = [
     path('<int:bidid>/jobselection4/', views.jobselection4, name='jobselection4'),
     path('<int:bidid>/jobselection5/', views.jobselection5, name='jobselection5'),
     path('<int:id>/contractorpage/', views.contractorpage, name='contractorpage'),
-    path('<int:custid>/customerinfo/', views.customerinfo, name='customerinfo'),
+ #   path('<int:custid>/customerinfo/', views.customerinfo, name='customerinfo'),
+    path('<int:jobid>/customerinfo/', views.customerinfo, name='customerinfo'),
     path('<int:id>/customerpage/', views.customerpage, name='customerpage'),
     path('<int:id>/addcust/', views.addcust, name='addcust'),
     path('<int:id>/conedit/', views.conedit, name='conedit'),
@@ -489,14 +490,22 @@ urlpatterns = [
     path('deleteequipselection', views.deleteequipselection, name='deleteequipselection'),
 
     path('<int:bidid>/bidpage/', views.bidpage, name='bidpage'),
-    path('<int:bidid>/bidpageno/', views.bidpageno, name='bidpageno'),
-    path('<int:bidid>/bidpage3/', views.bidpage3, name='bidpage3'),
-    path('<int:bidid>/bidpage3A/', views.bidpage3A, name='bidpage3A'),
-    path('<int:bidid>/bidpage4/', views.bidpage4, name='bidpage4'),
+
+
+
     path('<int:bidid>/jobcost/', views.jobcost, name='jobcost'),
     path('<int:bidid>/targetnet/', views.targetnet, name='targetnet'),
     path('<int:bidid>/cancelbid/', views.cancelbid, name='cancelbid'),
 
+    path('<int:bidid>/bidpage1/', views.bidpage1, name='bidpage1'),
+    path('<int:bidid>/bidpage2/', views.bidpage2, name='bidpage2'),
+    path('<int:bidid>/bidpage3/', views.bidpage3, name='bidpage3'),
+    path('<int:bidid>/bidpage4/', views.bidpage4, name='bidpage4'),
+    path('<int:bidid>/bidpage5/', views.bidpage5, name='bidpage5'),
+
+    path('<int:bidid>/load_tech2/', views.load_tech2, name='load_tech2'),
+    path('<int:bidid>/load_tech3/', views.load_tech3, name='load_tech3'),
+    path('<int:bidid>/load_tech4/', views.load_tech4, name='load_tech4'),
 
     path('<int:jobid>/addnewosr/', views.addnewosr, name='addnewosr'),
     path('<int:jobid>/newvendordescript/', views.newvendordescript, name='newvendordescript'),
@@ -653,156 +662,6 @@ urlpatterns = [
     path('<int:bidid>/load_quanity21/', views.load_quanity21, name='load_quanity21'),
     path('<int:bidid>/quant21/', views.quant21, name='quant21'),
     path('<int:bidid>/delete21/', views.delete21, name='delete21'),
-
-    path('<int:bidid>/descript22/', views.descript22, name='descript22'),
-    path('<int:bidid>/load_descript22/', views.load_descript22, name='load_descript22'),
-    path('<int:bidid>/load_quanity22/', views.load_quanity22, name='load_quanity22'),
-    path('<int:bidid>/quant22/', views.quant22, name='quant22'),
-    path('<int:bidid>/delete22/', views.delete22, name='delete22'),
-
-    path('<int:bidid>/descript23/', views.descript23, name='descript23'),
-    path('<int:bidid>/load_descript23/', views.load_descript23, name='load_descript23'),
-    path('<int:bidid>/load_quanity23/', views.load_quanity23, name='load_quanity23'),
-    path('<int:bidid>/quant23/', views.quant23, name='quant23'),
-    path('<int:bidid>/delete23/', views.delete23, name='delete23'),
-
-    path('<int:bidid>/descript24/', views.descript24, name='descript24'),
-    path('<int:bidid>/load_descript24/', views.load_descript24, name='load_descript24'),
-    path('<int:bidid>/load_quanity24/', views.load_quanity24, name='load_quanity24'),
-    path('<int:bidid>/quant24/', views.quant24, name='quant24'),
-    path('<int:bidid>/delete24/', views.delete24, name='delete24'),
-
-    path('<int:bidid>/descript25/', views.descript25, name='descript25'),
-    path('<int:bidid>/load_descript25/', views.load_descript25, name='load_descript25'),
-    path('<int:bidid>/load_quanity25/', views.load_quanity25, name='load_quanity25'),
-    path('<int:bidid>/quant25/', views.quant25, name='quant25'),
-    path('<int:bidid>/delete25/', views.delete25, name='delete25'),
-
-    path('<int:bidid>/descript26/', views.descript26, name='descript26'),
-    path('<int:bidid>/load_descript26/', views.load_descript26, name='load_descript26'),
-    path('<int:bidid>/load_quanity26/', views.load_quanity26, name='load_quanity26'),
-    path('<int:bidid>/quant26/', views.quant26, name='quant26'),
-    path('<int:bidid>/delete26/', views.delete26, name='delete26'),
-
-    path('<int:bidid>/descript27/', views.descript27, name='descript27'),
-    path('<int:bidid>/load_descript27/', views.load_descript27, name='load_descript27'),
-    path('<int:bidid>/load_quanity27/', views.load_quanity27, name='load_quanity27'),
-    path('<int:bidid>/quant27/', views.quant27, name='quant27'),
-    path('<int:bidid>/delete27/', views.delete27, name='delete27'),
-
-    path('<int:bidid>/descript28/', views.descript28, name='descript28'),
-    path('<int:bidid>/load_descript28/', views.load_descript28, name='load_descript28'),
-    path('<int:bidid>/load_quanity28/', views.load_quanity28, name='load_quanity28'),
-    path('<int:bidid>/quant28/', views.quant28, name='quant28'),
-    path('<int:bidid>/delete28/', views.delete28, name='delete28'),
-
-    path('<int:bidid>/descript29/', views.descript29, name='descript29'),
-    path('<int:bidid>/load_descript29/', views.load_descript29, name='load_descript29'),
-    path('<int:bidid>/load_quanity29/', views.load_quanity29, name='load_quanity29'),
-    path('<int:bidid>/quant29/', views.quant29, name='quant29'),
-    path('<int:bidid>/delete29/', views.delete29, name='delete29'),
-
-    path('<int:bidid>/descript30/', views.descript30, name='descript30'),
-    path('<int:bidid>/load_descript30/', views.load_descript30, name='load_descript30'),
-    path('<int:bidid>/load_quanity30/', views.load_quanity30, name='load_quanity30'),
-    path('<int:bidid>/quant30/', views.quant30, name='quant30'),
-    path('<int:bidid>/delete30/', views.delete30, name='delete30'),
-
-    path('<int:bidid>/descript31/', views.descript31, name='descript31'),
-    path('<int:bidid>/load_descript31/', views.load_descript31, name='load_descript31'),
-    path('<int:bidid>/load_quanity31/', views.load_quanity31, name='load_quanity31'),
-    path('<int:bidid>/quant31/', views.quant31, name='quant31'),
-    path('<int:bidid>/delete31/', views.delete31, name='delete31'),
-
-    path('<int:bidid>/descript32/', views.descript32, name='descript32'),
-    path('<int:bidid>/load_descript32/', views.load_descript32, name='load_descript32'),
-    path('<int:bidid>/load_quanity32/', views.load_quanity32, name='load_quanity32'),
-    path('<int:bidid>/quant32/', views.quant32, name='quant32'),
-    path('<int:bidid>/delete32/', views.delete32, name='delete32'),
-
-    path('<int:bidid>/descript33/', views.descript33, name='descript33'),
-    path('<int:bidid>/load_descript33/', views.load_descript33, name='load_descript33'),
-    path('<int:bidid>/load_quanity33/', views.load_quanity33, name='load_quanity33'),
-    path('<int:bidid>/quant33/', views.quant33, name='quant33'),
-    path('<int:bidid>/delete33/', views.delete33, name='delete33'),
-
-    path('<int:bidid>/descript34/', views.descript34, name='descript34'),
-    path('<int:bidid>/load_descript34/', views.load_descript34, name='load_descript34'),
-    path('<int:bidid>/load_quanity34/', views.load_quanity34, name='load_quanity34'),
-    path('<int:bidid>/quant34/', views.quant34, name='quant34'),
-    path('<int:bidid>/delete34/', views.delete34, name='delete34'),
-
-    path('<int:bidid>/descript35/', views.descript35, name='descript35'),
-    path('<int:bidid>/load_descript35/', views.load_descript35, name='load_descript35'),
-    path('<int:bidid>/load_quanity35/', views.load_quanity35, name='load_quanity35'),
-    path('<int:bidid>/quant35/', views.quant35, name='quant35'),
-    path('<int:bidid>/delete35/', views.delete35, name='delete35'),
-
-    path('<int:bidid>/descript36/', views.descript36, name='descript36'),
-    path('<int:bidid>/load_descript36/', views.load_descript36, name='load_descript36'),
-    path('<int:bidid>/load_quanity36/', views.load_quanity36, name='load_quanity36'),
-    path('<int:bidid>/quant36/', views.quant36, name='quant36'),
-    path('<int:bidid>/delete36/', views.delete36, name='delete36'),
-
-    path('<int:bidid>/descript37/', views.descript37, name='descript37'),
-    path('<int:bidid>/load_descript37/', views.load_descript37, name='load_descript37'),
-    path('<int:bidid>/load_quanity37/', views.load_quanity37, name='load_quanity37'),
-    path('<int:bidid>/quant37/', views.quant37, name='quant37'),
-    path('<int:bidid>/delete37/', views.delete37, name='delete37'),
-
-    path('<int:bidid>/descript38/', views.descript38, name='descript38'),
-    path('<int:bidid>/load_descript38/', views.load_descript38, name='load_descript38'),
-    path('<int:bidid>/load_quanity38/', views.load_quanity38, name='load_quanity38'),
-    path('<int:bidid>/quant38/', views.quant38, name='quant38'),
-    path('<int:bidid>/delete38/', views.delete38, name='delete38'),
-
-    path('<int:bidid>/descript39/', views.descript39, name='descript39'),
-    path('<int:bidid>/load_descript39/', views.load_descript39, name='load_descript39'),
-    path('<int:bidid>/load_quanity39/', views.load_quanity39, name='load_quanity39'),
-    path('<int:bidid>/quant39/', views.quant39, name='quant39'),
-    path('<int:bidid>/delete39/', views.delete39, name='delete39'),
-
-    path('<int:bidid>/descript46/', views.descript46, name='descript46'),
-    path('<int:bidid>/load_descript46/', views.load_descript46, name='load_descript46'),
-    path('<int:bidid>/load_quanity46/', views.load_quanity46, name='load_quanity46'),
-    path('<int:bidid>/quant46/', views.quant46, name='quant46'),
-    path('<int:bidid>/delete46/', views.delete46, name='delete46'),
-
-    path('<int:bidid>/descript40/', views.descript40, name='descript40'),
-    path('<int:bidid>/load_descript40/', views.load_descript40, name='load_descript40'),
-    path('<int:bidid>/load_quanity40/', views.load_quanity40, name='load_quanity40'),
-    path('<int:bidid>/quant40/', views.quant40, name='quant40'),
-    path('<int:bidid>/delete40/', views.delete40, name='delete40'),
-
-    path('<int:bidid>/descript41/', views.descript41, name='descript41'),
-    path('<int:bidid>/load_descript41/', views.load_descript41, name='load_descript41'),
-    path('<int:bidid>/load_quanity41/', views.load_quanity41, name='load_quanity41'),
-    path('<int:bidid>/quant41/', views.quant41, name='quant41'),
-    path('<int:bidid>/delete41/', views.delete41, name='delete41'),
-
-    path('<int:bidid>/descript42/', views.descript42, name='descript42'),
-    path('<int:bidid>/load_descript42/', views.load_descript42, name='load_descript42'),
-    path('<int:bidid>/load_quanity42/', views.load_quanity42, name='load_quanity42'),
-    path('<int:bidid>/quant42/', views.quant42, name='quant42'),
-    path('<int:bidid>/delete42/', views.delete42, name='delete42'),
-
-    path('<int:bidid>/descript43/', views.descript43, name='descript43'),
-    path('<int:bidid>/load_descript43/', views.load_descript43, name='load_descript43'),
-    path('<int:bidid>/load_quanity43/', views.load_quanity43, name='load_quanity43'),
-    path('<int:bidid>/quant43/', views.quant43, name='quant43'),
-    path('<int:bidid>/delete43/', views.delete43, name='delete43'),
-
-    path('<int:bidid>/descript44/', views.descript44, name='descript44'),
-    path('<int:bidid>/load_descript44/', views.load_descript44, name='load_descript44'),
-    path('<int:bidid>/load_quanity44/', views.load_quanity44, name='load_quanity44'),
-    path('<int:bidid>/quant44/', views.quant44, name='quant44'),
-    path('<int:bidid>/delete44/', views.delete44, name='delete44'),
-    
-    path('<int:bidid>/descript45/', views.descript45, name='descript45'),
-    path('<int:bidid>/load_descript45/', views.load_descript45, name='load_descript45'),
-    path('<int:bidid>/load_quanity45/', views.load_quanity45, name='load_quanity45'),
-    path('<int:bidid>/quant45/', views.quant45, name='quant45'),
-    path('<int:bidid>/delete45/', views.delete45, name='delete45'),
 
     path('<int:bidid>/materialtype/', views.materialtype, name='materialtype'),
 
@@ -1141,5 +1000,11 @@ urlpatterns = [
     path('levelnewtech/', views.levelnewtech, name='levelnewtech'),
     path('ratenewtech/', views.ratenewtech, name='ratenewtech'),
     path('deletenewtech/', views.deletenewtech, name='deletenewtech'),
+
+
+    path('<int:bidid>/load_equiprow1/', views.load_equiprow1, name='load_equiprow1'),
+
+
+
 
 ]
