@@ -8,7 +8,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
 $(document).ready(function() {
-
   if ($('#id_descript21').val() === 'Select Material' || $('#id_descript21').val() === '' &&  $('#descript21b_id').val() == 1 ){
        $("#id_descript21").css('background-color', '#1E5938')
         $("#id_descript21").attr("disabled", true)
@@ -18,8 +17,9 @@ $(document).ready(function() {
      } else   {
         $("#id_descript21").css('background-color', 'gold')
      }
-
 });
+
+
 
 $(function(){
    $('#id_descript21').change(function(){
@@ -92,5 +92,6 @@ $(function(){
         }, 100);
     });
 });
+
 
 </script>

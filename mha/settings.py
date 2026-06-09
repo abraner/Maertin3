@@ -80,8 +80,11 @@ WSGI_APPLICATION = 'mha.wsgi.application'
 
 #DATABASES = {
 #    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'abraner$Maertin2database',
+#        'USER': 'abraner',
+#        'PASSWORD': 'Alman2dy',
+#        'HOST' : 'abraner.mysql.pythonanywhere-services.com'
 #    }
 #}
 DATABASES = {

@@ -133,23 +133,6 @@ $(function(){
 $(function(){
     $('#id_descript1').change(function(){
         setTimeout(function(){
-            var urlC = $(".form2").attr("descript1load-url");
-            req = $.ajax({
-                   url: urlC,
-                   data:{
-                     },
-                     success: function (data) {
-                       $("#descript1_id").html(data);
-                     }
-                });
-        },400);
-    });
-});
-
-$(function(){
-    $('#id_descript1').change(function(){
-        setTimeout(function(){
-               $("#id_quanity1").attr("disabled", true)
             var urlC = $(".form2").attr("quanity1load-url");
             req = $.ajax({
                    url: urlC,
@@ -162,5 +145,7 @@ $(function(){
         },700);
     });
 });
+
+
 </script>
 

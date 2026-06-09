@@ -590,6 +590,22 @@ urlpatterns = [
     path('<int:bidid>/load_quanity9/', views.load_quanity9, name='load_quanity9'),
     path('<int:bidid>/quant9/', views.quant9, name='quant9'),
     path('<int:bidid>/delete9/', views.delete9, name='delete9'),
+    path('<int:bidid>/delete9a/', views.delete9a, name='delete9a'),
+
+    path('<int:bidid>/delete10a/', views.delete10a, name='delete10a'),
+    path('<int:bidid>/delete11a/', views.delete11a, name='delete11a'),
+    path('<int:bidid>/delete12a/', views.delete12a, name='delete12a'),
+    path('<int:bidid>/delete13a/', views.delete13a, name='delete13a'),
+    path('<int:bidid>/delete14a/', views.delete14a, name='delete14a'),
+    path('<int:bidid>/delete15a/', views.delete15a, name='delete15a'),
+    path('<int:bidid>/delete16a/', views.delete16a, name='delete16a'),
+    path('<int:bidid>/delete17a/', views.delete17a, name='delete17a'),
+    path('<int:bidid>/delete18a/', views.delete18a, name='delete18a'),
+    path('<int:bidid>/delete19a/', views.delete19a, name='delete19a'),
+    path('<int:bidid>/delete20a/', views.delete20a, name='delete20a'),
+
+
+
 
     path('<int:bidid>/descript10/', views.descript10, name='descript10'),
     path('<int:bidid>/load_descript10/', views.load_descript10, name='load_descript10'),

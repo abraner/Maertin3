@@ -123,15 +123,11 @@
                 </div>
                     <div class="condheader"> Exsting Furnace Information </div>
                     <div class="form-condcol">
-                        <div id="plenumheight">
-                            <div id="id_plenumheight"></div>
-                        </div>
+
                         {{ form.plenumwidth.errors }}
-                        <label class="label_plenumwidth">Width:</label>
+                        <label class="label_plenumwidth">Plenum Width:</label>
                         {{ form.plenumwidth }}
-                        <div id="plenumdepth">
-                            <div id="id_plenumdepth"></div>
-                        </div>
+
                     </div>
                     <div class="form-condcol">
                         {{ form.existfurnconfig.errors }}
@@ -140,15 +136,11 @@
 
                     </div>
                     <div class="form-condcol">
-                        <div id="existfurnheight">
-                            <div id="id_existfurnheight"></div>
-                        </div>
+
                         {{ form.furnwidth.errors }}
-                        <label class="label_existfurnwidth">Width :</label>
+                        <label class="label_existfurnwidth">Furnace Width :</label>
                         {{ form.existfurnwidth }}
-                        <div id="existfurndepth">
-                            <div id="id_existfurndepth"></div>
-                        </div>
+
 
                     </div>
 
@@ -307,7 +299,7 @@ $(document).ready(function() {
   $("#id_joblocation").css('background-color', 'gold')
   $("#id_furntype").attr("disabled", true)
   $("#id_outsideunittype").attr("disabled", true)
- // $("#id_condeff").attr("disabled", true)
+  $("#id_condeff").attr("disabled", true)
   $("#id_condbtu").attr("disabled", true)
   $("#id_conddescript").attr("disabled", true)
   $("#condmodnum_id").attr("disabled", true)
@@ -493,8 +485,8 @@ setTimeout(function(){
 $(function(){
    $('#id_joblocation').change(function(){
        $("#id_joblocation").css('background-color', '#ffd700')
-       $("input#plenumheight_id").attr("disabled", false).css('background-color', '#66d09a')
-       $('#id_plenumheigh').focus();
+       $("#id_plenumwidth").attr("disabled", false).css('background-color', '#66d09a')
+       $('#id_plenumwidth').focus();
         setTimeout(function(){
                 var selectBox =document.getElementById('id_joblocation');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -512,13 +504,14 @@ $(function(){
     });
 });
 
-////////////////// Plenum Width //////////////////////////////////////
+///////////////////////////////////////  Existing Furnace Info  ////////////////////////////////////
 
 $(function(){
    $('#id_plenumwidth').change(function(){
+        $("#id_joblocation").attr("disabled", true).css('background-color', '#66d09a')
         $("#id_plenumwidth").css('background-color', '#ffd700')
-        $("#plenumdepth_id").attr("disabled", false).css('background-color', '#66d09a')
-        $('#plenumdepth_id').focus();
+        $("#id_existfurnconfig").attr("disabled", false).css('background-color', '#66d09a')
+        $('#id_existfurnconfig').focus();
         setTimeout(function(){
                 var selectBox =document.getElementById('id_plenumwidth');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -536,39 +529,12 @@ $(function(){
     });
 });
 
-///////////////////////////////////////  Existing Furnace Info  ////////////////////////////////////
-
-$(function(){
-   $('#id_existfurnwidth').change(function(){
-       //$("#id_joblocation").css('background-color', '#ffd700')
-       $("#existfurndepth_id").attr("disabled", false).css('background-color', '#66d09a')
-       $("#id_existfurnwidth").attr("disabled", false).css('background-color', 'gold')
-       $('#id_plenumheigh').focus();
-        setTimeout(function(){
-                var selectBox =document.getElementById('id_existfurnwidth');
-                var userInput =selectBox.options[selectBox.selectedIndex].value;
-                console.log(userInput);
-                var url = $(".form2").attr("existfurnwidth-url");
-                    $.ajax({
-                        type:'POST',
-                       url: url,
-                       data:{
-                            id_existfurnwidth: $('#id_existfurnwidth').val(),
-                            csrfmiddlewaretoken: '{{ csrf_token }}'
-                         },
-                    });
-        }, 100);
-    });
-});
 
 
 $(function(){
    $('#id_existfurnconfig').change(function(){
-       //$("#id_joblocation").css('background-color', '#ffd700')
-       $("#existfurnheight_id").attr("disabled", false).css('background-color', '#66d09a')
-
+       $("#id_existfurnwidth").attr("disabled", false).css('background-color', '#66d09a')
        $("#id_existfurnconfig").attr("disabled", false).css('background-color', '#ffd700')
-       //$('#id_plenumheigh').focus();
         setTimeout(function(){
                 var selectBox =document.getElementById('id_existfurnconfig');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -587,6 +553,29 @@ $(function(){
 });
 
 
+$(function(){
+   $('#id_existfurnwidth').change(function(){
+       $("#id_joblocation").css('background-color', '#ffd700')
+       $("#id_existfurnwidth").attr("disabled", false).css('background-color', 'gold')
+       $("#id_condeff").attr("disabled", false).css('background-color', '#66d09a')
+       $('#id_condeff').focus();
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_existfurnwidth');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("existfurnwidth-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_existfurnwidth: $('#id_existfurnwidth').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
 
     ///////////////////////////////////////  Condenser Efficiency  ////////////////////////////////////
 
@@ -600,7 +589,7 @@ $(function(){
         $("#existfurnheight_id").attr("disabled", true).css('background-color', '#66d09a')
         $("#id_existfurnwidth").attr("disabled", true).css('background-color', '#66d09a')
        $("#id_condeff").attr("disabled", false).css('background-color', 'gold')
-        $("#id_condbtu").attr("disabled", false).css('background-color', '#66d09a')
+       // $("#id_condbtu").attr("disabled", false).css('background-color', '#66d09a')
         setTimeout(function(){
                 var selectBox =document.getElementById('id_condeff');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -630,7 +619,7 @@ $(function(){
                        $("#id_condbtu").html(data);
                      }
                 });
-        },200);
+        },800);
     });
 });
 
@@ -646,7 +635,7 @@ $(function(){
                        $("#id_conddescript").html(data);
                      }
                 });
-        },200);
+        },1200);
     });
 });
 
@@ -654,6 +643,7 @@ $(function(){
 $(function(){
    $('#id_condeff').change(function(){
         setTimeout(function(){
+        $("#id_condbtu").attr("disabled", false).css('background-color', '#66d09a') 
             var urlC = $(".form2").attr("condmodnum2Aload-url");
             req = $.ajax({
                    url: urlC,
@@ -663,7 +653,7 @@ $(function(){
                        $("#id_condmodnum").html(data);
                      }
                 });
-        },200);
+        },1500);
     });
 });
 
@@ -672,7 +662,7 @@ $(function(){
 $(function(){
    $('#id_condbtu').change(function(){
        $("#id_condbtu").attr("disabled", false).css('background-color', 'gold')
-       $("#id_conddescript").attr("disabled", false).css('background-color', '#66d09a')
+
 
         setTimeout(function(){
                 var selectBox =document.getElementById('id_condbtu');
@@ -694,6 +684,7 @@ $(function(){
 $(function(){
    $('#id_condbtu').change(function(){
         setTimeout(function(){
+        $("#id_conddescript").attr("disabled", false).css('background-color', '#66d09a') 
             var urlC = $(".form2").attr("conddescript2Aload-url");
             req = $.ajax({
                    url: urlC,
@@ -703,7 +694,7 @@ $(function(){
                        $("#id_conddescript").html(data);
                      }
                 });
-        },200);
+        },800);
     });
 });
 
@@ -713,7 +704,7 @@ $(function(){
    $('#id_conddescript').change(function(){
        //$("#id_joblocation").css('background-color', '#ffd700')
        $("#id_conddescript").attr("disabled", false).css('background-color', '#ffd700')
-       $("#id_coilconfig").attr("disabled", false).css('background-color', '#66d09a')
+
        //$('#id_plenumheigh').focus();
         setTimeout(function(){
                 var selectBox =document.getElementById('id_conddescript');
@@ -751,6 +742,7 @@ $(function(){
 $(function(){
    $('#id_conddescript').change(function(){
         setTimeout(function(){
+        $("#id_coilconfig").attr("disabled", false).css('background-color', '#66d09a')  
             var urlC = $(".form2").attr("coilconfig2up-url");
             req = $.ajax({
                    url: urlC,
@@ -771,7 +763,7 @@ $(function(){
        $("#id_condeff").attr("disabled", true).css('background-color', '#66d09a')
         $("#id_condbtu").attr("disabled", true).css('background-color', '#66d09a')
         $("#id_conddescript").attr("disabled", true).css('background-color', '#66d09a')
-        $("#id_coilbtu").attr("disabled", false).css('background-color', '#66d09a')
+
         $("#id_coilconfig").attr("disabled", false).css('background-color', 'gold')
         setTimeout(function(){
                 var selectBox =document.getElementById('id_coilconfig');
@@ -793,6 +785,7 @@ $(function(){
 $(function(){
    $('#id_coilconfig').change(function(){
         setTimeout(function(){
+        $("#id_coilbtu").attr("disabled", false).css('background-color', '#66d09a') 
             var urlC = $(".form2").attr("coilbtu2Aload-url");
             req = $.ajax({
                    url: urlC,
@@ -811,7 +804,7 @@ $(function(){
 
 $(function(){
    $('#id_coilbtu').change(function(){
-       $("#id_coiltype").attr("disabled", false).css('background-color', '#66d09a')
+
        $("#id_coilbtu").attr("disabled", false).css('background-color', 'gold')
         setTimeout(function(){
                 var selectBox =document.getElementById('id_coilbtu');
@@ -833,6 +826,7 @@ $(function(){
 $(function(){
    $('#id_coilbtu').change(function(){
         setTimeout(function(){
+        $("#id_coiltype").attr("disabled", false).css('background-color', '#66d09a')
             var urlC = $(".form2").attr("coiltype2Aload-url");
             req = $.ajax({
                    url: urlC,
@@ -952,100 +946,7 @@ $(function(){
         },500);
     });
 });
-///////////////////////////////////////   Thermostat Mfg.  ////////////////////////////////////
 
-$(function(){
-   $('#id_thermostat').change(function(){
-    $("#id_thermostatmodnum").attr("disabled", false).css('background-color', '#66d09a')
-    $('#id_thermostat').css('background-color', '#ffd700')
-    $('#id_thermostatmodnum').focus();
-        setTimeout(function(){
-                var selectBox =document.getElementById('id_thermostat');
-                var userInput =selectBox.options[selectBox.selectedIndex].value;
-                console.log(userInput);
-                var url = $(".form2").attr("thermomfg-url");
-                    $.ajax({
-                        type:'POST',
-                       url: url,
-                       data:{
-                            id_thermostat: $('#id_thermostat').val(),
-                            csrfmiddlewaretoken: '{{ csrf_token }}'
-                         },
-                    });
-        }, 100);
-    });
-});
-
-//$(function(){
-//   $('#id_thermostat').change(function(){
-//        setTimeout(function(){
-//       $("#id_coilbtu").attr("disabled", true).css('background-color', '#98b5d0')
-//       $("#id_coilconfig").attr("disabled", true).css('background-color', '#98b5d0')
-//       $("#id_coilmodnum").attr("disabled", true).css('background-color', '#98b5d0')
-//       $("#id_coiltype").attr("disabled", true).css('background-color', '#98b5d0')
-//       $('#id_thermostat').css('background-color', '#ffd700')
-//       $("#id_thermostatmodnum").attr("disabled", false).css('background-color', '#66d09a')
-//            var urlC = $(".form2").attr("thermomodnumload-url");
-//            req = $.ajax({
-//                   url: urlC,
-//                   data:{
-//                     },
-//                     success: function (data) {
-//                       $("#id_thermostatmodnum").html(data);
-//                     }
-//                });
-//        },1000);
-//    });
-//});
-
-
-///////////////////////////////////////   Thermostat Model NUmber  ////////////////////////////////////
-
-$(function(){
-    $('.delete40').click(function(){
-        setTimeout(function(){
-            var urlC = $(".form2").attr("delete40-url");
-            req = $.ajax({
-                   url: urlC,
-                   data:{
-                     },
-                     success: function (data) {
-                       $("#delete40").html(data);
-                     }
-                });
-        },100);
-    });
-});
-
-
- $(function(){
-   $('#id_addthermostat').change(function(){
-        $('#id_addthermostat').css('background-color', '#ffd700')
-        if ($('#id_addthermostat').val() == 1) $(".btn.btn3").hide()
-        if ($('#id_addthermostat').val() == 2) $(".btn.btn3").show()
-        if ($('#id_addthermostat').val() == 1) $(".form-thermostat2").show()
-        if ($('#id_addthermostat').val() == 2) $(".form-thermostat2").hide()
-        if ($('#id_addthermostat').val() == 1) $("#id_thermostat").attr("disabled", false).css('background-color', '#66d09a')
-        $("#id_coilbtu").attr("disabled", true).css('background-color', '#98b5d0')
-        $("#id_coilconfig").attr("disabled", true).css('background-color', '#98b5d0')
-        $("#id_coilmodnum").attr("disabled", true).css('background-color', '#98b5d0')
-        $("#id_coiltype").attr("disabled", true).css('background-color', '#98b5d0')
-        setTimeout(function(){
-                var selectBox =document.getElementById('id_addthermostat');
-                var userInput =selectBox.options[selectBox.selectedIndex].value;
-                console.log(userInput);
-                var url = $(".form2").attr("addthermostat2a-url");
-                    $.ajax({
-                        type:'POST',
-                       url: url,
-                       data:{
-                            id_addthermostat: $('#id_addthermostat').val(),
-                            csrfmiddlewaretoken: '{{ csrf_token }}'
-                         },
-                    });
-        }, 100);
-    });
-});
 
 //$(function(){
 //   $('#id_addthermostat').change(function(){
@@ -1097,11 +998,95 @@ $(function(){
 //});
 //
 //
+
+
+
+
+
+
+///////////////////////////////////////   Thermostat Mfg.  ////////////////////////////////////
+
+$(function(){
+   $('#id_thermostat').change(function(){
+
+    $('#id_thermostat').css('background-color', '#ffd700')
+    $('#id_thermostatmodnum').focus();
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_thermostat');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("thermomfg2a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_thermostat: $('#id_thermostat').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+$(function(){
+   $('#id_thermostat').change(function(){
+        setTimeout(function(){
+       //$("#id_coilbtu").attr("disabled", true).css('background-color', '#98b5d0')
+       //$("#id_coilconfig").attr("disabled", true).css('background-color', '#98b5d0')
+       //$("#id_coilmodnum").attr("disabled", true).css('background-color', '#98b5d0')
+       //$("#id_coiltype").attr("disabled", true).css('background-color', '#98b5d0')
+       //$('#id_thermostat').css('background-color', '#ffd700')
+       $("#id_thermostatmodnum").attr("disabled", false).css('background-color', '#66d09a')
+            var urlC = $(".form2").attr("thermomodnumload2a-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_thermostatmodnum").html(data);
+                     }
+                });
+        },1000);
+    });
+});
+
+
+/////////////////////////////////////////   Thermostat Model NUmber  ////////////////////////////////////
+ $(function(){
+   $('#id_addthermostat').change(function(){
+        $('#id_addthermostat').css('background-color', '#ffd700')
+        if ($('#id_addthermostat').val() == 1) $(".btn.btn3").hide()
+        if ($('#id_addthermostat').val() == 2) $(".btn.btn3").show()
+        if ($('#id_addthermostat').val() == 1) $(".form-thermostat2").show()
+        if ($('#id_addthermostat').val() == 2) $(".form-thermostat2").hide()
+        if ($('#id_addthermostat').val() == 1) $("#id_thermostat").attr("disabled", false).css('background-color', '#66d09a')
+        $("#id_coilbtu").attr("disabled", true).css('background-color', '#98b5d0')
+        $("#id_coilconfig").attr("disabled", true).css('background-color', '#98b5d0')
+        $("#id_coilmodnum").attr("disabled", true).css('background-color', '#98b5d0')
+        $("#id_coiltype").attr("disabled", true).css('background-color', '#98b5d0')
+        setTimeout(function(){
+                var selectBox =document.getElementById('id_addthermostat');
+                var userInput =selectBox.options[selectBox.selectedIndex].value;
+                console.log(userInput);
+                var url = $(".form2").attr("addthermostat2a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_addthermostat: $('#id_addthermostat').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
 $(function(){
    $('#id_thermostatmodnum').change(function(){
-       $("#id_thermostat").attr("disabled", true).css('background-color', '#98b5d0')
-       $("#id_thermostatmodnum").attr("disabled", true).css('background-color', '#98b5d0')
-       $("#id_addthermostat").attr("disabled", true).css('background-color', '#98b5d0')
+ //      $("#id_thermostat").attr("disabled", true).css('background-color', '#98b5d0')
+ //      $("#id_thermostatmodnum").attr("disabled", true).css('background-color', '#98b5d0')
+ //      $("#id_addthermostat").attr("disabled", true).css('background-color', '#98b5d0')
        if ($('#id_optionid').val() == 1) $(".btn.btn2").hide()
        if ($('#id_optionid').val() == 1) $(".btn.btn3").show()
        if ($('#id_optionid').val() > 1) $(".btn.btn2").show()
@@ -1125,10 +1110,6 @@ $(function(){
         }, 100);
     });
 });
-
-
-
-
 
 $(function(){
    $('#id_thermostatmodnum').change(function(){
@@ -1178,24 +1159,5 @@ $(function(){
     });
 });
 
-
-
-
-
-$(function(){
-    $('.btn.btn3').click(function(){
-        $(".btn.btn3").attr("disabled", true)
-
-    });
-});
-
-
-    $(function(){
-    $('#id_addthermostat').change(function(){
-    if ($('#id_addthermostat').val() ==='No') $(".btn.btn2no").show()
-    if ($('#id_addthermostat').val() ==='Yes') $(".btn.btn2no").hide()
-
-    });
-});
 
 </script>

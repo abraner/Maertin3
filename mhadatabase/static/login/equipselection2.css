@@ -239,7 +239,7 @@ input#plenumheight_id, input#existfurnheight_id{
 }
 
 .label_plenumwidth, .label_plenumdepth, .label_existfurnwidth, .label_existfurndepth{
-    width: 74px;
+    width: 169px;
     font-size: calc(.65vw + .65vh + .25vmin);
     text-align: right;
 }

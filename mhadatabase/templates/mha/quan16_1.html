@@ -4,14 +4,15 @@
 
 $(document).ready(function() {
 
-    if ($('#id_descript16').val() === 'Select Material') {
-       $("#id_descript16").css('background-color', '#2e8b57')
-       $("#id_quanity16").attr("disabled", true)
-    } else {
-        $("#id_descript16").css('background-color', 'gold')
-     //   $("#id_descript16").attr("disabled", true)
-   }
-
+ if ($('#id_descript16').val() === 'Select Material' || $('#id_descript16').val() === '' &&  $('#descript16b_id').val() == 1 ){
+      $("#id_descript16").css('background-color', '#1E5938')
+       $("#id_descript16").attr("disabled", true)
+    } else if  ($('#id_descript16').val() === 'Select Material' || $('#id_descript16').val() === '' &&  $('#descript16b_id').val() > 1 ){
+       $("#id_descript16").attr("disabled", false)
+       $("#id_descript16").css('background-color', '#90B5A1')
+    } else   {
+       $("#id_descript16").css('background-color', 'gold')
+    }
 });
 
     $(function(){

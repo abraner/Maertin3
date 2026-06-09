@@ -4,16 +4,16 @@
 
 $(document).ready(function() {
 
-    if ($('#id_descript10').val() === 'Select Material') {
-       $("#id_descript10").css('background-color', '#2e8b57')
-       $("#id_quanity10").attr("disabled", true)
-    } else {
-        $("#id_descript10").css('background-color', 'gold')
-     //   $("#id_descript10").attr("disabled", true)
-   }
-
+ if ($('#id_descript10').val() === 'Select Material' || $('#id_descript10').val() === '' &&  $('#descript10b_id').val() == 1 ){
+      $("#id_descript10").css('background-color', '#1E5938')
+       $("#id_descript10").attr("disabled", true)
+    } else if  ($('#id_descript10').val() === 'Select Material' || $('#id_descript10').val() === '' &&  $('#descript10b_id').val() > 1 ){
+       $("#id_descript10").attr("disabled", false)
+       $("#id_descript10").css('background-color', '#90B5A1')
+    } else   {
+       $("#id_descript10").css('background-color', 'gold')
+    }
 });
-
 
     $(function(){
    $('#id_quanity10').change(function(){
