@@ -13,7 +13,7 @@ from .forms import EquipInfo, EquipInfoEdit, UpdateEquipInfo, IncreaseGlobal, In
     Package10a, Package10b, Package11a, Package11b, Package12a, Package12b, Package13a, Package13b, Package14a, \
     Package14b, \
     Package15a, Package15b, Package16a, Package16b, ContractForm, Costjob, NetprofitTarget, \
-    EquipmentSelect2, EquipmentSelect3, TechInfo, JobInfoCurrent
+    EquipmentSelect2, EquipmentSelect3, TechInfo, JobInfoCurrent, EquipmentSelect2AB
 from .models import (Equipment, Equipment2, Man, Type, BTUcond, BTUevap, Warr, \
     EquipUpdate, GlobalIncrease, MatUpdate, \
     Material, Manufacturer, Vendor, MaterialType, CustomerInfo, ContractorInfo, Bidding, EquipSelection, Contract, \
@@ -6870,7 +6870,7 @@ def yesdupcon(request, custid=None):
     vv = Bidding.objects.values_list('id', flat=True).last()
     ww = EquipSelection.objects.values_list('id', flat=True).last()
     xx = CurrentJobInfo.objects.values_list('id', flat=True).last() or 0
-    aa = CurrentJobInfo.objects.filter(id=xx).delete()
+#    aa = CurrentJobInfo.objects.filter(id=xx).delete()
     xx1 = xx + 1
     CurrentJobInfo.objects.create(id=xx1, custid=u, conid=v, bidid=vv, jobid=ww)
     s4 = Contract.objects.filter(id=uu).update(jobid=ww)
@@ -6880,7 +6880,7 @@ def yesdupcon(request, custid=None):
     instance2 = EquipSelection.objects.order_by('custid').last()
 
     context = {
-        "aa": aa,
+#        "aa": aa,
         "uu": uu,
         "b": b,
         "s": s,
@@ -6976,17 +6976,42 @@ def jobselection2(request, bidid=None):
     b = EquipSelection.objects.values_list('custid', flat=True).get(bidid=bidid)
     c = EquipSelection.objects.values_list('optionid', flat=True).get(bidid=bidid)
     c1 = EquipSelection.objects.values_list('jobid', flat=True).get(bidid=bidid)
+    c2 = EquipSelection.objects.values_list('joblocation', flat=True).get(bidid=bidid)
+    c3 = EquipSelection.objects.values_list('existfurnconfig', flat=True).get(bidid=bidid)
+    c4 = EquipSelection.objects.values_list('plenumwidth', flat=True).get(bidid=bidid)
+    c5 = EquipSelection.objects.values_list('existfurnwidth', flat=True).get(bidid=bidid)
     d = c + 1
     e = Option.objects.values_list('option', flat=True).get(id=d)
     f = EquipSelection.objects.create(custid=b, conid=a, optionid=d, options=e, jobid=c1)
     g = EquipSelection.objects.values_list('id', flat=True).last()
+    h1 = Contract.objects.values_list('memo1', flat=True).get(jobid=c1)
+    h2 = Contract.objects.values_list('memo2', flat=True).get(jobid=c1)
+    h3 = Contract.objects.values_list('memo3', flat=True).get(jobid=c1)
+    h4 = Contract.objects.values_list('memo4', flat=True).get(jobid=c1)
+    h5 = Contract.objects.values_list('memo5', flat=True).get(jobid=c1)
+    h6 = Contract.objects.values_list('memo5', flat=True).get(jobid=c1)
+    h7 = Contract.objects.values_list('memo7', flat=True).get(jobid=c1)
+    h8 = Contract.objects.values_list('memo8', flat=True).get(jobid=c1)
+    h9 = Contract.objects.values_list('memo9', flat=True).get(jobid=c1)
+    h10 = Contract.objects.values_list('memo10', flat=True).get(jobid=c1)
+    h11 = Contract.objects.values_list('memo11', flat=True).get(jobid=c1)
+    h12 = Contract.objects.values_list('memo12', flat=True).get(jobid=c1)
+    h13 = Contract.objects.values_list('memo13', flat=True).get(jobid=c1)
+    h14 = Contract.objects.values_list('memo14', flat=True).get(jobid=c1)
+    h15 = Contract.objects.values_list('memo15', flat=True).get(jobid=c1)
+    h16 = Contract.objects.values_list('memo16', flat=True).get(jobid=c1)
+    h17 = Contract.objects.values_list('memo17', flat=True).get(jobid=c1)
+    h18 = Contract.objects.values_list('memo18', flat=True).get(jobid=c1)
 
-    j = Bidding.objects.create(custid=b, conid=a, jobid=c1, optionsid=d, options=e)
+    j = Bidding.objects.create(custid=b, conid=a, jobid=c1, optionsid=d, options=e, joblocation=c2)
     j1 = Bidding.objects.values_list('id', flat=True).last()
     j2 = Bidding.objects.filter(id=j1).update(bidid=j1)
-    k = CurrentJobInfo.objects.create(custid=b, conid=a, bidid=j1, jobid=c1, optionid=d, options=e)
-    l = EquipSelection.objects.filter(id=g).update(bidid=j1)
-    i = Contract.objects.create(custid=b, conid=a, jobid=c1, bidid=j1)
+    k = CurrentJobInfo.objects.create(custid=b, conid=a, bidid=j1, jobid=c1, optionid=d, options=e, currentlocrm=c2)
+    l = EquipSelection.objects.filter(id=g).update(bidid=j1, joblocation=c2, plenumwidth=c4, existfurnconfig=c3,
+                                                   existfurnwidth = c5)
+    i = Contract.objects.create(custid=b, conid=a, jobid=c1, bidid=j1, memo1=h1, memo2=h2, memo3=h3, memo4=h4, memo5=h5
+                                , memo6=h6, memo7=h7, memo8=h8, memo9=h9, memo10=h10, memo11=h11, memo12=h12, memo13=h13
+                                , memo14=h14, memo15=h15, memo16=h16, memo17=h17, memo18=h18)
     queryset = EquipSelection.objects.filter(id=g)
     instance2 = get_object_or_404(EquipSelection, id=g)
 
@@ -7019,17 +7044,42 @@ def jobselection3(request, bidid=None):
     c = EquipSelection.objects.values_list('optionid', flat=True).get(bidid=bidid)
     c1 = EquipSelection.objects.values_list('jobid', flat=True).get(bidid=bidid)
     c2 = EquipSelection.objects.values_list('joblocation', flat=True).get(bidid=bidid)
+    c3 = EquipSelection.objects.values_list('existfurnconfig', flat=True).get(bidid=bidid)
+    c4 = EquipSelection.objects.values_list('plenumwidth', flat=True).get(bidid=bidid)
+    c5 = EquipSelection.objects.values_list('existfurnwidth', flat=True).get(bidid=bidid)
     d = c + 1
     e = Option.objects.values_list('option', flat=True).get(id=d)
     f = EquipSelection.objects.create(custid=b, conid=a, optionid=d, options=e, jobid=c1)
     g = EquipSelection.objects.values_list('id', flat=True).last()
 
+    h1 = Contract.objects.filter(jobid=c1).values_list('memo1', flat=True)[0]
+    h2 = Contract.objects.filter(jobid=c1).values_list('memo2', flat=True)[0]
+    h3 = Contract.objects.filter(jobid=c1).values_list('memo3', flat=True)[0]
+    h4 = Contract.objects.filter(jobid=c1).values_list('memo4', flat=True)[0]
+    h5 = Contract.objects.filter(jobid=c1).values_list('memo5', flat=True)[0]
+    h6 = Contract.objects.filter(jobid=c1).values_list('memo6', flat=True)[0]
+    h7 = Contract.objects.filter(jobid=c1).values_list('memo7', flat=True)[0]
+    h8 = Contract.objects.filter(jobid=c1).values_list('memo8', flat=True)[0]
+    h9 = Contract.objects.filter(jobid=c1).values_list('memo9', flat=True)[0]
+    h10 =Contract.objects.filter(jobid=c1).values_list('memo10', flat=True)[0]
+    h11 =Contract.objects.filter(jobid=c1).values_list('memo11', flat=True)[0]
+    h12 =Contract.objects.filter(jobid=c1).values_list('memo12', flat=True)[0]
+    h13 =Contract.objects.filter(jobid=c1).values_list('memo13', flat=True)[0]
+    h14 =Contract.objects.filter(jobid=c1).values_list('memo14', flat=True)[0]
+    h15 =Contract.objects.filter(jobid=c1).values_list('memo15', flat=True)[0]
+    h16 =Contract.objects.filter(jobid=c1).values_list('memo16', flat=True)[0]
+    h17 =Contract.objects.filter(jobid=c1).values_list('memo17', flat=True)[0]
+    h18 =Contract.objects.filter(jobid=c1).values_list('memo18', flat=True)[0]
+
     j = Bidding.objects.create(custid=b, conid=a, jobid=c1, optionsid=d, options=e, joblocation=c2)
     j1 = Bidding.objects.values_list('id', flat=True).last()
     j2 = Bidding.objects.filter(id=j1).update(bidid=j1)
-    k = CurrentJobInfo.objects.create(custid=b, conid=a, bidid=j1, jobid=c1, optionid=d, options=e)
-    l = EquipSelection.objects.filter(id=g).update(bidid=j1, joblocation=c2)
-    i = Contract.objects.create(custid=b, conid=a, jobid=c1, bidid=j1)
+    k = CurrentJobInfo.objects.create(custid=b, conid=a, bidid=j1, jobid=c1, optionid=d, options=e, currentlocrm=c2)
+    l = EquipSelection.objects.filter(id=g).update(bidid=j1, joblocation=c2, plenumwidth=c4, existfurnconfig=c3,
+                                                   existfurnwidth=c5)
+    i = Contract.objects.create(custid=b, conid=a, jobid=c1, bidid=j1, memo1=h1, memo2=h2, memo3=h3, memo4=h4, memo5=h5
+                                , memo6=h6, memo7=h7, memo8=h8, memo9=h9, memo10=h10, memo11=h11, memo12=h12, memo13=h13
+                                , memo14=h14, memo15=h15, memo16=h16, memo17=h17, memo18=h18)
     queryset = EquipSelection.objects.filter(id=g)
     instance2 = get_object_or_404(EquipSelection, id=g)
 
@@ -7062,17 +7112,41 @@ def jobselection4(request, bidid=None):
     c = EquipSelection.objects.values_list('optionid', flat=True).get(bidid=bidid)
     c1 = EquipSelection.objects.values_list('jobid', flat=True).get(bidid=bidid)
     c2 = EquipSelection.objects.values_list('joblocation', flat=True).get(bidid=bidid)
+    c3 = EquipSelection.objects.values_list('existfurnconfig', flat=True).get(bidid=bidid)
+    c4 = EquipSelection.objects.values_list('plenumwidth', flat=True).get(bidid=bidid)
+    c5 = EquipSelection.objects.values_list('existfurnwidth', flat=True).get(bidid=bidid)
     d = c + 1
     e = Option.objects.values_list('option', flat=True).get(id=d)
     f = EquipSelection.objects.create(custid=b, conid=a, optionid=d, options=e, jobid=c1)
     g = EquipSelection.objects.values_list('id', flat=True).last()
+    h1 = Contract.objects.filter(jobid=c1).values_list('memo1', flat=True)[0]
+    h2 = Contract.objects.filter(jobid=c1).values_list('memo2', flat=True)[0]
+    h3 = Contract.objects.filter(jobid=c1).values_list('memo3', flat=True)[0]
+    h4 = Contract.objects.filter(jobid=c1).values_list('memo4', flat=True)[0]
+    h5 = Contract.objects.filter(jobid=c1).values_list('memo5', flat=True)[0]
+    h6 = Contract.objects.filter(jobid=c1).values_list('memo6', flat=True)[0]
+    h7 = Contract.objects.filter(jobid=c1).values_list('memo7', flat=True)[0]
+    h8 = Contract.objects.filter(jobid=c1).values_list('memo8', flat=True)[0]
+    h9 = Contract.objects.filter(jobid=c1).values_list('memo9', flat=True)[0]
+    h10 = Contract.objects.filter(jobid=c1).values_list('memo10', flat=True)[0]
+    h11 = Contract.objects.filter(jobid=c1).values_list('memo11', flat=True)[0]
+    h12 = Contract.objects.filter(jobid=c1).values_list('memo12', flat=True)[0]
+    h13 = Contract.objects.filter(jobid=c1).values_list('memo13', flat=True)[0]
+    h14 = Contract.objects.filter(jobid=c1).values_list('memo14', flat=True)[0]
+    h15 = Contract.objects.filter(jobid=c1).values_list('memo15', flat=True)[0]
+    h16 = Contract.objects.filter(jobid=c1).values_list('memo16', flat=True)[0]
+    h17 = Contract.objects.filter(jobid=c1).values_list('memo17', flat=True)[0]
+    h18 = Contract.objects.filter(jobid=c1).values_list('memo18', flat=True)[0]
 
     j = Bidding.objects.create(custid=b, conid=a, jobid=c1, optionsid=d, options=e, joblocation=c2)
     j1 = Bidding.objects.values_list('id', flat=True).last()
     j2 = Bidding.objects.filter(id=j1).update(bidid=j1)
-    k = CurrentJobInfo.objects.create(custid=b, conid=a, bidid=j1, jobid=c1, optionid=d, options=e)
-    l = EquipSelection.objects.filter(id=g).update(bidid=j1, joblocation=c2)
-    i = Contract.objects.create(custid=b, conid=a, jobid=c1, bidid=j1)
+    k = CurrentJobInfo.objects.create(custid=b, conid=a, bidid=j1, jobid=c1, optionid=d, options=e, currentlocrm=c2)
+    l = EquipSelection.objects.filter(id=g).update(bidid=j1, joblocation=c2, plenumwidth=c4, existfurnconfig=c3,
+                                                   existfurnwidth=c5)
+    i = Contract.objects.create(custid=b, conid=a, jobid=c1, bidid=j1, memo1=h1, memo2=h2, memo3=h3, memo4=h4, memo5=h5
+                                , memo6=h6, memo7=h7, memo8=h8, memo9=h9, memo10=h10, memo11=h11, memo12=h12, memo13=h13
+                                , memo14=h14, memo15=h15, memo16=h16, memo17=h17, memo18=h18)
     queryset = EquipSelection.objects.filter(id=g)
     instance2 = get_object_or_404(EquipSelection, id=g)
 
@@ -7105,17 +7179,41 @@ def jobselection5(request, bidid=None):
     c = EquipSelection.objects.values_list('optionid', flat=True).get(bidid=bidid)
     c1 = EquipSelection.objects.values_list('jobid', flat=True).get(bidid=bidid)
     c2 = EquipSelection.objects.values_list('joblocation', flat=True).get(bidid=bidid)
+    c3 = EquipSelection.objects.values_list('existfurnconfig', flat=True).get(bidid=bidid)
+    c4 = EquipSelection.objects.values_list('plenumwidth', flat=True).get(bidid=bidid)
+    c5 = EquipSelection.objects.values_list('existfurnwidth', flat=True).get(bidid=bidid)
     d = c + 1
     e = Option.objects.values_list('option', flat=True).get(id=d)
     f = EquipSelection.objects.create(custid=b, conid=a, optionid=d, options=e, jobid=c1)
     g = EquipSelection.objects.values_list('id', flat=True).last()
+    h1 = Contract.objects.filter(jobid=c1).values_list('memo1', flat=True)[0]
+    h2 = Contract.objects.filter(jobid=c1).values_list('memo2', flat=True)[0]
+    h3 = Contract.objects.filter(jobid=c1).values_list('memo3', flat=True)[0]
+    h4 = Contract.objects.filter(jobid=c1).values_list('memo4', flat=True)[0]
+    h5 = Contract.objects.filter(jobid=c1).values_list('memo5', flat=True)[0]
+    h6 = Contract.objects.filter(jobid=c1).values_list('memo6', flat=True)[0]
+    h7 = Contract.objects.filter(jobid=c1).values_list('memo7', flat=True)[0]
+    h8 = Contract.objects.filter(jobid=c1).values_list('memo8', flat=True)[0]
+    h9 = Contract.objects.filter(jobid=c1).values_list('memo9', flat=True)[0]
+    h10 = Contract.objects.filter(jobid=c1).values_list('memo10', flat=True)[0]
+    h11 = Contract.objects.filter(jobid=c1).values_list('memo11', flat=True)[0]
+    h12 = Contract.objects.filter(jobid=c1).values_list('memo12', flat=True)[0]
+    h13 = Contract.objects.filter(jobid=c1).values_list('memo13', flat=True)[0]
+    h14 = Contract.objects.filter(jobid=c1).values_list('memo14', flat=True)[0]
+    h15 = Contract.objects.filter(jobid=c1).values_list('memo15', flat=True)[0]
+    h16 = Contract.objects.filter(jobid=c1).values_list('memo16', flat=True)[0]
+    h17 = Contract.objects.filter(jobid=c1).values_list('memo17', flat=True)[0]
+    h18 = Contract.objects.filter(jobid=c1).values_list('memo18', flat=True)[0]
 
     j = Bidding.objects.create(custid=b, conid=a, jobid=c1, optionsid=d, options=e, joblocation=c2)
     j1 = Bidding.objects.values_list('id', flat=True).last()
     j2 = Bidding.objects.filter(id=j1).update(bidid=j1)
-    k = CurrentJobInfo.objects.create(custid=b, conid=a, bidid=j1, jobid=c1, optionid=d, options=e)
-    l = EquipSelection.objects.filter(id=g).update(bidid=j1, joblocation=c2)
-    i = Contract.objects.create(custid=b, conid=a, jobid=c1, bidid=j1)
+    k = CurrentJobInfo.objects.create(custid=b, conid=a, bidid=j1, jobid=c1, optionid=d, options=e, currentlocrm=c2)
+    l = EquipSelection.objects.filter(id=g).update(bidid=j1, joblocation=c2, plenumwidth=c4, existfurnconfig=c3,
+                                                   existfurnwidth=c5)
+    i = Contract.objects.create(custid=b, conid=a, jobid=c1, bidid=j1, memo1=h1, memo2=h2, memo3=h3, memo4=h4, memo5=h5
+                                , memo6=h6, memo7=h7, memo8=h8, memo9=h9, memo10=h10, memo11=h11, memo12=h12, memo13=h13
+                                , memo14=h14, memo15=h15, memo16=h16, memo17=h17, memo18=h18)
     queryset = EquipSelection.objects.filter(id=g)
     instance2 = get_object_or_404(EquipSelection, id=g)
 
@@ -7594,6 +7692,347 @@ def equipselection2A(request, id=None):
     return render(request, 'mha/equipselection2A.html', context)
 
 
+def equipselection2AB(request, id=None):
+    FilterPlenumWidth.objects.all().delete()
+    a = EquipSelection.objects.values_list('jobid', flat=True).last()
+    a2 = EquipSelection.objects.values_list('bidid', flat=True).last()
+    a3 = EquipSelection.objects.values_list('conid', flat=True).last()
+    a4 = EquipSelection.objects.values_list('custid', flat=True).last()
+    aa = EquipSelection.objects.filter(jobid=a, bidid=a2).update(optionid=2, options='Option B')
+    ab = Bidding.objects.filter(jobid=a, bidid=a2).update(optionsid=2, options='Option B')
+    ac = CurrentJobInfo.objects.filter(jobid=a, bidid=a2).update(optionid=2, options='Option B')
+    b = CustomerInfo.objects.values_list('id', flat=True).last()
+    CustomerInfo.objects.values_list('id', flat=True).last()
+    c = SelectedEquip.objects.values_list('id', flat=True).last()or 0
+    d1 = c + 1
+    d2 = c + 2
+    d3 = c + 3
+    d4 = c + 4
+    d5 = c + 5
+    d6 = c + 6
+    d7 = c + 7
+
+    SelectedEquip.objects.create(id = d1, equipid=1, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d2, equipid=2, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d3, equipid=3, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d4, equipid=4, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d5, equipid=5, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d6, equipid=6, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d7, equipid=7, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    instance = get_object_or_404(EquipSelection, jobid=a, bidid=a2)
+    instance2 = get_object_or_404(EquipSelection, bidid=a2)
+    form = EquipmentSelect2AB(request.POST or None, instance=instance)
+    queryset = CustomerInfo.objects.filter(id=b).values()
+    c = Bidding.objects.filter(jobid=a).count()
+    d = Bidding.objects.filter(bidid=a2).update(count=c)
+    e = TargetProfit.objects.create(conid=a3, custid=a4, jobid=a, bidid=a2, targetprofit_id=0.15)
+    f = Equipment2.objects.filter(type='Furnace').annotate(widthA=F('width'))
+    g = list(f.values_list('width', flat=True).distinct())
+    try:
+        h1 = FilterPlenumWidth.objects.create(id=1, furnplenumwidth=g[0])
+    except Exception:
+        h1 = 0
+    try:
+        h2 = FilterPlenumWidth.objects.create(id=2, furnplenumwidth=g[1])
+    except Exception:
+        h2 = 0
+    try:
+        h3 = FilterPlenumWidth.objects.create(id=3, furnplenumwidth=g[2])
+    except Exception:
+        h3 = 0
+    try:
+        h4 = FilterPlenumWidth.objects.create(id=4, outputsfurnplenumwidthtg3s=g[3])
+    except Exception:
+        h4 = 0
+    try:
+        h5 = FilterPlenumWidth.objects.create(id=5, outputsfurnplenumwidthtg3s=g[4])
+    except Exception:
+        h5 = 0
+    try:
+        h6 = FilterPlenumWidth.objects.create(id=6, outputsfurnplenumwidthtg3s=g[5])
+    except Exception:
+        h6 = 0
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        return redirect(instance.get_absolute24_url())
+
+    context = {
+        "instance": instance,
+        "instance2": instance2,
+        "form": form,
+        "object_list": queryset,
+        "aa": aa,
+        "ab": ab,
+        "ac": ac,
+        "d": d,
+        "e": e,
+        "h1": h1,
+        "h2": h2,
+        "h3": h3,
+        "h4": h4,
+        "h5": h5,
+        "h6": h6,
+    }
+    return render(request, 'mha/equipselection2AB.html', context)
+
+
+def equipselection2AC(request, id=None):
+    FilterPlenumWidth.objects.all().delete()
+    a = EquipSelection.objects.values_list('jobid', flat=True).last()
+    a2 = EquipSelection.objects.values_list('bidid', flat=True).last()
+    a3 = EquipSelection.objects.values_list('conid', flat=True).last()
+    a4 = EquipSelection.objects.values_list('custid', flat=True).last()
+    aa = EquipSelection.objects.filter(jobid=a, bidid=a2).update(optionid=3, options='Option C')
+    ab = Bidding.objects.filter(jobid=a, bidid=a2).update(optionsid=3, options='Option C')
+    ac = CurrentJobInfo.objects.filter(jobid=a, bidid=a2).update(optionid=3, options='Option C')
+    b = CustomerInfo.objects.values_list('id', flat=True).last()
+    CustomerInfo.objects.values_list('id', flat=True).last()
+    c = SelectedEquip.objects.values_list('id', flat=True).last()or 0
+    d1 = c + 1
+    d2 = c + 2
+    d3 = c + 3
+    d4 = c + 4
+    d5 = c + 5
+    d6 = c + 6
+    d7 = c + 7
+
+    SelectedEquip.objects.create(id = d1, equipid=1, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d2, equipid=2, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d3, equipid=3, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d4, equipid=4, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d5, equipid=5, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d6, equipid=6, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d7, equipid=7, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    instance = get_object_or_404(EquipSelection, jobid=a, bidid=a2)
+    instance2 = get_object_or_404(EquipSelection, bidid=a2)
+    form = EquipmentSelect2AB(request.POST or None, instance=instance)
+    queryset = CustomerInfo.objects.filter(id=b).values()
+    c = Bidding.objects.filter(jobid=a).count()
+    d = Bidding.objects.filter(bidid=a2).update(count=c)
+    e = TargetProfit.objects.create(conid=a3, custid=a4, jobid=a, bidid=a2, targetprofit_id=0.15)
+    f = Equipment2.objects.filter(type='Furnace').annotate(widthA=F('width'))
+    g = list(f.values_list('width', flat=True).distinct())
+    try:
+        h1 = FilterPlenumWidth.objects.create(id=1, furnplenumwidth=g[0])
+    except Exception:
+        h1 = 0
+    try:
+        h2 = FilterPlenumWidth.objects.create(id=2, furnplenumwidth=g[1])
+    except Exception:
+        h2 = 0
+    try:
+        h3 = FilterPlenumWidth.objects.create(id=3, furnplenumwidth=g[2])
+    except Exception:
+        h3 = 0
+    try:
+        h4 = FilterPlenumWidth.objects.create(id=4, outputsfurnplenumwidthtg3s=g[3])
+    except Exception:
+        h4 = 0
+    try:
+        h5 = FilterPlenumWidth.objects.create(id=5, outputsfurnplenumwidthtg3s=g[4])
+    except Exception:
+        h5 = 0
+    try:
+        h6 = FilterPlenumWidth.objects.create(id=6, outputsfurnplenumwidthtg3s=g[5])
+    except Exception:
+        h6 = 0
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        return redirect(instance.get_absolute24_url())
+
+    context = {
+        "instance": instance,
+        "instance2": instance2,
+        "form": form,
+        "object_list": queryset,
+        "aa": aa,
+        "ab": ab,
+        "ac": ac,
+        "d": d,
+        "e": e,
+        "h1": h1,
+        "h2": h2,
+        "h3": h3,
+        "h4": h4,
+        "h5": h5,
+        "h6": h6,
+    }
+    return render(request, 'mha/equipselection2AB.html', context)
+
+
+def equipselection2AD(request, id=None):
+    FilterPlenumWidth.objects.all().delete()
+    a = EquipSelection.objects.values_list('jobid', flat=True).last()
+    a2 = EquipSelection.objects.values_list('bidid', flat=True).last()
+    a3 = EquipSelection.objects.values_list('conid', flat=True).last()
+    a4 = EquipSelection.objects.values_list('custid', flat=True).last()
+    aa = EquipSelection.objects.filter(jobid=a, bidid=a2).update(optionid=4, options='Option D')
+    ab = Bidding.objects.filter(jobid=a, bidid=a2).update(optionsid=4, options='Option D')
+    ac = CurrentJobInfo.objects.filter(jobid=a, bidid=a2).update(optionid=4, options='Option D')
+    b = CustomerInfo.objects.values_list('id', flat=True).last()
+    CustomerInfo.objects.values_list('id', flat=True).last()
+    c = SelectedEquip.objects.values_list('id', flat=True).last()or 0
+    d1 = c + 1
+    d2 = c + 2
+    d3 = c + 3
+    d4 = c + 4
+    d5 = c + 5
+    d6 = c + 6
+    d7 = c + 7
+
+    SelectedEquip.objects.create(id = d1, equipid=1, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d2, equipid=2, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d3, equipid=3, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d4, equipid=4, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d5, equipid=5, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d6, equipid=6, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d7, equipid=7, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    instance = get_object_or_404(EquipSelection, jobid=a, bidid=a2)
+    instance2 = get_object_or_404(EquipSelection, bidid=a2)
+    form = EquipmentSelect2AB(request.POST or None, instance=instance)
+    queryset = CustomerInfo.objects.filter(id=b).values()
+    c = Bidding.objects.filter(jobid=a).count()
+    d = Bidding.objects.filter(bidid=a2).update(count=c)
+    e = TargetProfit.objects.create(conid=a3, custid=a4, jobid=a, bidid=a2, targetprofit_id=0.15)
+    f = Equipment2.objects.filter(type='Furnace').annotate(widthA=F('width'))
+    g = list(f.values_list('width', flat=True).distinct())
+    try:
+        h1 = FilterPlenumWidth.objects.create(id=1, furnplenumwidth=g[0])
+    except Exception:
+        h1 = 0
+    try:
+        h2 = FilterPlenumWidth.objects.create(id=2, furnplenumwidth=g[1])
+    except Exception:
+        h2 = 0
+    try:
+        h3 = FilterPlenumWidth.objects.create(id=3, furnplenumwidth=g[2])
+    except Exception:
+        h3 = 0
+    try:
+        h4 = FilterPlenumWidth.objects.create(id=4, outputsfurnplenumwidthtg3s=g[3])
+    except Exception:
+        h4 = 0
+    try:
+        h5 = FilterPlenumWidth.objects.create(id=5, outputsfurnplenumwidthtg3s=g[4])
+    except Exception:
+        h5 = 0
+    try:
+        h6 = FilterPlenumWidth.objects.create(id=6, outputsfurnplenumwidthtg3s=g[5])
+    except Exception:
+        h6 = 0
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        return redirect(instance.get_absolute24_url())
+
+    context = {
+        "instance": instance,
+        "instance2": instance2,
+        "form": form,
+        "object_list": queryset,
+        "aa": aa,
+        "ab": ab,
+        "ac": ac,
+        "d": d,
+        "e": e,
+        "h1": h1,
+        "h2": h2,
+        "h3": h3,
+        "h4": h4,
+        "h5": h5,
+        "h6": h6,
+    }
+    return render(request, 'mha/equipselection2AB.html', context)
+
+
+
+def equipselection2AE(request, id=None):
+    FilterPlenumWidth.objects.all().delete()
+    a = EquipSelection.objects.values_list('jobid', flat=True).last()
+    a2 = EquipSelection.objects.values_list('bidid', flat=True).last()
+    a3 = EquipSelection.objects.values_list('conid', flat=True).last()
+    a4 = EquipSelection.objects.values_list('custid', flat=True).last()
+    aa = EquipSelection.objects.filter(jobid=a, bidid=a2).update(optionid=5, options='Option E')
+    ab = Bidding.objects.filter(jobid=a, bidid=a2).update(optionsid=5, options='Option E')
+    ac = CurrentJobInfo.objects.filter(jobid=a, bidid=a2).update(optionid=5, options='Option E')
+    b = CustomerInfo.objects.values_list('id', flat=True).last()
+    CustomerInfo.objects.values_list('id', flat=True).last()
+    c = SelectedEquip.objects.values_list('id', flat=True).last()or 0
+    d1 = c + 1
+    d2 = c + 2
+    d3 = c + 3
+    d4 = c + 4
+    d5 = c + 5
+    d6 = c + 6
+    d7 = c + 7
+
+    SelectedEquip.objects.create(id = d1, equipid=1, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d2, equipid=2, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d3, equipid=3, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d4, equipid=4, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d5, equipid=5, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d6, equipid=6, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    SelectedEquip.objects.create(id = d7, equipid=7, bidid=a2, conid=a3, custid=a4, jobid=a, type='', mfg='', modelnum='', mfgmodeldescrip='', btu='', warr='')
+    instance = get_object_or_404(EquipSelection, jobid=a, bidid=a2)
+    instance2 = get_object_or_404(EquipSelection, bidid=a2)
+    form = EquipmentSelect2AB(request.POST or None, instance=instance)
+    queryset = CustomerInfo.objects.filter(id=b).values()
+    c = Bidding.objects.filter(jobid=a).count()
+    d = Bidding.objects.filter(bidid=a2).update(count=c)
+    e = TargetProfit.objects.create(conid=a3, custid=a4, jobid=a, bidid=a2, targetprofit_id=0.15)
+    f = Equipment2.objects.filter(type='Furnace').annotate(widthA=F('width'))
+    g = list(f.values_list('width', flat=True).distinct())
+    try:
+        h1 = FilterPlenumWidth.objects.create(id=1, furnplenumwidth=g[0])
+    except Exception:
+        h1 = 0
+    try:
+        h2 = FilterPlenumWidth.objects.create(id=2, furnplenumwidth=g[1])
+    except Exception:
+        h2 = 0
+    try:
+        h3 = FilterPlenumWidth.objects.create(id=3, furnplenumwidth=g[2])
+    except Exception:
+        h3 = 0
+    try:
+        h4 = FilterPlenumWidth.objects.create(id=4, outputsfurnplenumwidthtg3s=g[3])
+    except Exception:
+        h4 = 0
+    try:
+        h5 = FilterPlenumWidth.objects.create(id=5, outputsfurnplenumwidthtg3s=g[4])
+    except Exception:
+        h5 = 0
+    try:
+        h6 = FilterPlenumWidth.objects.create(id=6, outputsfurnplenumwidthtg3s=g[5])
+    except Exception:
+        h6 = 0
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        return redirect(instance.get_absolute24_url())
+
+    context = {
+        "instance": instance,
+        "instance2": instance2,
+        "form": form,
+        "object_list": queryset,
+        "aa": aa,
+        "ab": ab,
+        "ac": ac,
+        "d": d,
+        "e": e,
+        "h1": h1,
+        "h2": h2,
+        "h3": h3,
+        "h4": h4,
+        "h5": h5,
+        "h6": h6,
+    }
+    return render(request, 'mha/equipselection2AB.html', context)
+
+
 def equipselection2B(request, id=None):
     FilterPlenumWidth.objects.all().delete()
     a = EquipSelection.objects.values_list('jobid', flat=True).last()
@@ -7860,7 +8299,7 @@ def equipselection3A(request, id=None):
         "h5": h5,
         "h6": h6,
     }
-    return render(request, 'mha/equipselection2A.html', context)
+    return render(request, 'mha/equipselection2B.html', context)
 
 
 
@@ -8052,9 +8491,9 @@ def equipselection4A(request, id=None):
     a2 = EquipSelection.objects.values_list('bidid', flat=True).last()
     a3 = EquipSelection.objects.values_list('conid', flat=True).last()
     a4 = EquipSelection.objects.values_list('custid', flat=True).last()
-    aa = EquipSelection.objects.filter(jobid=a).update(optionid=3, options='Option C')
-    ab = Bidding.objects.filter(jobid=a).update(optionsid=3, options='Option C')
-    ac = CurrentJobInfo.objects.filter(jobid=a).update(optionid=3, options='Option C')
+    aa = EquipSelection.objects.filter(bidid=a2).update(optionid=3, options='Option C')
+    ab = Bidding.objects.filter(bidid=a2).update(optionsid=3, options='Option C')
+    ac = CurrentJobInfo.objects.filter(bidid=a2).update(optionid=3, options='Option C')
     b = CustomerInfo.objects.values_list('id', flat=True).last()
     CustomerInfo.objects.values_list('id', flat=True).last()
     c = SelectedEquip.objects.values_list('id', flat=True).last()or 0
@@ -11470,6 +11909,36 @@ def load_plenumwidth(request):
         "form": form,
     }
     return render(request, 'mha/plenumwidth_1.html', context)
+
+
+def load_existfurnwidthAB(request, bidid=None):
+    form = EquipmentSelect2AB(request.POST or None)
+    existfurnwidth = EquipSelection.objects.values_list('existfurnwidth', flat=True).last()
+    context = {
+        "existfurnwidth": existfurnwidth,
+        "form": form,
+    }
+    return render(request, 'mha/existfurnwidthAB_1.html', context)
+
+
+def load_existfurnconfigAB(request, bidid=None):
+    form = EquipmentSelect2AB(request.POST or None)
+    existfurnconfig = EquipSelection.objects.values_list('existfurnconfig', flat=True).last()
+    context = {
+        "existfurnconfig": existfurnconfig,
+        "form": form,
+    }
+    return render(request, 'mha/existfurnconfigAB_1.html', context)
+
+
+def load_plenumwidthAB(request, bidid=None):
+    form = EquipmentSelect2AB(request.POST or None)
+    plenumwidth = EquipSelection.objects.values_list('plenumwidth', flat=True).last()
+    context = {
+        "plenumwidth": plenumwidth,
+        "form": form,
+    }
+    return render(request, 'mha/plenumwidthAB_1.html', context)
 
 
 def plenumwidth(request):
@@ -21810,11 +22279,64 @@ def memo31(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo31_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo31']
+    Contract.objects.filter(bidid=bidid).update(memo31=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo31_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo31']
+    Contract.objects.filter(bidid=bidid).update(memo31=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo31_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo31']
+    Contract.objects.filter(bidid=bidid).update(memo31=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo31_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo31']
+    Contract.objects.filter(bidid=bidid).update(memo31=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def memo1(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo1']
-    Contract.objects.filter(bidid=bidid).update(memo1=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo1=a)
     context = {
         "instance": instance,
         "form": form,
@@ -21839,6 +22361,122 @@ def memo1a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo1_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo1']
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo1=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo1a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo1a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo1=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2', context)
+
+
+def memo1_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo1']
+    Contract.objects.filter(bidid=bidid).update(memo1=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo1a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo1a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo1=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3', context)
+
+
+def memo1_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo1']
+    Contract.objects.filter(bidid=bidid).update(memo1=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo1a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo1a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo1=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4', context)
+
+
+def memo1_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo1']
+    Contract.objects.filter(bidid=bidid).update(memo1=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo1a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo1a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo1=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5', context)
+
 def load_memo1a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -21855,7 +22493,8 @@ def memo2(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo2']
-    Contract.objects.filter(bidid=bidid).update(memo2=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo2=a)
     context = {
         "instance": instance,
         "form": form,
@@ -21880,6 +22519,122 @@ def memo2a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo2_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo2']
+    Contract.objects.filter(bidid=bidid).update(memo2=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo2a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo2a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo2=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo2_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo2']
+    Contract.objects.filter(bidid=bidid).update(memo2=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo2a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo2a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo2=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo2_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo2']
+    Contract.objects.filter(bidid=bidid).update(memo2=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo2a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo2a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo2=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo2_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo2']
+    Contract.objects.filter(bidid=bidid).update(memo2=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo2a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo2a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo2=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def load_memo2a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -21896,7 +22651,8 @@ def memo3(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo3']
-    Contract.objects.filter(bidid=bidid).update(memo3=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo3=a)
     context = {
         "instance": instance,
         "form": form,
@@ -21921,6 +22677,122 @@ def memo3a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo3_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo3']
+    Contract.objects.filter(bidid=bidid).update(memo3=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo3a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo3a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo3=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo3_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo3']
+    Contract.objects.filter(bidid=bidid).update(memo3=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo3a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo3a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo3=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo3_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo3']
+    Contract.objects.filter(bidid=bidid).update(memo3=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo3a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo3a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo3=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo3_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo3']
+    Contract.objects.filter(bidid=bidid).update(memo3=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo3a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo3a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo3=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def load_memo3a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -21937,7 +22809,8 @@ def memo4(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo4']
-    Contract.objects.filter(bidid=bidid).update(memo4=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo4=a)
     context = {
         "instance": instance,
         "form": form,
@@ -21962,6 +22835,122 @@ def memo4a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo4_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo4']
+    Contract.objects.filter(bidid=bidid).update(memo4=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo4a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo4a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo4=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo4_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo4']
+    Contract.objects.filter(bidid=bidid).update(memo4=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo4a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo4a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo4=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo4_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo4']
+    Contract.objects.filter(bidid=bidid).update(memo4=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo4a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo4a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo4=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo4_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo4']
+    Contract.objects.filter(bidid=bidid).update(memo4=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo4a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo4a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo4=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def load_memo4a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -21978,7 +22967,8 @@ def memo5(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo5']
-    Contract.objects.filter(bidid=bidid).update(memo5=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo5=a)
     context = {
         "instance": instance,
         "form": form,
@@ -22003,6 +22993,122 @@ def memo5a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo5_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo5']
+    Contract.objects.filter(bidid=bidid).update(memo5=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo5a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo5a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo5=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo5_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo5']
+    Contract.objects.filter(bidid=bidid).update(memo5=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo5a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo5a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo5=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo5_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo5']
+    Contract.objects.filter(bidid=bidid).update(memo5=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo5a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo5a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo5=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo5_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo5']
+    Contract.objects.filter(bidid=bidid).update(memo5=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo5a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo5a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo5=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def load_memo5a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -22019,7 +23125,8 @@ def memo6(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo6']
-    Contract.objects.filter(bidid=bidid).update(memo6=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo6=a)
     context = {
         "instance": instance,
         "form": form,
@@ -22044,6 +23151,122 @@ def memo6a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo6_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo6']
+    Contract.objects.filter(bidid=bidid).update(memo6=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo6a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo6a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo6=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo6_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo6']
+    Contract.objects.filter(bidid=bidid).update(memo6=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo6a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo6a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo6=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo6_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo6']
+    Contract.objects.filter(bidid=bidid).update(memo6=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo6a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo6a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo6=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo6_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo6']
+    Contract.objects.filter(bidid=bidid).update(memo6=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo6a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo6a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo6=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def load_memo6a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -22060,7 +23283,8 @@ def memo7(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo7']
-    Contract.objects.filter(bidid=bidid).update(memo7=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo7=a)
     context = {
         "instance": instance,
         "form": form,
@@ -22085,6 +23309,126 @@ def memo7a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+
+def memo7_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo7']
+    Contract.objects.filter(bidid=bidid).update(memo7=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo7a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo7a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo7=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+
+def memo7_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo7']
+    Contract.objects.filter(bidid=bidid).update(memo7=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo7a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo7a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo7=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+
+def memo7_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo7']
+    Contract.objects.filter(bidid=bidid).update(memo7=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo7a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo7a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo7=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+
+def memo7_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo7']
+    Contract.objects.filter(bidid=bidid).update(memo7=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo7a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo7a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo7=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def load_memo7a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -22101,7 +23445,8 @@ def memo8(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo8']
-    Contract.objects.filter(bidid=bidid).update(memo8=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo8=a)
     context = {
         "instance": instance,
         "form": form,
@@ -22126,6 +23471,125 @@ def memo8a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo8_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo8']
+    Contract.objects.filter(bidid=bidid).update(memo8=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo8a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo8a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo8=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+
+def memo8_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo8']
+    Contract.objects.filter(bidid=bidid).update(memo8=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo8a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo8a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo8=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+
+def memo8_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo8']
+    Contract.objects.filter(bidid=bidid).update(memo8=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo8a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo8a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo8=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+
+def memo8_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo8']
+    Contract.objects.filter(bidid=bidid).update(memo8=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo8a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo8a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo8=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def load_memo8a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -22142,7 +23606,8 @@ def memo9(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo9']
-    Contract.objects.filter(bidid=bidid).update(memo9=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo9=a)
     context = {
         "instance": instance,
         "form": form,
@@ -22167,6 +23632,125 @@ def memo9a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo9_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo9']
+    Contract.objects.filter(bidid=bidid).update(memo9=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo9a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo9a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo9=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+
+def memo9_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo9']
+    Contract.objects.filter(bidid=bidid).update(memo9=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo9a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo9a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo9=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+
+def memo9_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo9']
+    Contract.objects.filter(bidid=bidid).update(memo9=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo9a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo9a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo9=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+
+def memo9_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo9']
+    Contract.objects.filter(bidid=bidid).update(memo9=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo9a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo9a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo9=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def load_memo9a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -22183,7 +23767,8 @@ def memo10(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo10']
-    Contract.objects.filter(bidid=bidid).update(memo10=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo10=a)
     context = {
         "instance": instance,
         "form": form,
@@ -22208,6 +23793,125 @@ def memo10a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo10_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo10']
+    Contract.objects.filter(bidid=bidid).update(memo10=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo10a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo10a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo10=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+
+def memo10_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo10']
+    Contract.objects.filter(bidid=bidid).update(memo10=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo10a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo10a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo10=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+
+def memo10_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo10']
+    Contract.objects.filter(bidid=bidid).update(memo10=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo10a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo10a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo10=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+
+def memo10_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo10']
+    Contract.objects.filter(bidid=bidid).update(memo10=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo10a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo10a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo10=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def load_memo10a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -22224,7 +23928,8 @@ def memo11(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo11']
-    Contract.objects.filter(bidid=bidid).update(memo11=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo11=a)
     context = {
         "instance": instance,
         "form": form,
@@ -22249,6 +23954,125 @@ def memo11a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo11_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo11']
+    Contract.objects.filter(bidid=bidid).update(memo11=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo11a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo11a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo11=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+
+def memo11_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo11']
+    Contract.objects.filter(bidid=bidid).update(memo11=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo11a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo11a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo11=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+
+def memo11_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo11']
+    Contract.objects.filter(bidid=bidid).update(memo11=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo11a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo11a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo11=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+
+def memo11_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo11']
+    Contract.objects.filter(bidid=bidid).update(memo11=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo11a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo11a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo11=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def load_memo11a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -22265,7 +24089,8 @@ def memo12(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo12']
-    Contract.objects.filter(bidid=bidid).update(memo12=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo12=a)
     context = {
         "instance": instance,
         "form": form,
@@ -22290,6 +24115,125 @@ def memo12a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo12_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo12']
+    Contract.objects.filter(bidid=bidid).update(memo12=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo12a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo12a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo12=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+
+def memo12_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo12']
+    Contract.objects.filter(bidid=bidid).update(memo12=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo12a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo12a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo12=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+
+def memo12_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo12']
+    Contract.objects.filter(bidid=bidid).update(memo12=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo12a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo12a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo12=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+
+def memo12_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo12']
+    Contract.objects.filter(bidid=bidid).update(memo12=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo12a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo12a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo12=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def load_memo12a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -22306,7 +24250,8 @@ def memo13(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo13']
-    Contract.objects.filter(bidid=bidid).update(memo13=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo13=a)
     context = {
         "instance": instance,
         "form": form,
@@ -22331,6 +24276,125 @@ def memo13a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo13_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo13']
+    Contract.objects.filter(bidid=bidid).update(memo13=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo13a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo13a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo13=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+
+def memo13_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo13']
+    Contract.objects.filter(bidid=bidid).update(memo13=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo13a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo13a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo13=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+
+def memo13_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo13']
+    Contract.objects.filter(bidid=bidid).update(memo13=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo13a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo13a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo13=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+
+def memo13_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo13']
+    Contract.objects.filter(bidid=bidid).update(memo13=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo13a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo13a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo13=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def load_memo13a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -22347,7 +24411,8 @@ def memo14(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo14']
-    Contract.objects.filter(bidid=bidid).update(memo14=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo14=a)
     context = {
         "instance": instance,
         "form": form,
@@ -22372,6 +24437,125 @@ def memo14a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo14_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo14']
+    Contract.objects.filter(bidid=bidid).update(memo14=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo14a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo14a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo14=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+
+def memo14_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo14']
+    Contract.objects.filter(bidid=bidid).update(memo14=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo14a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo14a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo14=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+
+def memo14_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo14']
+    Contract.objects.filter(bidid=bidid).update(memo14=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo14a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo14a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo14=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+
+def memo14_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo14']
+    Contract.objects.filter(bidid=bidid).update(memo14=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo14a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo14a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo14=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def load_memo14a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -22388,7 +24572,8 @@ def memo15(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo15']
-    Contract.objects.filter(bidid=bidid).update(memo15=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo15=a)
     context = {
         "instance": instance,
         "form": form,
@@ -22413,6 +24598,125 @@ def memo15a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo15_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo15']
+    Contract.objects.filter(bidid=bidid).update(memo15=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo15a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo15a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo15=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+
+def memo15_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo15']
+    Contract.objects.filter(bidid=bidid).update(memo15=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo15a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo15a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo15=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+
+def memo15_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo15']
+    Contract.objects.filter(bidid=bidid).update(memo15=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo15a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo15a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo15=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+
+def memo15_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo15']
+    Contract.objects.filter(bidid=bidid).update(memo15=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo15a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo15a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo15=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def load_memo15a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -22429,7 +24733,8 @@ def memo16(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo16']
-    Contract.objects.filter(bidid=bidid).update(memo16=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo16=a)
     context = {
         "instance": instance,
         "form": form,
@@ -22454,6 +24759,128 @@ def memo16a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+
+def memo16_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo16']
+    Contract.objects.filter(bidid=bidid).update(memo16=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo16a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo16a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo16=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+
+def memo16_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo16']
+    Contract.objects.filter(bidid=bidid).update(memo16=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo16a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo16a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo16=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+
+def memo16_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo16']
+    Contract.objects.filter(bidid=bidid).update(memo16=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo16a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo16a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo16=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+
+def memo16_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo16']
+    Contract.objects.filter(bidid=bidid).update(memo16=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo16a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo16a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo16=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+
+
 def load_memo16a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -22470,7 +24897,8 @@ def memo17(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo17']
-    Contract.objects.filter(bidid=bidid).update(memo17=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo17=a)
     context = {
         "instance": instance,
         "form": form,
@@ -22495,6 +24923,125 @@ def memo17a(request, bidid=None):
     return render(request, 'mha/contract.html', context)
 
 
+def memo17_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo17']
+    Contract.objects.filter(bidid=bidid).update(memo17=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo17a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo17a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo17=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+
+def memo17_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo17']
+    Contract.objects.filter(bidid=bidid).update(memo17=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo17a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo17a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo17=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+
+def memo17_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo17']
+    Contract.objects.filter(bidid=bidid).update(memo17=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo17a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo17a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo17=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+
+def memo17_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo17']
+    Contract.objects.filter(bidid=bidid).update(memo17=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo17a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo17a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo17=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
 def load_memo17a(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
@@ -22511,7 +25058,8 @@ def memo18(request, bidid=None):
     instance = Contract.objects.get(bidid=bidid)
     form = ContractForm(request.POST or None, instance=instance)
     a = request.POST['id_memo18']
-    Contract.objects.filter(bidid=bidid).update(memo18=a)
+    b = Contract.objects.filter(bidid=bidid).values_list('jobid', flat=True).last()
+    Contract.objects.filter(jobid=b).update(memo18=a)
     context = {
         "instance": instance,
         "form": form,
@@ -22534,6 +25082,125 @@ def memo18a(request, bidid=None):
 
     }
     return render(request, 'mha/contract.html', context)
+
+
+def memo18_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo18']
+    Contract.objects.filter(bidid=bidid).update(memo18=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+def memo18a_2(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo18a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo18=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti2.html', context)
+
+
+
+def memo18_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo18']
+    Contract.objects.filter(bidid=bidid).update(memo18=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+def memo18a_3(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo18a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo18=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti3.html', context)
+
+
+
+def memo18_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo18']
+    Contract.objects.filter(bidid=bidid).update(memo18=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+def memo18a_4(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo18a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo18=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti4.html', context)
+
+
+
+def memo18_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo18']
+    Contract.objects.filter(bidid=bidid).update(memo18=a)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
+
+
+def memo18a_5(request, bidid=None):
+    instance = Contract.objects.get(bidid=bidid)
+    form = ContractForm(request.POST or None, instance=instance)
+    a = request.POST['id_memo18a']
+    b = DetailTable.objects.values_list('id', flat=True).last()
+    c = b+1
+    DetailTable.objects.create(id=c, details=a)
+    Contract.objects.filter(bidid=bidid).update(memo18=c)
+    context = {
+        "instance": instance,
+        "form": form,
+
+    }
+    return render(request, 'mha/contractmulti5.html', context)
 
 
 def load_memo18a(request, bidid=None):
@@ -22622,7 +25289,7 @@ def changetargetnet(request, bidid=None):
     p = JobCost.objects.filter(bidid=bidid).update(finaljobcost=o)
 
     q = CurrentJobInfo.objects.filter(bidid=bidid).update(locationcost=j, loccostafterrebate=o)
-
+    r = Contract.objects.filter(bidid=bidid).update(grandtotalcost=o)
     context = {
         "instance": instance,
         "form": form,
@@ -22633,6 +25300,7 @@ def changetargetnet(request, bidid=None):
         "l": l,
         "p": p,
         "q": q,
+        "r": r,
 
     }
 

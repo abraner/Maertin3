@@ -30,25 +30,60 @@
                     <div class="logo2">
                         <form class="form2" method="post"
                             memo31-url="{% url 'mhadatabase:memo31' instance.bidid %}"
-                            memo1-url="{% url 'mhadatabase:memo1' instance.bidid %}"
-                              memo1-url="{% url 'mhadatabase:memo1' instance.bidid %}"
+                              memo1-url="{% url 'mhadatabase:memo1_5' instance.bidid %}"
+                              memo1a-url="{% url 'mhadatabase:memo1a_5' instance.bidid %}"
+                              memo1aload-url="{% url 'mhadatabase:load_memo1a' instance.bidid %}"
                               memo2-url="{% url 'mhadatabase:memo2' instance.bidid %}"
+                              memo2a-url="{% url 'mhadatabase:memo2a' instance.bidid %}"
+                              memo2aload-url="{% url 'mhadatabase:load_memo2a' instance.bidid %}"
                               memo3-url="{% url 'mhadatabase:memo3' instance.bidid %}"
+                              memo3a-url="{% url 'mhadatabase:memo3a' instance.bidid %}"
+                              memo3aload-url="{% url 'mhadatabase:load_memo3a' instance.bidid %}"
                               memo4-url="{% url 'mhadatabase:memo4' instance.bidid %}"
+                              memo4a-url="{% url 'mhadatabase:memo4a' instance.bidid %}"
+                              memo4aload-url="{% url 'mhadatabase:load_memo4a' instance.bidid %}"
                               memo5-url="{% url 'mhadatabase:memo5' instance.bidid %}"
+                              memo5a-url="{% url 'mhadatabase:memo5a' instance.bidid %}"
+                              memo5aload-url="{% url 'mhadatabase:load_memo5a' instance.bidid %}"
                               memo6-url="{% url 'mhadatabase:memo6' instance.bidid %}"
+                              memo6a-url="{% url 'mhadatabase:memo6a' instance.bidid %}"
+                              memo6aload-url="{% url 'mhadatabase:load_memo6a' instance.bidid %}"
                               memo7-url="{% url 'mhadatabase:memo7' instance.bidid %}"
+                              memo7a-url="{% url 'mhadatabase:memo7a' instance.bidid %}"
+                              memo7aload-url="{% url 'mhadatabase:load_memo7a' instance.bidid %}"
                               memo8-url="{% url 'mhadatabase:memo8' instance.bidid %}"
+                              memo8a-url="{% url 'mhadatabase:memo8a' instance.bidid %}"
+                              memo8aload-url="{% url 'mhadatabase:load_memo8a' instance.bidid %}"
                               memo9-url="{% url 'mhadatabase:memo9' instance.bidid %}"
+                              memo9a-url="{% url 'mhadatabase:memo9a' instance.bidid %}"
+                              memo9aload-url="{% url 'mhadatabase:load_memo9a' instance.bidid %}"
                               memo10-url="{% url 'mhadatabase:memo10' instance.bidid %}"
+                              memo10a-url="{% url 'mhadatabase:memo10a' instance.bidid %}"
+                              memo10aload-url="{% url 'mhadatabase:load_memo10a' instance.bidid %}"
                               memo11-url="{% url 'mhadatabase:memo11' instance.bidid %}"
+                              memo11a-url="{% url 'mhadatabase:memo11a' instance.bidid %}"
+                              memo11aload-url="{% url 'mhadatabase:load_memo11a' instance.bidid %}"
                               memo12-url="{% url 'mhadatabase:memo12' instance.bidid %}"
+                              memo12a-url="{% url 'mhadatabase:memo12a' instance.bidid %}"
+                              memo12aload-url="{% url 'mhadatabase:load_memo12a' instance.bidid %}"
                               memo13-url="{% url 'mhadatabase:memo13' instance.bidid %}"
+                              memo13a-url="{% url 'mhadatabase:memo13a' instance.bidid %}"
+                              memo13aload-url="{% url 'mhadatabase:load_memo13a' instance.bidid %}"
                               memo14-url="{% url 'mhadatabase:memo14' instance.bidid %}"
+                              memo14a-url="{% url 'mhadatabase:memo14a' instance.bidid %}"
+                              memo14aload-url="{% url 'mhadatabase:load_memo14a' instance.bidid %}"
                               memo15-url="{% url 'mhadatabase:memo15' instance.bidid %}"
+                              memo15a-url="{% url 'mhadatabase:memo15a' instance.bidid %}"
+                              memo15aload-url="{% url 'mhadatabase:load_memo15a' instance.bidid %}"
                               memo16-url="{% url 'mhadatabase:memo16' instance.bidid %}"
+                              memo16a-url="{% url 'mhadatabase:memo16a' instance.bidid %}"
+                              memo16aload-url="{% url 'mhadatabase:load_memo16a' instance.bidid %}"
                               memo17-url="{% url 'mhadatabase:memo17' instance.bidid %}"
+                              memo17a-url="{% url 'mhadatabase:memo17a' instance.bidid %}"
+                              memo17aload-url="{% url 'mhadatabase:load_memo17a' instance.bidid %}"
                               memo18-url="{% url 'mhadatabase:memo18' instance.bidid %}"
+                              memo18a-url="{% url 'mhadatabase:memo18a' instance.bidid %}"
+                              memo18aload-url="{% url 'mhadatabase:load_memo18a' instance.bidid %}"
 
                         >
                                 {% csrf_token %}
@@ -531,8 +566,12 @@ var userInput = document.getElementById("id_memo31").value;
 
 
 
+////////////////////////////// Memo 1 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo1').change(function(){
+   if ($('#id_memo1').val() ==1) $(".mfg-modal").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo1');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -550,8 +589,76 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button1').click(function(){
+        $(".mfg2").show()
+        $(".mfg-modal").hide()
+    });
+});
+
+$(function(){
+    $('.button2').click(function(){
+        $(".mfg-modal").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel').click(function(){
+        $(".mfg2").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept').click(function(){
+        $(".mfg2").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo1a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo1a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo1a: $('#id_memo1a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo1aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo1").html(data);
+                     }
+                });
+        },800);
+    });
+});
+
+
+
+
+
+
+////////////////////////////// Memo 2 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo2').change(function(){
+   if ($('#id_memo2').val() ==1) $(".mfg-modal2").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo2');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -569,8 +676,73 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button12').click(function(){
+        $(".mfg22").show()
+        $(".mfg-modal2").hide()
+    });
+});
+
+$(function(){
+    $('.button22').click(function(){
+        $(".mfg-modal2").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel2').click(function(){
+        $(".mfg22").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept2').click(function(){
+        $(".mfg22").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo2a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo2a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo2a: $('#id_memo2a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept2').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo2aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo2").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+
+
+//////////////////////////// Memo 3 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo3').change(function(){
+   if ($('#id_memo3').val() ==1) $(".mfg-modal3").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo3');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -588,8 +760,73 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button13').click(function(){
+        $(".mfg23").show()
+        $(".mfg-modal3").hide()
+    });
+});
+
+$(function(){
+    $('.button23').click(function(){
+        $(".mfg-modal3").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel3').click(function(){
+        $(".mfg23").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept3').click(function(){
+        $(".mfg23").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo3a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo3a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo3a: $('#id_memo3a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept3').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo3aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo3").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+
+
+////////////////////////////// Memo 4 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo4').change(function(){
+   if ($('#id_memo4').val() ==1) $(".mfg-modal4").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo4');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -607,8 +844,73 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button14').click(function(){
+        $(".mfg24").show()
+        $(".mfg-modal4").hide()
+    });
+});
+
+$(function(){
+    $('.button24').click(function(){
+        $(".mfg-modal4").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel4').click(function(){
+        $(".mfg24").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept4').click(function(){
+        $(".mfg24").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo4a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo4a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo4a: $('#id_memo4a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept4').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo4aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo4").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+
+
+////////////////////////////// Memo 5 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo5').change(function(){
+   if ($('#id_memo5').val() ==1) $(".mfg-modal5").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo5');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -626,8 +928,71 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button15').click(function(){
+        $(".mfg25").show()
+        $(".mfg-modal5").hide()
+    });
+});
+
+$(function(){
+    $('.button25').click(function(){
+        $(".mfg-modal5").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel5').click(function(){
+        $(".mfg25").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept5').click(function(){
+        $(".mfg25").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo5a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo5a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo5a: $('#id_memo5a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept5').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo5aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo5").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 6 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo6').change(function(){
+   if ($('#id_memo6').val() ==1) $(".mfg-modal6").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo6');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -645,8 +1010,71 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button16').click(function(){
+        $(".mfg26").show()
+        $(".mfg-modal6").hide()
+    });
+});
+
+$(function(){
+    $('.button26').click(function(){
+        $(".mfg-modal6").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel6').click(function(){
+        $(".mfg26").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept6').click(function(){
+        $(".mfg26").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo6a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo6a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo6a: $('#id_memo6a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept6').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo6aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo6").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 7 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo7').change(function(){
+   if ($('#id_memo7').val() ==1) $(".mfg-modal7").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo7');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -664,8 +1092,71 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button17').click(function(){
+        $(".mfg27").show()
+        $(".mfg-modal7").hide()
+    });
+});
+
+$(function(){
+    $('.button27').click(function(){
+        $(".mfg-modal7").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel7').click(function(){
+        $(".mfg27").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept7').click(function(){
+        $(".mfg27").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo7a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo7a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo7a: $('#id_memo7a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept7').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo7aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo7").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 8 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo8').change(function(){
+   if ($('#id_memo8').val() ==1) $(".mfg-modal8").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo8');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -683,8 +1174,71 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button18').click(function(){
+        $(".mfg28").show()
+        $(".mfg-modal8").hide()
+    });
+});
+
+$(function(){
+    $('.button28').click(function(){
+        $(".mfg-modal8").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel8').click(function(){
+        $(".mfg28").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept8').click(function(){
+        $(".mfg28").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo8a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo8a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo8a: $('#id_memo8a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept8').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo8aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo8").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 9 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo9').change(function(){
+   if ($('#id_memo9').val() ==1) $(".mfg-modal9").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo9');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -702,8 +1256,71 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button19').click(function(){
+        $(".mfg29").show()
+        $(".mfg-modal9").hide()
+    });
+});
+
+$(function(){
+    $('.button29').click(function(){
+        $(".mfg-modal9").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel9').click(function(){
+        $(".mfg29").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept9').click(function(){
+        $(".mfg29").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo9a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo9a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo9a: $('#id_memo9a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept9').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo9aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo9").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 10 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo10').change(function(){
+   if ($('#id_memo10').val() ==1) $(".mfg-modal10").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo10');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -721,8 +1338,71 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button110').click(function(){
+        $(".mfg210").show()
+        $(".mfg-modal10").hide()
+    });
+});
+
+$(function(){
+    $('.button210').click(function(){
+        $(".mfg-modal10").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel10').click(function(){
+        $(".mfg210").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept10').click(function(){
+        $(".mfg210").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo10a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo10a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo10a: $('#id_memo10a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept10').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo10aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo10").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 11 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo11').change(function(){
+   if ($('#id_memo11').val() ==1) $(".mfg-modal11").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo11');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -740,8 +1420,71 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button111').click(function(){
+        $(".mfg211").show()
+        $(".mfg-modal11").hide()
+    });
+});
+
+$(function(){
+    $('.button211').click(function(){
+        $(".mfg-modal11").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel11').click(function(){
+        $(".mfg211").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept11').click(function(){
+        $(".mfg211").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo11a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo11a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo11a: $('#id_memo11a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept11').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo11aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo11").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 12 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo12').change(function(){
+   if ($('#id_memo12').val() ==1) $(".mfg-modal12").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo12');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -759,8 +1502,70 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button112').click(function(){
+        $(".mfg212").show()
+        $(".mfg-modal12").hide()
+    });
+});
+
+$(function(){
+    $('.button212').click(function(){
+        $(".mfg-modal12").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel12').click(function(){
+        $(".mfg212").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept12').click(function(){
+        $(".mfg212").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo12a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo12a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo12a: $('#id_memo12a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept12').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo12aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo12").html(data);
+                     }
+                });
+        },400);
+    });
+});
+////////////////////////////// Memo 13 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo13').change(function(){
+   if ($('#id_memo13').val() ==1) $(".mfg-modal13").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo13');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -778,8 +1583,71 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button113').click(function(){
+        $(".mfg213").show()
+        $(".mfg-modal13").hide()
+    });
+});
+
+$(function(){
+    $('.button213').click(function(){
+        $(".mfg-modal13").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel13').click(function(){
+        $(".mfg213").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept13').click(function(){
+        $(".mfg213").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo13a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo13a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo13a: $('#id_memo13a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept13').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo13aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo13").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 14 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo14').change(function(){
+   if ($('#id_memo14').val() ==1) $(".mfg-modal14").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo14');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -797,8 +1665,71 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button114').click(function(){
+        $(".mfg214").show()
+        $(".mfg-modal14").hide()
+    });
+});
+
+$(function(){
+    $('.button214').click(function(){
+        $(".mfg-modal14").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel14').click(function(){
+        $(".mfg214").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept14').click(function(){
+        $(".mfg214").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo14a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo14a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo14a: $('#id_memo14a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept14').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo14aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo14").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 15 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo15').change(function(){
+   if ($('#id_memo15').val() ==1) $(".mfg-modal15").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo15');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -816,8 +1747,71 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button115').click(function(){
+        $(".mfg215").show()
+        $(".mfg-modal15").hide()
+    });
+});
+
+$(function(){
+    $('.button215').click(function(){
+        $(".mfg-modal15").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel15').click(function(){
+        $(".mfg215").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept15').click(function(){
+        $(".mfg215").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo15a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo15a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo15a: $('#id_memo15a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept15').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo15aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo15").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 16 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo16').change(function(){
+   if ($('#id_memo16').val() ==1) $(".mfg-modal16").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo16');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -835,8 +1829,71 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button116').click(function(){
+        $(".mfg216").show()
+        $(".mfg-modal16").hide()
+    });
+});
+
+$(function(){
+    $('.button216').click(function(){
+        $(".mfg-modal16").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel16').click(function(){
+        $(".mfg216").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept16').click(function(){
+        $(".mfg216").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo16a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo16a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo16a: $('#id_memo16a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept16').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo16aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo16").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 17 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo17').change(function(){
+   if ($('#id_memo17').val() ==1) $(".mfg-modal17").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo17');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -854,8 +1911,71 @@ $(function(){
     });
 });
 
+
+
+$(function(){
+    $('.button117').click(function(){
+        $(".mfg217").show()
+        $(".mfg-modal17").hide()
+    });
+});
+
+$(function(){
+    $('.button217').click(function(){
+        $(".mfg-modal17").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel17').click(function(){
+        $(".mfg217").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept17').click(function(){
+        $(".mfg217").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo17a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo17a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo17a: $('#id_memo17a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept17').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo17aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo17").html(data);
+                     }
+                });
+        },400);
+    });
+});
+
+////////////////////////////// Memo 18 //////////////////////////////////////
+
+
 $(function(){
    $('#id_memo18').change(function(){
+   if ($('#id_memo18').val() ==1) $(".mfg-modal18").show()
         setTimeout(function(){
                 var selectBox =document.getElementById('id_memo18');
                 var userInput =selectBox.options[selectBox.selectedIndex].value;
@@ -870,6 +1990,65 @@ $(function(){
                          },
                     });
         }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.button118').click(function(){
+        $(".mfg218").show()
+        $(".mfg-modal18").hide()
+    });
+});
+
+$(function(){
+    $('.button218').click(function(){
+        $(".mfg-modal18").hide()
+    });
+});
+
+$(function(){
+    $('button.cancel18').click(function(){
+        $(".mfg218").hide()
+    });
+});
+
+
+ $(function(){
+    $('.accept18').click(function(){
+        $(".mfg218").hide()
+        setTimeout(function(){
+            var userInput = document.getElementById("id_memo18a").value;
+                console.log(userInput);
+                var url = $(".form2").attr("memo18a-url");
+                    $.ajax({
+                        type:'POST',
+                       url: url,
+                       data:{
+                            id_memo18a: $('#id_memo18a').val(),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                         },
+                    });
+        }, 100);
+    });
+});
+
+
+
+$(function(){
+    $('.accept18').click(function(){
+        setTimeout(function(){
+            var urlC = $(".form2").attr("memo18aload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_memo18").html(data);
+                     }
+                });
+        },400);
     });
 });
 

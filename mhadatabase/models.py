@@ -1228,6 +1228,8 @@ class EquipSelection(models.Model):
     optionid = models.IntegerField(null=True, default=None, verbose_name="")
     options = models.CharField(null=True, blank=True, max_length=45, verbose_name="")
 
+    def get_absolute7_url(self):
+        return f"/mhadatabase/{self.custid}/customerpage/"
 
     def get_absolute11_url(self):
         return f"/mhadatabase/{self.custid}/jobselection"
@@ -1235,35 +1237,14 @@ class EquipSelection(models.Model):
     def get_absolute16_url(self):
         return f"/mhadatabase/{self.custid}/jobselection"
 
-    def get_absolute7_url(self):
-        return f"/mhadatabase/{self.custid}/customerpage/"
+    def get_absolute17_url(self):
+        return f"/mhadatabase/{self.jobid}/equipselection1"
 
     def get_absolute18_url(self):
         return f"/mhadatabase/{self.jobid}/customerinfo"
 
-    def get_absolute25_url(self):
-        return f"/mhadatabase/{self.bidid}/bidpageno/"
-
     def get_absolute19_url(self):
         return f"/mhadatabase/{self.bidid}/bidpage/"
-
-    def get_absolute26_url(self):
-        return f"/mhadatabase/{self.bidid}/bidpage1"
-
-    def get_absolute27_url(self):
-        return f"/mhadatabase/{self.bidid}/bidpage4"
-
-    def get_absolute28_url(self):
-        return f"/mhadatabase/{self.bidid}/bidpage2"
-
-    def get_absolute29_url(self):
-        return f"/mhadatabase/{self.bidid}/bidpage3"
-
-    def get_absolute30_url(self):
-        return f"/mhadatabase/{self.bidid}/bidpage3A"
-
-    def get_absolute17_url(self):
-        return f"/mhadatabase/{self.jobid}/equipselection1"
 
     def get_absolute20_url(self):
         return f"/mhadatabase/{self.id}/equipselection2"
@@ -1280,6 +1261,24 @@ class EquipSelection(models.Model):
     def get_absolute24_url(self):
         return f"/mhadatabase/{self.jobid}/equipselection2A"
 
+    def get_absolute25_url(self):
+        return f"/mhadatabase/{self.bidid}/bidpageno/"
+
+    def get_absolute26_url(self):
+        return f"/mhadatabase/{self.bidid}/bidpage1"
+
+    def get_absolute27_url(self):
+        return f"/mhadatabase/{self.bidid}/bidpage4"
+
+    def get_absolute28_url(self):
+        return f"/mhadatabase/{self.bidid}/bidpage2"
+
+    def get_absolute29_url(self):
+        return f"/mhadatabase/{self.bidid}/bidpage3"
+
+    def get_absolute30_url(self):
+        return f"/mhadatabase/{self.bidid}/bidpage3A"
+
     def get_absolute31_url(self):
         return f"/mhadatabase/{self.bidid}/equipselection2B"
 
@@ -1287,7 +1286,7 @@ class EquipSelection(models.Model):
         return f"/mhadatabase/{self.bidid}/equipselection2C"
 
     def get_absolute33_url(self):
-        return f"/mhadatabase/{self.bidid}/equipselection3A"
+        return f"/mhadatabase/{self.bidid}/equipselection2AB"
 
     def get_absolute34_url(self):
         return f"/mhadatabase/{self.bidid}/equipselection3B"
@@ -1321,6 +1320,15 @@ class EquipSelection(models.Model):
 
     def get_absolute44_url(self):
         return f"/mhadatabase/{self.bidid}/equipselection6C"
+
+    def get_absolute45_url(self):
+        return f"/mhadatabase/{self.bidid}/equipselection2AC"
+
+    def get_absolute46_url(self):
+        return f"/mhadatabase/{self.bidid}/equipselection2AD"
+
+    def get_absolute47_url(self):
+        return f"/mhadatabase/{self.bidid}/equipselection2AE"
 
 
 

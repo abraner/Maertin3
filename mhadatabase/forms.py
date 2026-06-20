@@ -724,6 +724,91 @@ class EquipmentSelect2(forms.ModelForm):
             'options',
         ]
 
+class EquipmentSelect2AB(forms.ModelForm):
+
+    condeff = forms.ModelChoiceField(queryset=FilterCondEff.objects.all(), empty_label="Select an option")
+    condbtu = forms.ModelChoiceField(queryset=FilterCondbtu.objects.all(), empty_label="Select an option")
+    conddescript = forms.ModelChoiceField(queryset=FilterCondDescrip.objects.all(), empty_label="Select an option")
+    coilconfig = forms.ModelChoiceField(queryset=FilterCoilConfig.objects.all(), empty_label="Select an option")
+    coilbtu = forms.ModelChoiceField(queryset=FilterCoilbtu.objects.all(), empty_label="Select an option")
+    coiltype = forms.ModelChoiceField(queryset=FilterCoiltype.objects.all(), empty_label="Select an option")
+    addthermostat = forms.ModelChoiceField(queryset=YesNo.objects.all(), empty_label="Select")
+    thermostat = forms.ModelChoiceField(queryset=FilterThermostat.objects.all(), empty_label="Select an option")
+    thermostatmodnum = forms.ModelChoiceField(queryset=FilterThermostatModnum.objects.all(),
+                                              empty_label="Select an option")
+
+
+    class Meta:
+        model = EquipSelection
+        fields = [
+            'jobid',
+            'bidid',
+            'conid',
+            'custid',
+            'bididA',
+            'joblocation',
+            'furntype',
+            'furnmodrebatenum',
+            'furnmodnum',
+            'furnconfig',
+            'furndescript',
+            'furneff',
+            'furnbtub',
+            'furnbtu',
+            'furnwidth',
+            'furnheight',
+            'furndepth',
+            'odmodrebatenum',
+            'condmodnum',
+            'conddescript',
+            'condeff',
+            'condbtu',
+            'condbtub',
+            'coilmfg',
+            'coilmodrebatenum',
+            'coilmodnum',
+            'coiltype',
+            'coildescript',
+            'coilconfig',
+            'coilbtu',
+            'coilbtub',
+            'coilwidth',
+            'coilheight',
+            'coildepth',
+            'furncoilheight',
+            'targetseerrating',
+            'targetseerratingB',
+            'equipcomboseerRate',
+            'vendor1rebate',
+            'vendor2rebate',
+            'vendor3rebate',
+            'vendor4rebate',
+            'ahriref',
+            'lock',
+            'thermostatgroup',
+            'airhandlertype',
+            'outsideunittype',
+            'thermostatb',
+            'thermostat',
+            'addthermostat',
+            'thermostatmodnum',
+            'vendor4rebate2',
+            'totalrebate',
+            'eqmtrtype',
+            'plenumheight',
+            'plenumwidth',
+            'plenumdepth',
+            'existfurnconfig',
+            'existfurnheight',
+            'existfurnwidth',
+            'existfurndepth',
+            'acunitrebateamount',
+            'furnunitrebateamount',
+            'commedfurnthermbonus',
+            'commedbonus',
+            'optionid',
+            'options',
+        ]
 
 class EquipmentSelect3(forms.ModelForm):
     joblocation = forms.ModelChoiceField(queryset=JobLocation.objects.all(), empty_label="Select an option")
