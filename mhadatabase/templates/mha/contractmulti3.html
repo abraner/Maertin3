@@ -84,6 +84,7 @@
                               memo18-url="{% url 'mhadatabase:memo18' instance.bidid %}"
                               memo18a-url="{% url 'mhadatabase:memo18a' instance.bidid %}"
                               memo18aload-url="{% url 'mhadatabase:load_memo18a' instance.bidid %}"
+                              contractdateload-url="{% url 'mhadatabase:load_contractdate' instance.bidid %}"
 
                         >
                                 {% csrf_token %}
@@ -115,8 +116,7 @@
                         <a class="button2" href="{% url 'mhadatabase:customerinfo' instance.jobid %}">Close Form</a>
                         <div class="dateheader">Proposal Date</div>
                         <div class="calendar">
-                            <i class="bi bi-calendar-date input-group-text"></i>
-                            <input type="text" class="datepicker_input form-control" placeholder="Pick a Date">
+                            <div id="id_contractdate"></div>
                         </div>
 
                     </div>
@@ -544,7 +544,23 @@ if (element.textContent.indexOf("$") != 0)
 console.log(element.textContent);
 });
 
+$(document).ready(function() {
 
+setTimeout(function(){
+            var urlC = $(".form2").attr("contractdateload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_contractdate").html(data);
+                     }
+                });
+        }, 0);
+
+
+
+});
 
 $('.datepicker_input').datepicker();
 

@@ -18,9 +18,9 @@
     </div>
     <div class="container2">
         <form class="form2" method="post"
-              joblocation-url="{% url 'mhadatabase:joblocation' %}"
-              airhandler-url="{% url 'mhadatabase:airhandler' %}"
-              outsideunit-url="{% url 'mhadatabase:outsideunit' %}"
+              joblocationload1B-url="{% url 'mhadatabase:load_joblocation1B' %}"
+              airhandler1Bload-url="{% url 'mhadatabase:load_airhandler1B' %}"
+              outsideunittype1Bload-url="{% url 'mhadatabase:load_outsideunittype1B' %}"
               condeffload-url="{% url 'mhadatabase:load_condeff' %}"
               condeff-url="{% url 'mhadatabase:condeff' %}"
               condbtuload-url="{% url 'mhadatabase:load_condbtu' %}"
@@ -128,19 +128,19 @@
             <div class="row2">
                 <div class="row2col1">
                     <div class="form-rowjoblocation">
-                        {{ form.joblocation.errors }}
+
                         <label class="joblocation">Job Location:</label>
-                        {{ form.joblocation }}
+                        <div id="id_joblocation"></div>
                     </div>
                     <div class="form-rowfurntype">
-                        {{ form.furntype.errors }}
+
                         <label class="furntype">Air Handler Type:</label>
-                        {{ form.furntype }}
+                        <div id="id_airhandlertype"></div>
                     </div>
                     <div class="form-rowcondtype">
                         <label class="outsideunittype">Outside Unit Type:</label>
-                        {{ form.outsideunittype.errors }}
-                        {{ form.outsideunittype }}
+                        <div id="id_outsideunittype"></div>
+
                     </div>
                 </div>
             <div class="row2col2">
@@ -314,10 +314,10 @@ $(document).ready(function() {
    $("#id_bidid").attr("disabled", true)
    $("#form-rowfirst").attr("disabled", true)
    $("#form-rowlast").attr("disabled", true)
-   $("#id_joblocation").css('background-color', '#66d09a')
+   $("#id_joblocation").attr("disabled", true)
    $("#id_furntype").attr("disabled", true)
    $("#id_outsideunittype").attr("disabled", true)
-   $("#id_condeff").attr("disabled", true)
+   $("#id_condeff").attr("disabled", false).css('background-color', '#66d09a')
    $("#id_condbtu").attr("disabled", true)
    $("#id_conddescript").attr("disabled", true)
    $("#id_condmodnum").attr("disabled", true)
@@ -340,6 +340,43 @@ $(document).ready(function() {
    $("#id_addthermostat").attr("disabled", true)
 
 
+
+        setTimeout(function(){
+           var urlC = $(".form2").attr("joblocationload1B-url");
+           req = $.ajax({
+                  url: urlC,
+                  data:{
+                    },
+                    success: function (data) {
+                      $("#id_joblocation").html(data);
+                    }
+               });
+       }, 0);
+
+
+        setTimeout(function(){
+           var urlC = $(".form2").attr("airhandler1Bload-url");
+           req = $.ajax({
+                  url: urlC,
+                  data:{
+                    },
+                    success: function (data) {
+                      $("#id_airhandlertype").html(data);
+                    }
+               });
+       }, 0);
+
+        setTimeout(function(){
+           var urlC = $(".form2").attr("outsideunittype1Bload-url");
+           req = $.ajax({
+                  url: urlC,
+                  data:{
+                    },
+                    success: function (data) {
+                      $("#id_outsideunittype").html(data);
+                    }
+               });
+       }, 0);
 
 
 
@@ -2058,21 +2095,6 @@ $(function(){
 });
 
 
-$(function(){
-   $('#id_coilmodnum').change(function(){
-        setTimeout(function(){
-            if ($("#id_optionid").val() === '1') {
-            console.log("Input field value is 1!");
-            var urlC = $(".form2").attr("custpageloc-url");
-            req = $.ajax({
-                   url: urlC,
-                   });
-    }
-
-        },1500);
-    });
-});
-
 //$(function(){
 //   $('#id_coilmodnum').change(function(){
 //        setTimeout(function(){
@@ -2131,7 +2153,20 @@ $(function(){
 //});
 
 
-
+//$(function(){
+//   $('#id_coilmodnum').change(function(){
+//        setTimeout(function(){
+//            if ($("#id_optionid").val() === '1') {
+//            console.log("Input field value is 1!");
+//            var urlC = $(".form2").attr("custpageloc-url");
+//            req = $.ajax({
+//                   url: urlC,
+//                   });
+//    }
+//
+//        },1500);
+//    });
+//});
 
 
 

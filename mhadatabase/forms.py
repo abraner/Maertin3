@@ -633,6 +633,100 @@ class EquipmentSelect1(forms.ModelForm):
         ]
 
 
+class EquipmentSelect1B(forms.ModelForm):
+    condeff = forms.ModelChoiceField(queryset=FilterCondEff.objects.all(), empty_label="Select an option")
+    condbtu = forms.ModelChoiceField(queryset=FilterCondbtu.objects.all(), empty_label="Select an option")
+    conddescript = forms.ModelChoiceField(queryset=FilterCondDescrip.objects.all(), empty_label="Select an option")
+    condmodnum = forms.ModelChoiceField(queryset=FilterCondModelnum.objects.all(), empty_label="Select an option")
+    furnbtu = forms.ModelChoiceField(queryset=FilterFurnbtu.objects.all(), empty_label="Select an option")
+    furnconfig = forms.ModelChoiceField(queryset=FilterFurnConfig.objects.all(),
+        to_field_name="furnconfigfilter", empty_label="Select an option")
+    furneff = forms.ModelChoiceField(queryset=FilterFurnEff.objects.all(), empty_label="Select an option")
+    furndescript = forms.ModelChoiceField(queryset=FilterFurnDescrip.objects.all(), empty_label="Select an option")
+    furnmodnum = forms.ModelChoiceField(queryset=FilterFurnModelnum.objects.all(), empty_label="Select an option")
+    coilbtu = forms.ModelChoiceField(queryset=FilterCoilbtu.objects.all(), empty_label="Select an option")
+    coilconfig = forms.ModelChoiceField(queryset=FilterCoilConfig.objects.all(), empty_label="Select an option")
+    coilmodnum = forms.ModelChoiceField(queryset=FilterCoilModelnum.objects.all(), empty_label="Select an option")
+    thermostat = forms.ModelChoiceField(queryset=FilterThermostat.objects.all(), empty_label="Select an option")
+    thermostatmodnum = forms.ModelChoiceField(queryset=FilterThermostatModnum.objects.all(),
+                                              empty_label="Select an option")
+    coiltype = forms.ModelChoiceField(queryset=FilterCoiltype.objects.all(), empty_label="Select an option")
+    plenumwidth = forms.ModelChoiceField(queryset=FilterPlenumWidth.objects.all(), empty_label="Select")
+    addthermostat = forms.ModelChoiceField(queryset=YesNo.objects.all(), empty_label="Select")
+
+    class Meta:
+        model = EquipSelection
+        fields = [
+            'jobid',
+            'bidid',
+            'conid',
+            'custid',
+            'bididA',
+            'joblocation',
+            'furntype',
+            'furnmodrebatenum',
+            'furnmodnum',
+            'furnconfig',
+            'furndescript',
+            'furneff',
+            'furnbtub',
+            'furnbtu',
+            'furnwidth',
+            'furnheight',
+            'furndepth',
+            'odmodrebatenum',
+            'condmodnum',
+            'conddescript',
+            'condeff',
+            'condbtu',
+            'condbtub',
+            'coilmfg',
+            'coilmodrebatenum',
+            'coilmodnum',
+            'coiltype',
+            'coilconfig',
+            'coilbtu',
+            'coilbtub',
+            'coilwidth',
+            'coilheight',
+            'coildepth',
+            'furncoilheight',
+            'targetseerrating',
+            'targetseerratingB',
+            'equipcomboseerRate',
+            'vendor1rebate',
+            'vendor2rebate',
+            'vendor3rebate',
+            'vendor4rebate',
+            'ahriref',
+            'lock',
+            'thermostatgroup',
+            'airhandlertype',
+            'outsideunittype',
+            'thermostatb',
+            'thermostat',
+            'thermostatmodnum',
+            'vendor4rebate2',
+            'totalrebate',
+            'eqmtrtype',
+            'plenumheight',
+            'plenumwidth',
+            'plenumdepth',
+            'acunitrebateamount',
+            'furnunitrebateamount',
+            'commedfurnthermbonus',
+            'commedbonus',
+            'optionid',
+            'options',
+            'addthermostat',
+
+        ]
+
+
+
+
+
+
 class EquipmentSelect2(forms.ModelForm):
     joblocation = forms.ModelChoiceField(queryset=JobLocation.objects.all(), empty_label="Select an option")
     plenumwidth = forms.ModelChoiceField(queryset=FilterPlenumWidth.objects.all(), empty_label="Select")
@@ -1593,10 +1687,7 @@ class ContractForm(forms.ModelForm):
     memo18 = forms.ModelChoiceField(queryset=DetailTable.objects.all().order_by('id'), empty_label="")
     depositterms = forms.ModelChoiceField(queryset=Terms.objects.all().order_by('term'), empty_label="")
     finalterms = forms.ModelChoiceField(queryset=Terms.objects.all().order_by('term'), empty_label="")
-    contractdate = forms.DateField(
-        widget=DateInput2(attrs={'onchange': 'WorkOrderDateFunction()'}),
-        required=False,
-    )
+
     downpaymentdate = forms.DateField(
         widget=DateInput2(attrs={'onchange': 'DownPaymentDateFunction()'}),
         required=False,
@@ -1693,13 +1784,16 @@ class ContractForm(forms.ModelForm):
             'finaltermsa',
 
 
-
         ]
 
         widgets = {
             'memo31': forms.Textarea(attrs={'cols': 100, 'rows': 5}),
-
+            'contractdate': forms.DateInput(format='%m-%d-%Y'),
         }
+
+
+
+
 
 
 class NetprofitTarget(forms.ModelForm):

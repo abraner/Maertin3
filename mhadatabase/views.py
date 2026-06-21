@@ -13,7 +13,7 @@ from .forms import EquipInfo, EquipInfoEdit, UpdateEquipInfo, IncreaseGlobal, In
     Package10a, Package10b, Package11a, Package11b, Package12a, Package12b, Package13a, Package13b, Package14a, \
     Package14b, \
     Package15a, Package15b, Package16a, Package16b, ContractForm, Costjob, NetprofitTarget, \
-    EquipmentSelect2, EquipmentSelect3, TechInfo, JobInfoCurrent, EquipmentSelect2AB
+    EquipmentSelect2, EquipmentSelect3, TechInfo, JobInfoCurrent, EquipmentSelect2AB, EquipmentSelect1B
 from .models import (Equipment, Equipment2, Man, Type, BTUcond, BTUevap, Warr, \
     EquipUpdate, GlobalIncrease, MatUpdate, \
     Material, Manufacturer, Vendor, MaterialType, CustomerInfo, ContractorInfo, Bidding, EquipSelection, Contract, \
@@ -6867,13 +6867,14 @@ def yesdupcon(request, custid=None):
     s2 = Bidding.objects.create(custid=u, conid=v)
     s3 = EquipSelection.objects.create(custid=u, conid=v)
     uu = Contract.objects.values_list('id', flat=True).last()
+    uu1 = Contract.objects.values_list('date', flat=True).last()
     vv = Bidding.objects.values_list('id', flat=True).last()
     ww = EquipSelection.objects.values_list('id', flat=True).last()
     xx = CurrentJobInfo.objects.values_list('id', flat=True).last() or 0
 #    aa = CurrentJobInfo.objects.filter(id=xx).delete()
     xx1 = xx + 1
     CurrentJobInfo.objects.create(id=xx1, custid=u, conid=v, bidid=vv, jobid=ww)
-    s4 = Contract.objects.filter(id=uu).update(jobid=ww)
+    s4 = Contract.objects.filter(id=uu).update(jobid=ww,contractdate=uu1)
     s5 = EquipSelection.objects.filter(id=ww).update(jobid=ww)
     s6 = Bidding.objects.filter(id=vv).update(jobid=ww, )
 
@@ -6980,6 +6981,8 @@ def jobselection2(request, bidid=None):
     c3 = EquipSelection.objects.values_list('existfurnconfig', flat=True).get(bidid=bidid)
     c4 = EquipSelection.objects.values_list('plenumwidth', flat=True).get(bidid=bidid)
     c5 = EquipSelection.objects.values_list('existfurnwidth', flat=True).get(bidid=bidid)
+    c6 = EquipSelection.objects.values_list('airhandlertype', flat=True).get(bidid=bidid)
+    c7 = EquipSelection.objects.values_list('outsideunittype', flat=True).get(bidid=bidid)
     d = c + 1
     e = Option.objects.values_list('option', flat=True).get(id=d)
     f = EquipSelection.objects.create(custid=b, conid=a, optionid=d, options=e, jobid=c1)
@@ -6989,7 +6992,7 @@ def jobselection2(request, bidid=None):
     h3 = Contract.objects.values_list('memo3', flat=True).get(jobid=c1)
     h4 = Contract.objects.values_list('memo4', flat=True).get(jobid=c1)
     h5 = Contract.objects.values_list('memo5', flat=True).get(jobid=c1)
-    h6 = Contract.objects.values_list('memo5', flat=True).get(jobid=c1)
+    h6 = Contract.objects.values_list('memo6', flat=True).get(jobid=c1)
     h7 = Contract.objects.values_list('memo7', flat=True).get(jobid=c1)
     h8 = Contract.objects.values_list('memo8', flat=True).get(jobid=c1)
     h9 = Contract.objects.values_list('memo9', flat=True).get(jobid=c1)
@@ -7002,16 +7005,17 @@ def jobselection2(request, bidid=None):
     h16 = Contract.objects.values_list('memo16', flat=True).get(jobid=c1)
     h17 = Contract.objects.values_list('memo17', flat=True).get(jobid=c1)
     h18 = Contract.objects.values_list('memo18', flat=True).get(jobid=c1)
+    uu1 = Contract.objects.values_list('date', flat=True).last()
 
     j = Bidding.objects.create(custid=b, conid=a, jobid=c1, optionsid=d, options=e, joblocation=c2)
     j1 = Bidding.objects.values_list('id', flat=True).last()
     j2 = Bidding.objects.filter(id=j1).update(bidid=j1)
     k = CurrentJobInfo.objects.create(custid=b, conid=a, bidid=j1, jobid=c1, optionid=d, options=e, currentlocrm=c2)
     l = EquipSelection.objects.filter(id=g).update(bidid=j1, joblocation=c2, plenumwidth=c4, existfurnconfig=c3,
-                                                   existfurnwidth = c5)
+                                                   existfurnwidth = c5, airhandlertype=c6, outsideunittype=c7)
     i = Contract.objects.create(custid=b, conid=a, jobid=c1, bidid=j1, memo1=h1, memo2=h2, memo3=h3, memo4=h4, memo5=h5
                                 , memo6=h6, memo7=h7, memo8=h8, memo9=h9, memo10=h10, memo11=h11, memo12=h12, memo13=h13
-                                , memo14=h14, memo15=h15, memo16=h16, memo17=h17, memo18=h18)
+                                , memo14=h14, memo15=h15, memo16=h16, memo17=h17, memo18=h18, contractdate=uu1)
     queryset = EquipSelection.objects.filter(id=g)
     instance2 = get_object_or_404(EquipSelection, id=g)
 
@@ -7047,6 +7051,8 @@ def jobselection3(request, bidid=None):
     c3 = EquipSelection.objects.values_list('existfurnconfig', flat=True).get(bidid=bidid)
     c4 = EquipSelection.objects.values_list('plenumwidth', flat=True).get(bidid=bidid)
     c5 = EquipSelection.objects.values_list('existfurnwidth', flat=True).get(bidid=bidid)
+    c6 = EquipSelection.objects.values_list('airhandlertype', flat=True).get(bidid=bidid)
+    c7 = EquipSelection.objects.values_list('outsideunittype', flat=True).get(bidid=bidid)
     d = c + 1
     e = Option.objects.values_list('option', flat=True).get(id=d)
     f = EquipSelection.objects.create(custid=b, conid=a, optionid=d, options=e, jobid=c1)
@@ -7070,16 +7076,17 @@ def jobselection3(request, bidid=None):
     h16 =Contract.objects.filter(jobid=c1).values_list('memo16', flat=True)[0]
     h17 =Contract.objects.filter(jobid=c1).values_list('memo17', flat=True)[0]
     h18 =Contract.objects.filter(jobid=c1).values_list('memo18', flat=True)[0]
+    uu1 = Contract.objects.values_list('date', flat=True).last()
 
     j = Bidding.objects.create(custid=b, conid=a, jobid=c1, optionsid=d, options=e, joblocation=c2)
     j1 = Bidding.objects.values_list('id', flat=True).last()
     j2 = Bidding.objects.filter(id=j1).update(bidid=j1)
     k = CurrentJobInfo.objects.create(custid=b, conid=a, bidid=j1, jobid=c1, optionid=d, options=e, currentlocrm=c2)
     l = EquipSelection.objects.filter(id=g).update(bidid=j1, joblocation=c2, plenumwidth=c4, existfurnconfig=c3,
-                                                   existfurnwidth=c5)
+                                                   existfurnwidth=c5, airhandlertype=c6, outsideunittype=c7)
     i = Contract.objects.create(custid=b, conid=a, jobid=c1, bidid=j1, memo1=h1, memo2=h2, memo3=h3, memo4=h4, memo5=h5
                                 , memo6=h6, memo7=h7, memo8=h8, memo9=h9, memo10=h10, memo11=h11, memo12=h12, memo13=h13
-                                , memo14=h14, memo15=h15, memo16=h16, memo17=h17, memo18=h18)
+                                , memo14=h14, memo15=h15, memo16=h16, memo17=h17, memo18=h18, contractdate=uu1)
     queryset = EquipSelection.objects.filter(id=g)
     instance2 = get_object_or_404(EquipSelection, id=g)
 
@@ -7115,6 +7122,8 @@ def jobselection4(request, bidid=None):
     c3 = EquipSelection.objects.values_list('existfurnconfig', flat=True).get(bidid=bidid)
     c4 = EquipSelection.objects.values_list('plenumwidth', flat=True).get(bidid=bidid)
     c5 = EquipSelection.objects.values_list('existfurnwidth', flat=True).get(bidid=bidid)
+    c6 = EquipSelection.objects.values_list('airhandlertype', flat=True).get(bidid=bidid)
+    c7 = EquipSelection.objects.values_list('outsideunittype', flat=True).get(bidid=bidid)
     d = c + 1
     e = Option.objects.values_list('option', flat=True).get(id=d)
     f = EquipSelection.objects.create(custid=b, conid=a, optionid=d, options=e, jobid=c1)
@@ -7137,16 +7146,16 @@ def jobselection4(request, bidid=None):
     h16 = Contract.objects.filter(jobid=c1).values_list('memo16', flat=True)[0]
     h17 = Contract.objects.filter(jobid=c1).values_list('memo17', flat=True)[0]
     h18 = Contract.objects.filter(jobid=c1).values_list('memo18', flat=True)[0]
-
+    uu1 = Contract.objects.values_list('date', flat=True).last()
     j = Bidding.objects.create(custid=b, conid=a, jobid=c1, optionsid=d, options=e, joblocation=c2)
     j1 = Bidding.objects.values_list('id', flat=True).last()
     j2 = Bidding.objects.filter(id=j1).update(bidid=j1)
     k = CurrentJobInfo.objects.create(custid=b, conid=a, bidid=j1, jobid=c1, optionid=d, options=e, currentlocrm=c2)
     l = EquipSelection.objects.filter(id=g).update(bidid=j1, joblocation=c2, plenumwidth=c4, existfurnconfig=c3,
-                                                   existfurnwidth=c5)
+                                                   existfurnwidth=c5, airhandlertype=c6, outsideunittype=c7)
     i = Contract.objects.create(custid=b, conid=a, jobid=c1, bidid=j1, memo1=h1, memo2=h2, memo3=h3, memo4=h4, memo5=h5
                                 , memo6=h6, memo7=h7, memo8=h8, memo9=h9, memo10=h10, memo11=h11, memo12=h12, memo13=h13
-                                , memo14=h14, memo15=h15, memo16=h16, memo17=h17, memo18=h18)
+                                , memo14=h14, memo15=h15, memo16=h16, memo17=h17, memo18=h18, contractdate=uu1)
     queryset = EquipSelection.objects.filter(id=g)
     instance2 = get_object_or_404(EquipSelection, id=g)
 
@@ -7182,6 +7191,8 @@ def jobselection5(request, bidid=None):
     c3 = EquipSelection.objects.values_list('existfurnconfig', flat=True).get(bidid=bidid)
     c4 = EquipSelection.objects.values_list('plenumwidth', flat=True).get(bidid=bidid)
     c5 = EquipSelection.objects.values_list('existfurnwidth', flat=True).get(bidid=bidid)
+    c6 = EquipSelection.objects.values_list('airhandlertype', flat=True).get(bidid=bidid)
+    c7 = EquipSelection.objects.values_list('outsideunittype', flat=True).get(bidid=bidid)
     d = c + 1
     e = Option.objects.values_list('option', flat=True).get(id=d)
     f = EquipSelection.objects.create(custid=b, conid=a, optionid=d, options=e, jobid=c1)
@@ -7204,16 +7215,16 @@ def jobselection5(request, bidid=None):
     h16 = Contract.objects.filter(jobid=c1).values_list('memo16', flat=True)[0]
     h17 = Contract.objects.filter(jobid=c1).values_list('memo17', flat=True)[0]
     h18 = Contract.objects.filter(jobid=c1).values_list('memo18', flat=True)[0]
-
+    uu1 = Contract.objects.values_list('date', flat=True).last()
     j = Bidding.objects.create(custid=b, conid=a, jobid=c1, optionsid=d, options=e, joblocation=c2)
     j1 = Bidding.objects.values_list('id', flat=True).last()
     j2 = Bidding.objects.filter(id=j1).update(bidid=j1)
     k = CurrentJobInfo.objects.create(custid=b, conid=a, bidid=j1, jobid=c1, optionid=d, options=e, currentlocrm=c2)
     l = EquipSelection.objects.filter(id=g).update(bidid=j1, joblocation=c2, plenumwidth=c4, existfurnconfig=c3,
-                                                   existfurnwidth=c5)
+                                                   existfurnwidth=c5, airhandlertype=c6, outsideunittype=c7)
     i = Contract.objects.create(custid=b, conid=a, jobid=c1, bidid=j1, memo1=h1, memo2=h2, memo3=h3, memo4=h4, memo5=h5
                                 , memo6=h6, memo7=h7, memo8=h8, memo9=h9, memo10=h10, memo11=h11, memo12=h12, memo13=h13
-                                , memo14=h14, memo15=h15, memo16=h16, memo17=h17, memo18=h18)
+                                , memo14=h14, memo15=h15, memo16=h16, memo17=h17, memo18=h18, contractdate=uu1)
     queryset = EquipSelection.objects.filter(id=g)
     instance2 = get_object_or_404(EquipSelection, id=g)
 
@@ -7552,16 +7563,6 @@ def equipselection1(request, id=None):
 
 
 
-
-
-
-
-
-
-
-
-
-
 def equipselection2(request, id=None):
     a = EquipSelection.objects.values_list('jobid', flat=True).last()
     a2 = EquipSelection.objects.values_list('bidid', flat=True).last()
@@ -7604,7 +7605,7 @@ def equipselection2(request, id=None):
         "d": d,
         "e": e,
     }
-    return render(request, 'mha/equipselection1.html', context)
+    return render(request, 'mha/equipselection1B.html', context)
 
 
 def equipselection2A(request, id=None):
@@ -8215,7 +8216,7 @@ def equipselection3(request, id=None):
         "d": d,
         "e": e,
     }
-    return render(request, 'mha/equipselection1.html', context)
+    return render(request, 'mha/equipselection1B.html', context)
 
 
 def equipselection3A(request, id=None):
@@ -8483,7 +8484,7 @@ def equipselection4(request, id=None):
         "d": d,
         "e": e,
     }
-    return render(request, 'mha/equipselection1.html', context)
+    return render(request, 'mha/equipselection1B.html', context)
 
 
 def equipselection4A(request, id=None):
@@ -8753,7 +8754,7 @@ def equipselection5(request, id=None):
         "d": d,
         "e": e,
     }
-    return render(request, 'mha/equipselection1.html', context)
+    return render(request, 'mha/equipselection1B.html', context)
 
 
 def equipselection5A(request, id=None):
@@ -9477,6 +9478,36 @@ def joblocation(request):
         "f": f,
     }
     return render(request, 'mha/equipselection1.html', context)
+
+
+def load_joblocation1B(request, bidid=None):
+    form = EquipmentSelect1B(request.POST or None)
+    joblocation = EquipSelection.objects.values_list('joblocation', flat=True).last()
+    context = {
+        "joblocation": joblocation,
+        "form": form,
+    }
+    return render(request, 'mha/joblocation1B_1.html', context)
+
+
+def load_airhandler1B(request, bidid=None):
+    form = EquipmentSelect1B(request.POST or None)
+    airhandlertype = EquipSelection.objects.values_list('airhandlertype', flat=True).last()
+    context = {
+        "airhandlertype": airhandlertype,
+        "form": form,
+    }
+    return render(request, 'mha/airhandlertype1B_1.html', context)
+
+
+def load_outsideunittype1B(request, bidid=None):
+    form = EquipmentSelect1B(request.POST or None)
+    outsideunittype = EquipSelection.objects.values_list('outsideunittype', flat=True).last()
+    context = {
+        "outsideunittype": outsideunittype,
+        "form": form,
+    }
+    return render(request, 'mha/outsideunittype1B_1.html', context)
 
 
 def airhandler(request):
@@ -21563,6 +21594,20 @@ def contractE(request, bidid=None):
         "grandtotalcost": grandtotalcost,
     }
     return render(request, 'mha/contract.html', context)
+
+
+
+def load_contractdate(request, bidid=None):
+    instance = Contract.objects.filter(bidid=bidid).last()
+    form = ContractForm(request.POST or None)
+    contractdate = Contract.objects.filter(bidid=bidid).values_list('contractdate', flat=True)
+    context = {
+        "instance": instance,
+        "form": form,
+        "contractdate": contractdate,
+    }
+    return render(request, 'mha/contractdate_1.html', context)
+
 
 
 def contractmulti2(request, jobid=None):

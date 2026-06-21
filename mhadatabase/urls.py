@@ -392,6 +392,13 @@ urlpatterns = [
 
 
     path('joblocation', views.joblocation, name='joblocation'),
+    path('load_joblocation1B', views.load_joblocation1B, name='load_joblocation1B'),
+    path('load_airhandler1B', views.load_airhandler1B, name='load_airhandler1B'),
+    path('load_outsideunittype1B', views.load_outsideunittype1B, name='load_outsideunittype1B'),
+
+
+
+
     path('airhandler', views.airhandler, name='airhandler'),
     path('airhandler3a', views.airhandler3a, name='airhandler3a'),
 
@@ -860,6 +867,8 @@ urlpatterns = [
 
     path('<int:jobid>/print/', views.print, name='print'),
     path('<int:bidid>/contract/', views.contract, name='contract'),
+    path('<int:bidid>/load_contractdate/', views.load_contractdate, name='load_contractdate'),
+
     path('<int:bidid>/contractB/', views.contractB, name='contractB'),
     path('<int:bidid>/contractC/', views.contractC, name='contractC'),
     path('<int:bidid>/contractD/', views.contractD, name='contractD'),

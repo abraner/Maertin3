@@ -224,6 +224,14 @@ input#vendor1rebate_id, input#vendor2rebate_id, input#totalrebate_id{
     margin-bottom: 12px;
 }
 
+
+
+#joblocation_id, #airhandlertype_id, #outsideunittype_id{
+    width: 235px;
+    font-size: calc(.65vw + .65vh + .25vmin);
+    margin-bottom: 12px;
+}
+
 .label_joblocation, .label_furntype, .label_condtype{
     width: 200px;
     display: block;

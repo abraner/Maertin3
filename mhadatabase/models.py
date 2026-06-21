@@ -2259,7 +2259,7 @@ class Contract(models.Model):
     custid = models.IntegerField(null=True, default=None, verbose_name="CustID.")
     jobid = models.IntegerField(null=True, default=None, verbose_name="JobID.")
     contractdate = models.DateField(blank=True, null=True)
-    date = models.DateField(auto_now_add=False, auto_now=True, blank=True)
+    date = models.DateField(auto_now_add=True)
     downpaymentdate = models.DateField(blank=True, null=True)
     finalpaymentdate = models.DateField(blank=True, null=True)
     depositterms = models.CharField(max_length=254, default=None, null=True, blank=True, verbose_name="")

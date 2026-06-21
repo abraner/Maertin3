@@ -96,6 +96,7 @@
                               finalterms-url="{% url 'mhadatabase:finalterms' instance.bidid %}"
                               finaltermsa-url="{% url 'mhadatabase:finaltermsa' instance.bidid %}"
                               finaltermsaload-url="{% url 'mhadatabase:load_finaltermsa' instance.bidid %}"
+                              contractdateload-url="{% url 'mhadatabase:load_contractdate' instance.bidid %}"
 
                               multiformb-url="{% url 'mhadatabase:multiformb' %}"
 
@@ -129,7 +130,7 @@
                         <a class="button2" href="{% url 'mhadatabase:customerinfo' instance.jobid %}">Close Form</a>
                         <div class="dateheader">Proposal Date</div>
                         <div class="calendar">
-                            <div id="contractdate" >{{ form.contractdate }}</div>
+                            <div id="id_contractdate"></div>
 
                         </div>
 
@@ -1028,18 +1029,18 @@ $(document).ready(function() {
 
 
 
-//setTimeout(function(){
-//            var urlC = $(".form2").attr("workorderdatea-url");
-//            req = $.ajax({
-//                   url: urlC,
-//                   data:{
-//                     },
-//                     success: function (data) {
-//                       $("#workorderdate").html(data);
-//                     }
-//                });
-//        }, 0);
-//
+setTimeout(function(){
+            var urlC = $(".form2").attr("contractdateload-url");
+            req = $.ajax({
+                   url: urlC,
+                   data:{
+                     },
+                     success: function (data) {
+                       $("#id_contractdate").html(data);
+                     }
+                });
+        }, 0);
+
 //setTimeout(function(){
 //            var urlC = $(".form2").attr("downpaymentdatea-url");
 //            req = $.ajax({

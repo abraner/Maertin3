@@ -198,10 +198,13 @@ i.bi bi-calendar-date input-group-text{
     display: flex;
     margin-top: 3px;
     margin-bottom: 10px;
-    margin-left: 26px;
+    margin-left: 44px;
 }
 
-
+#id_contractdate{
+    width: 107px;
+    text-align: center;
+}
 
 
 .dateheader{
